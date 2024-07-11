@@ -1,13 +1,16 @@
 import React from 'react';
 import './Homepage.css';
 
-const HomePage = () => {
-  return (
-    <div className="homepage">
-      <div className="navbar">
+  const HomePage = () => {
+    return (
+      <div className="homepage">
+        <div className="navbar">
         <div className="logo-container">
-          <div className="logo">DORMVISION</div>
-        </div>
+    <div className="logo">
+      <img src="/dormvisionlogo.png" />
+    </div>
+  </div>
+
         <div className="nav-container">
           <div className="nav-links">
             <a href="#" className="nav-link">Home</a>
