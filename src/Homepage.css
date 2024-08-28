@@ -1,78 +1,103 @@
 .homepage {
-    font-family: Arial, sans-serif;
-  }
-  
-  .navbar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #004d33; /* Dark green */
-    padding: 1rem 2rem;
-  }
-  
-  .logo-container {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-    color: #ffd700; /* Gold */
-    font-weight: bold;
-  }
-  
-  .nav-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 1rem;
-  }
-  
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    background-color: #fcfcfc; 
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-  }
-  
-  .nav-link {
-    color: #000; /* Black */
-    text-decoration: none;
-    font-size: 1rem;
-    position: relative;
-  }
-  
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -2px;
-    left: 50%;
-    background-color: #000; /* Black */
-    transition: all 0.3s ease-in-out;
-    transform: translateX(-50%);
-  }
-  
-  .nav-link:hover::after {
-    width: 100%;
-  }
-  
+  font-family: "Segoe UI", Arial, sans-serif;
+}
 
-  
-  .main-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    background: linear-gradient(135deg, #004d33 25%, #006644 50%, #339966 75%, #99cc99 100%);
-    color: #fff;
-  }
-  
-  .main-content h1 {
-    font-size: 2rem;
-    font-weight: normal;
-  }
-  
+/* eto yung nasa taas kasama nung logo sa dorm vision*/
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Ensure elements are spaced out */
+  align-items: center; /* Center items vertically */
+  background-color: white; /* Dark green */
+  padding: 1rem 2rem;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  background-color: #fcfcfc; 
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.nav-link {
+  color: #000; /* Black */
+  text-decoration: none;
+  font-size: 1rem;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 50%;
+  background-color: #da5d5d; /* Black */  
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background-image: url('/public/bgroom.jpg'); /* Adjust the path as per your project structure */
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent repeating the background image */
+}
+.main-content h1 {
+  font-size: 4rem;
+  font-weight: normal;
+  color: #da5d5d;
+}
+
+.logo img {
+  max-width: 150px; /* Adjust size as needed */
+  height: auto;
+}
+
+/* log in button */
+.login-button {
+  padding: 0; /* Adjust the padding as needed */
+  background-color: #fff; /* Adjust the background color as needed */
+  border: 1px solid #ccc; /* Adjust the border as needed */
+  border-radius: 5px; /* Adjust the border-radius as needed */
+  cursor: pointer;
+  margin-left: auto; /* Push the login button to the right */
+}
+
+.login-button:hover {
+  color: #fff;
+}
+
+.login-container {
+  display: flex;
+  align-items: center;
+}
+
+
+.login-image {
+  width: 30px; /* Adjust size as needed */
+  height: 30px; /* Adjust size as needed */
+  object-fit: cover; /* Ensures the image covers the dimensions */
+}
+/* */
