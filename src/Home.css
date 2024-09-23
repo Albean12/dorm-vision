@@ -1,20 +1,29 @@
 .home-page {
+  position: relative;
+  min-height: 100vh; /* Ensures the background covers the full page */
+  overflow: hidden; /* Prevents scrollbars due to the blur */
+}
+
+.home-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-image: url('/public/bgroom.jpg'); /* Replace with the path to your image */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 100vh; /* Ensures the background covers the full page */
+  filter: blur(2px); /* Adds blur to background */
+  z-index: -1; /* Places the blurred background behind the content */
 }
 
 
+
 .hero-banner {
-  background-image: url('/'); /* Update with a valid URL */
-  background-size: cover;
-  background-position: center;
-  padding: 70px 20px;
-  text-align: center;
-  color: white;
-  position: relative;
+
+
 }
 
 .hero-banner h1 {
@@ -64,46 +73,6 @@
   padding: 10px;
 }
 
-.testimonials {
-  background-color: #f9f9f9;
-  padding: 50px 20px;
-  text-align: center;
-}
-
-.testimonials h2 {
-  font-size: 2.5em;
-  margin-bottom: 30px;
-}
-
-.testimonial-list {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.testimonial {
-  width: 30%; 
-  margin: 20px 0;
-  padding: 20px;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
-}
-
-.testimonial:hover {
-  transform: scale(1.05);
-}
-
-.testimonial p {
-  font-size: 1.2em;
-}
-
-.testimonial h4 {
-  font-size: 1em;
-  margin-top: 10px;
-  color: #007bff; 
-}
 
 .cta-section {
   padding: 50px 20px;

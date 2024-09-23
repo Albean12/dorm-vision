@@ -75,26 +75,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="testimonials bg-light py-5">
-        <div className="container">
-          <h2 className="text-center mb-5">What Our Residents Say</h2>
-          <div className="row">
-            <div className="col-md-6">
-              <div className="card p-4 mb-4">
-                <p>"The best living experience I've ever had. Highly recommend!"</p>
-                <h4 className="text-end">- Alex P.</h4>
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="card p-4 mb-4">
-                <p>"Amazing facilities and super convenient location!"</p>
-                <h4 className="text-end">- Jamie L.</h4>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Call to Action Section */}
       <section className="cta-section text-center py-5">
