@@ -1,55 +1,108 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Carousel } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './Home.css';
 
 const Home = () => {
+  // State to control whether the carousel should slide
+  const [hovered, setHovered] = useState(false);
+
   return (
     <div className="home-page">
-      <section className="hero-banner">
-        <h1>Convenience Meets Technology</h1>
-        <p>Discover modern living with our tech-enabled dormitories.</p>
-        <Link to="/contactus" className="cta-button">Book a Tour</Link>
+      {/* Hero Section */}
+      <section className="hero-banner text-center bg-light py-5">
+        <h1 className="display-4">Convenience Meets Technology</h1>
+        <p className="lead">Discover modern living with our tech-enabled dormitories.</p>
+        <Link to="/contactus" className="btn btn-primary btn-lg mt-3">Book a Tour</Link>
       </section>
 
-      <section className="features">
-        <h2>Why Choose Us?</h2>
-        <div className="feature-list">
-          <div className="feature">
-            <img src="/feature1.png" alt="Feature 1" />
+      {/* Features Section with Carousel */}
+      <section className="features container py-5">
+        <h2 className="text-center mb-5">Why Choose Us?</h2>
+        <div className="row">
+          <div className="col-md-4 text-center">
+            <Carousel
+              pause={hovered ? 'hover' : false}
+              interval={hovered ? 2000 : null}
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+            >
+              <Carousel.Item>
+                <img src="/sample1.jpg" alt="Feature 1" className="img-fluid mb-3" />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img src="/sample2.jpg" alt="Feature 1 - Slide 2" className="img-fluid mb-3" />
+              </Carousel.Item>
+            </Carousel>
             <h3>Modern Facilities</h3>
             <p>Experience state-of-the-art amenities and top-notch services.</p>
           </div>
-          <div className="feature">
-            <img src="/feature2.png" alt="Feature 2" />
+          <div className="col-md-4 text-center">
+            <Carousel
+              pause={hovered ? 'hover' : false}
+              interval={hovered ? 2000 : null}
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+            >
+              <Carousel.Item>
+                <img src="/feature2.png" alt="Feature 2" className="img-fluid mb-3" />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img src="/feature2-slide2.png" alt="Feature 2 - Slide 2" className="img-fluid mb-3" />
+              </Carousel.Item>
+            </Carousel>
             <h3>Smart Technology</h3>
             <p>Smart room controls, high-speed internet, and more.</p>
           </div>
-          <div className="feature">
-            <img src="/feature3.png" alt="Feature 3" />
+          <div className="col-md-4 text-center">
+            <Carousel
+              pause={hovered ? 'hover' : false}
+              interval={hovered ? 2000 : null}
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+            >
+              <Carousel.Item>
+                <img src="/feature3.png" alt="Feature 3" className="img-fluid mb-3" />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img src="/feature3-slide2.png" alt="Feature 3 - Slide 2" className="img-fluid mb-3" />
+              </Carousel.Item>
+            </Carousel>
             <h3>Prime Location</h3>
             <p>Located near top universities and public transportation.</p>
           </div>
         </div>
       </section>
 
-      <section className="testimonials">
-        <h2>What Our Residents Say</h2>
-        <div className="testimonial-list">
-          <div className="testimonial">
-            <p>"The best living experience I've ever had. Highly recommend!"</p>
-            <h4>- Alex P.</h4>
-          </div>
-          <div className="testimonial">
-            <p>"Amazing facilities and super convenient location!"</p>
-            <h4>- Jamie L.</h4>
+      {/* Testimonials Section */}
+      <section className="testimonials bg-light py-5">
+        <div className="container">
+          <h2 className="text-center mb-5">What Our Residents Say</h2>
+          <div className="row">
+            <div className="col-md-6">
+              <div className="card p-4 mb-4">
+                <p>"The best living experience I've ever had. Highly recommend!"</p>
+                <h4 className="text-end">- Alex P.</h4>
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="card p-4 mb-4">
+                <p>"Amazing facilities and super convenient location!"</p>
+                <h4 className="text-end">- Jamie L.</h4>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="cta-section">
-        <h2>Ready to Move In?</h2>
-        <p>Contact us today to schedule a tour or to get more information.</p>
-        <Link to="/contactus" className="cta-button">Contact Us</Link>
+      {/* Call to Action Section */}
+      <section className="cta-section text-center py-5">
+        <div className="container">
+          <h2 className="mb-4">Ready to Move In?</h2>
+          <p>Contact us today to schedule a tour or to get more information.</p>
+          <Link to="/contactus" className="btn btn-success btn-lg mt-3">Contact Us</Link>
+        </div>
       </section>
     </div>
   );
