@@ -46,10 +46,10 @@ const Home = () => {
               onMouseLeave={() => setHovered(false)}
             >
               <Carousel.Item>
-                <img src="/feature2.png" alt="Feature 2" className="img-fluid mb-3" />
+                <img src="/feature2.jpeg" alt="Feature 2" className="img-fluid mb-3" />
               </Carousel.Item>
               <Carousel.Item>
-                <img src="/feature2-slide2.png" alt="Feature 2 - Slide 2" className="img-fluid mb-3" />
+                <img src="/feature2-slide2.jpeg" alt="Feature 2 - Slide 2" className="img-fluid mb-3" />
               </Carousel.Item>
             </Carousel>
             <h3>Smart Technology</h3>
@@ -63,10 +63,10 @@ const Home = () => {
               onMouseLeave={() => setHovered(false)}
             >
               <Carousel.Item>
-                <img src="/feature3.png" alt="Feature 3" className="img-fluid mb-3" />
+                <img src="/feature3.jpeg" alt="Feature 3" className="img-fluid mb-3" />
               </Carousel.Item>
               <Carousel.Item>
-                <img src="/feature3-slide2.png" alt="Feature 3 - Slide 2" className="img-fluid mb-3" />
+                <img src="/feature3-slide2.jpeg" alt="Feature 3 - Slide 2" className="img-fluid mb-3" />
               </Carousel.Item>
             </Carousel>
             <h3>Prime Location</h3>

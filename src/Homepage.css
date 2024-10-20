@@ -36,7 +36,7 @@
 }
 
 .nav-link {
-  color: #000; /* Black */
+  color: #000;
   text-decoration: none;
   font-size: 1rem;
   position: relative;
@@ -49,7 +49,7 @@
   height: 2px;
   bottom: -2px;
   left: 50%;
-  background-color: #da5d5d; /* Color for the hover effect */
+  background-color: #da5d5d; 
   transition: all 0.3s ease-in-out;
   transform: translateX(-50%);
 }
@@ -62,16 +62,21 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  width: 100vw;
   height: 20vh;
+  background-size: cover;
   background-position: center; 
   background-repeat: no-repeat; 
-  padding-top: 10px; /* Add padding to prevent content from being hidden behind the navbar */
+  padding: 0;
+  margin: 0;
 }
 
 .main-content h1 {
   font-size: 4rem;
   font-weight: normal;
   color: #da5d5d;
+  position: relative;
+  z-index: 1;
 }
 
 .logo img {
