@@ -32,6 +32,7 @@ const HomePage = () => {
           </div>
           <div className="login-container">
             <Link to="/login" className="login-button">
+              <span className="login-text">Account</span>
               <img src="/user.png" alt="loginlogo" className="login-image" />
             </Link>
           </div>

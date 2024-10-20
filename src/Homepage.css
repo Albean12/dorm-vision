@@ -36,7 +36,7 @@
 }
 
 .nav-link {
-  color: #000;
+  color: #000; /* Black */
   text-decoration: none;
   font-size: 1rem;
   position: relative;
@@ -49,7 +49,7 @@
   height: 2px;
   bottom: -2px;
   left: 50%;
-  background-color: #da5d5d; 
+  background-color: #da5d5d; /* Color for the hover effect */
   transition: all 0.3s ease-in-out;
   transform: translateX(-50%);
 }
@@ -62,21 +62,16 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  width: 100vw;
   height: 20vh;
-  background-size: cover;
   background-position: center; 
   background-repeat: no-repeat; 
-  padding: 0;
-  margin: 0;
+  padding-top: 10px; /* Add padding to prevent content from being hidden behind the navbar */
 }
 
 .main-content h1 {
   font-size: 4rem;
   font-weight: normal;
   color: #da5d5d;
-  position: relative;
-  z-index: 1;
 }
 
 .logo img {
@@ -84,18 +79,22 @@
   height: auto;
 }
 
-/* Log in button */
+/* Updated Log in button */
 .login-button {
-  padding: 0; 
-  background-color: #fff; 
-  border: 1px solid #ccc; 
-  border-radius: 5px; 
+  display: flex;
+  align-items: center;
+  background-color: #f9fafc; /* Light blue background */
+  border: none;
+  border-radius: 30px; /* Rounded corners */
+  padding: 10px 20px;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
   cursor: pointer;
-  margin-left: auto; 
 }
 
 .login-button:hover {
-  color: #fff;
+  background-color: #d0e1ff; /* Darker blue on hover */
 }
 
 .login-container {
@@ -103,8 +102,16 @@
   align-items: center;
 }
 
+.login-text {
+  margin-right: 10px;
+  font-size: 1rem;
+  color: #00008b; /* Dark blue text */
+  font-weight: bold;
+}
+
 .login-image {
   width: 30px; 
   height: 30px; 
-  object-fit: cover; 
+  object-fit: cover;
+  border-radius: 50%; /* Circle image */
 }
