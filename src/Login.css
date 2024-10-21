@@ -9,12 +9,14 @@ body, html {
 .login-page {
   display: flex;
   height: 100vh;
+  padding: 0 20px; /* Add padding to both sides */
 }
 
 /* Left section (Form) */
 .login-left {
   flex: 1;
-  padding: 50px;
+  padding: 15px;
+  margin-left: -400px; /* Add this line to create space on the left */
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -135,8 +137,12 @@ body, html {
 
 /* Right section (Background) */
 .login-right {
-  flex: 1;
-  background: url('') no-repeat center center/cover;
+  flex: 1; /* Ensure this section takes up one portion of the available space */
+  background: url('/public/bgroom.jpg') no-repeat center center;
+  background-size: cover; /* Ensure the image covers the entire area */
+  height: 100vh; /* Make the right side take up the full viewport height */
+
+
 }
 
 /* Responsive adjustments */
