@@ -16,7 +16,6 @@ body, html {
 .login-left {
   flex: 1;
   padding: 15px;
-  margin-left: -400px; /* Add this line to create space on the left */
   background-color: #fff;
   display: flex;
   flex-direction: column;

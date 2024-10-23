@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
+import CreateAccountModal from './CreateAccount'; // Import the modal
 
 const Login = () => {
+  // State to manage the visibility of the Create Account modal
+  const [isCreateAccountOpen, setCreateAccountOpen] = useState(false);
+
+  const openCreateAccountModal = () => setCreateAccountOpen(true); // Open modal
+  const closeCreateAccountModal = () => setCreateAccountOpen(false); // Close modal
+
   return (
     <div className="login-page">
       {/* Left Section */}
       <div className="login-left">
         <h1 className="welcome-text">Hello, welcome!</h1>
-        
+
         {/* Login Form */}
         <form className="login-form">
           <div className="input-group">
@@ -32,7 +39,13 @@ const Login = () => {
 
         {/* Link for users without accounts */}
         <div className="create-account">
-          <span>You don't have an account? <Link to="/create-account" className="create-account-link">Create now</Link></span>
+          <span>
+            You don't have an account? 
+            {/* Replace the Link with a button to open the modal */}
+            <span className="create-account-link" onClick={openCreateAccountModal}>
+              Create now
+            </span>
+          </span>
         </div>
 
         <div className="social-links">
@@ -49,6 +62,9 @@ const Login = () => {
       <div className="login-right">
         {/* Background image will be applied in CSS */}
       </div>
+
+      {/* Modal for Create Account */}
+      <CreateAccountModal isOpen={isCreateAccountOpen} onClose={closeCreateAccountModal} />
     </div>
   );
 };
