@@ -13,7 +13,7 @@ body, html {
 /* Hero Section */
 .hero-section {
   height: 100vh;
-  background: url('/public/bgroom.jpg') no-repeat center center / cover; /* Replace with a background image */
+  background: url('/public/seagold.jpg') no-repeat center center / cover; /* Replace with a background image */
   display: flex;
   justify-content: center;
   align-items: center;

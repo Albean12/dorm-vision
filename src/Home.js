@@ -16,7 +16,7 @@ const Home = () => {
       <section className="hero-section text-center">
         <div className="hero-overlay">
           <h1>Welcome to Seagold Dormitory</h1>
-          <p className="lead">Your home away from home with modern facilities and a prime location.</p>
+          <p className="lead">Comfort away from Home.</p>
           <div className="button-group">
             <Link to="/Gallery" className="btn btn-primary">Explore Rooms</Link>
             <Link to="/contactus" className="btn btn-outline-light">Book a Tour</Link>

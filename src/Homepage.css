@@ -2,11 +2,13 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
+
 }
 
 .homepage {
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
+
 }
 
 /* Styles para sa Navbar */
@@ -53,7 +55,6 @@ body {
 .homepage-nav-links {
   display: flex;
   gap: 1rem;
-  background-color: #fcfcfc;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
 }
