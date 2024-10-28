@@ -7,9 +7,11 @@ function RoutingControl({ waypoints }) {
   const map = useMap();
 
   useEffect(() => {
-    if (!map) return;
+    // Check if the map and waypoints with at least two points are available
+    if (!map || waypoints.length < 2) return;
 
-    const routingControl = L.Routing.control({
+    // Initialize routing control only if map and waypoints are ready
+    let routingControl = L.Routing.control({
       waypoints: waypoints.map((wp) => L.latLng(wp)),
       lineOptions: {
         styles: [{ color: 'blue', weight: 4 }],
@@ -18,17 +20,23 @@ function RoutingControl({ waypoints }) {
       addWaypoints: false,      // Disables adding waypoints by dragging
       routeWhileDragging: false,
       draggableWaypoints: false,
-      fitSelectedRoutes: false,
-      show: false,              // Disable default instruction pane
+      fitSelectedRoutes: true,  // Automatically fits the map to the route
+      show: false,              // Disable the instruction pane
     }).addTo(map);
 
-    // Directly hide the routing container if it still appears
+    // Directly hide the routing control container if it appears
     const container = document.querySelector('.leaflet-routing-container');
     if (container) container.style.display = 'none';
 
+    // Cleanup function to safely remove routing control
     return () => {
-      if (map && routingControl) {
-        map.removeControl(routingControl);
+      if (routingControl && map) {
+        try {
+          map.removeControl(routingControl);
+          routingControl = null; // Explicitly set to null after removal
+        } catch (error) {
+          console.warn("Failed to remove routing control:", error);
+        }
       }
     };
   }, [map, waypoints]);

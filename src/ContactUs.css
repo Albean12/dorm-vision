@@ -1,0 +1,20 @@
+.contact-page {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .facebook-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #3b5998;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .facebook-link:hover {
+    background-color: #2d4373;
+  }
+  
