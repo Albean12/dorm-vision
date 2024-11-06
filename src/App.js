@@ -13,9 +13,14 @@ function App() {
 
   useEffect(() => {
     const fetchUserRole = async () => {
-      const role = await authService.getUserRole();
-      setUserRole(role);
-      setLoading(false);
+      try {
+        const role = await authService.getUserRole();
+        setUserRole(role);
+      } catch (error) {
+        console.error("Failed to fetch user role:", error);
+      } finally {
+        setLoading(false);
+      }
     };
     fetchUserRole();
   }, []);
@@ -29,8 +34,24 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage setUserRole={setUserRole} />} />
-        <Route path="/admin" element={userRole === 'admin' ? <AdminDashboard /> : <Navigate to="/login" />} />
-        <Route path="/tenant" element={userRole === 'tenant' ? <TenantDashboard /> : <Navigate to="/login" />} />
+        
+        {/* Route for Admin Dashboard */}
+        <Route
+          path="/admin"
+          element={
+            userRole === 'admin' ? <AdminDashboard /> : <Navigate to="/login" />
+          }
+        />
+        
+        {/* Route for Tenant Dashboard */}
+        <Route
+          path="/tenant"
+          element={
+            userRole === 'tenant' ? <TenantDashboard /> : <Navigate to="/login" />
+          }
+        />
+        
+        {/* Fallback Route */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
