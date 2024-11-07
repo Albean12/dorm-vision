@@ -7,10 +7,15 @@ const login = async (email, password) => {
     
     if (response.data.token) {
         localStorage.setItem('token', response.data.token);
-        localStorage.setItem('role', response.data.role); // Store role in localStorage
+        localStorage.setItem('role', response.data.role); // Save role in localStorage
     }
 
     return response.data;
+};
+
+// Define getUserRole to retrieve the user role from localStorage
+const getUserRole = () => {
+    return localStorage.getItem('role');
 };
 
 const logout = () => {
@@ -20,5 +25,6 @@ const logout = () => {
 
 export default {
     login,
+    getUserRole,  // Make sure this is exported
     logout,
 };
