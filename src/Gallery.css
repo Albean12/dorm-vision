@@ -33,24 +33,34 @@
     display: flex;
     gap: 10px; /* Space between images */
     justify-content: center; /* Center align the images */
+    flex-wrap: nowrap; /* Keeps images in a single row */
     overflow-x: auto; /* Allows horizontal scrolling if needed */
     padding: 1rem 0;
+ 
+    /* Hide scrollbar */
+    scrollbar-width: none; /* For Firefox */
+}
+.rooms-container::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Edge */
 }
 
 /* Styling for individual image cards */
 .room-card {
-    width: 350px; /* Smaller width for the images */
-    height: 350px; /* Smaller height for the images */
+    width: 600px; /* Smaller width for the images */
+    height: 450px; /* Smaller height for the images */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     background-color: #f0f0f0;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    overflow: hidden; /* Ensures image doesn’t exceed card bounds */
+    position: relative;
 }
 
+/* Hover effect for the card */
 .room-card:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05); /* Slightly enlarge the card */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
 }
 
 /* Styling for images inside each card */
@@ -58,5 +68,35 @@
     width: 100%; /* Makes the image fill the card's width */
     height: 100%;
     object-fit: cover; /* Ensures the image covers the card */
+    transition: transform 0.3s ease; /* Smooth transition for image scaling */
+}
+
+/* Hover effect for the image */
+.room-card:hover .room-image {
+    transform: scale(1.1); /* Slightly zoom in the image on hover */
+}
+
+/* Optional: Adding a dark overlay with text on hover */
+.room-card::after {
+    content: 'View Image'; /* Text shown on hover */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+    color: white;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease; /* Smooth fade-in */
     border-radius: 8px;
+    pointer-events: none; /* Allows clicks to pass through the overlay */
+}
+
+/* Show overlay on hover */
+.room-card:hover::after {
+    opacity: 1;
 }
