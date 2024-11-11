@@ -1,0 +1,62 @@
+/* Container styling */
+.gallery-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Styling for the main header */
+.gallery-header {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+/* Styling for each category section */
+.category-section {
+    margin-bottom: 3rem;
+}
+
+/* Styling for the category title */
+.category-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #333;
+    text-align: center;
+}
+
+/* Container for each category's images, displayed in a horizontal row */
+.rooms-container {
+    display: flex;
+    gap: 10px; /* Space between images */
+    justify-content: center; /* Center align the images */
+    overflow-x: auto; /* Allows horizontal scrolling if needed */
+    padding: 1rem 0;
+}
+
+/* Styling for individual image cards */
+.room-card {
+    width: 350px; /* Smaller width for the images */
+    height: 350px; /* Smaller height for the images */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background-color: #f0f0f0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.room-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for images inside each card */
+.room-image {
+    width: 100%; /* Makes the image fill the card's width */
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the card */
+    border-radius: 8px;
+}
