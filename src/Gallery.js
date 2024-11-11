@@ -7,11 +7,11 @@ import './Gallery.css';
 const imageCategories = [
   {
     category: "GENTLEMEN'S RESTROOM AND SHOWER ROOM",
-    images: ['/menscr1.jpg', '/menscr2.jpg', '/menscr3.jpg','/menscr4.jpg', '/menscr5.jpg','/menscr6.jpg', '/menscr7.jpg', '/menscr8.jpg'] // Replace with actual image paths
+    images: ['/menscr1.jpg', '/menscr2.jpg', '/menscr3.jpg', '/menscr4.jpg', '/menscr5.jpg', '/menscr6.jpg', '/menscr7.jpg', '/menscr8.jpg']
   },
   {
     category: "LADIES' RESTROOM AND SHOWER ROOM",
-    images: ['/womenscr1.jpg', '/womenscr2.jpg', '/womenscr3.jpg','/womenscr4.jpg', '/womenscr5.jpg','/womenscr6.jpg', '/womenscr7.jpg', '/womenscr8.jpg']
+    images: ['/womenscr1.jpg', '/womenscr2.jpg', '/womenscr3.jpg', '/womenscr4.jpg', '/womenscr5.jpg', '/womenscr6.jpg', '/womenscr7.jpg', '/womenscr8.jpg']
   },
   {
     category: "SHARED FACILITIES",
@@ -21,51 +21,59 @@ const imageCategories = [
 
 // Main Gallery component
 const Gallery = () => {
-  const [isOpen, setIsOpen] = useState(false); // State to control lightbox visibility
-  const [currentImages, setCurrentImages] = useState([]); // Images to display in the lightbox
-  const [photoIndex, setPhotoIndex] = useState(0); // Index of the current image
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentImages, setCurrentImages] = useState([]);
+  const [photoIndex, setPhotoIndex] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
-  // Function to open the lightbox with specific images and index
   const openLightbox = (images, index) => {
-    setCurrentImages(images); // Set the current category's images
-    setPhotoIndex(index); // Set the starting index for the lightbox
-    setIsOpen(true); // Open the lightbox
+    setCurrentImages(images);
+    setPhotoIndex(index);
+    setIsOpen(true);
   };
+
+  const filteredCategories = selectedCategory === "All"
+    ? imageCategories
+    : imageCategories.filter(category => category.category === selectedCategory);
 
   return (
     <section className="gallery-section">
-      {/* Main header for the gallery */}
       <h2 className="gallery-header">GALLERY</h2>
 
-      {/* Loop through each category to display category title and images */}
-      {imageCategories.map((category, catIndex) => (
-        <div key={catIndex} className="category-section">
-          {/* Display the category title */}
-          <h3 className="category-title">{category.category}</h3>
+      {/* Tabs for filtering categories */}
+      <div className="tabs">
+        <button onClick={() => setSelectedCategory("All")} className={selectedCategory === "All" ? "tab active-tab" : "tab"}>All</button>
+        {imageCategories.map((category, index) => (
+          <button
+            key={index}
+            onClick={() => setSelectedCategory(category.category)}
+            className={selectedCategory === category.category ? "tab active-tab" : "tab"}
+          >
+            {category.category}
+          </button>
+        ))}
+      </div>
 
-          {/* Horizontal container for the images within each category */}
+      {/* Display filtered categories */}
+      {filteredCategories.map((category, catIndex) => (
+        <div key={catIndex} className="category-section">
+          <h3 className="category-title">{category.category}</h3>
           <div className="rooms-container">
             {category.images.map((image, index) => (
-              <div key={index} className="room-card">
-                {/* Display each image with an onClick to open the lightbox */}
-                <img
-                  src={image}
-                  alt={`${category.category} ${index + 1}`}
-                  className="room-image"
-                  onClick={() => openLightbox(category.images, index)} // Open lightbox on image click
-                />
+              <div key={index} className="room-card" onClick={() => openLightbox(category.images, index)}>
+                <img src={image} alt={`${category.category} ${index + 1}`} className="room-image" />
+                <div className="image-caption">View Image</div> {/* Updated text here */}
               </div>
             ))}
           </div>
         </div>
       ))}
 
-      {/* Lightbox component */}
       {isOpen && (
         <Lightbox
-          images={currentImages.map((img) => ({ url: img }))} // Pass images in the format required by Lightbox
-          startIndex={photoIndex} // Set the starting index for the lightbox
-          onClose={() => setIsOpen(false)} // Close the lightbox
+          images={currentImages.map((img) => ({ url: img }))}
+          startIndex={photoIndex}
+          onClose={() => setIsOpen(false)}
         />
       )}
     </section>
