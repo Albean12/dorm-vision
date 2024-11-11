@@ -1,96 +1,113 @@
-/* Import a modern font */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-/* Apply the font to the entire gallery */
+/* Apply Poppins font to the entire gallery section */
 .gallery-section {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
     text-align: center;
 }
 
-/* Styling for the main header */
+/* Gallery Header Styling */
 .gallery-header {
     font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
-    color: #4CAF50; /* Pastel green color */
+    font-weight: 700;
+    color: #457b9d; /* Modern pastel blue */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
 }
 
-/* Tabs container */
+/* Tabs Container Styling */
 .tabs {
     display: flex;
     justify-content: center;
+    gap: 20px; /* Space between tabs */
     margin-bottom: 1.5rem;
     position: relative;
-    border-bottom: 2px solid #ddd;
 }
 
-/* Individual tab styling */
+/* Individual Tab Styling */
 .tab {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #6c757d; /* Neutral gray color for inactive tabs */
     background: none;
     border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: #4CAF50; /* Pastel green for text */
+    padding: 10px 15px;
     cursor: pointer;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
     position: relative;
-    font-weight: 500;
 }
 
-.tab:hover {
-    color: #388E3C; /* Darker green on hover */
-}
-
+/* Active Tab Styling */
 .active-tab {
-    color: #388E3C; /* Darker green for active tab */
-    font-weight: bold;
+    color: #2a9d8f; /* Dark pastel green for the active tab */
+    font-weight: 600;
 }
 
-/* Animated underline for active tab */
+/* Underline effect for active tab */
 .tabs .active-tab::after {
     content: "";
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -2px;
+    bottom: -5px; /* Adjusted to avoid overlapping */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%; /* Underline width */
     height: 3px;
-    background-color: #388E3C;
-    animation: underline 0.3s ease;
+    background-color: #2a9d8f;
+    border-radius: 3px;
 }
 
-/* Category title styling */
+/* Hover Effect */
+.tab:hover {
+    color: #2a9d8f; /* Hover color for tabs */
+}
+
+.tab::after {
+    content: "";
+    position: absolute;
+    bottom: -5px; /* Same adjustment as above */
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #2a9d8f; /* Hover underline color */
+    border-radius: 3px;
+    transition: width 0.3s ease, left 0.3s ease; /* Smooth underline transition */
+    transform: translateX(-50%);
+}
+
+.tab:hover::after {
+    width: 100%; /* Expands underline to full width on hover */
+    left: 0;
+}
+
+/* Category Title Styling */
 .category-title {
-    font-size: 1.5rem; /* Adjust font size */
-    font-weight: bold;
-    color: white; /* Text color */
-    background-color: #A5D6A7; /* Pastel green background */
-    padding: 10px 20px; /* Add padding for spacing */
-    border-radius: 8px; /* Rounded corners */
-    display: inline-block; /* Centers the title */
-    margin-bottom: 1.5rem; /* Space below the title */
-    text-align: center; /* Center text */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for a lifted effect */
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #a8dadc, #457b9d); /* Gradient background */
+    padding: 10px 20px;
+    border-radius: 12px;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Soft shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-
-/* Container for each category's images */
-.rooms-container {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding: 1rem 0;
-    scrollbar-width: none;
+.category-title:hover {
+    transform: translateY(-3px); /* Lift on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Container for each category's images */
+/* Container for each category's images */
 .rooms-container {
     display: flex;
-    gap: 20px; /* Space between images */
+    gap: 20px;
     justify-content: center;
     flex-wrap: wrap; /* Allows images to wrap onto the next line if necessary */
     padding: 1rem 0;
@@ -99,87 +116,28 @@
 /* Styling for each image card */
 .room-card {
     position: relative;
-    width: 200px; /* Increased width for larger images */
-    height: 200px; /* Increased height for larger images */
+    width: 200px; /* Set a fixed width */
+    height: 200px; /* Set a fixed height */
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    margin: 10px; /* Additional margin for spacing */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Image blur effect on hover */
-.room-card:hover .room-image {
-    transform: scale(1.1);
-    filter: blur(3px) brightness(0.7);
-}
-
+/* Image styling to fit within the card */
 .room-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Ensures the image covers the container without distortion */
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* Caption container with fade-in and slide-up animation */
-.image-caption {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    background-color: rgba(0, 150, 136, 0.9);
-    color: white;
-    font-size: 0.9rem;
-    padding: 8px 12px;
-    border-radius: 5px;
-    opacity: 0;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.room-card:hover .image-caption {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-}
-
-/* Icon styling in the caption */
-.image-caption .icon {
-    font-size: 1.2rem;
-    color: #A5D6A7;
-}
-
-
-/* Styling for the filter tags at the top */
-.filter-tags {
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-.filter-tags button {
-    margin: 0 5px;
-    padding: 5px 10px;
-    background-color: #E8F5E9; /* Light pastel green background */
-    border: 1px solid #A5D6A7; /* Slightly darker pastel green border */
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.filter-tags button:hover,
-.filter-tags .active-tag {
-    background-color: #A5D6A7; /* Darker pastel green for active and hover state */
-    color: white;
-}
-
-/* Keyframe animation for the active tab underline */
-@keyframes underline {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
+/* Image hover effect */
+.room-card:hover .room-image {
+    transform: scale(1.1);
+    filter: brightness(0.9); /* Slightly darkens on hover */
 }
