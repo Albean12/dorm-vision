@@ -13,11 +13,12 @@
 .gallery-header {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #457b9d; /* Modern pastel blue */
+    color: #D4AF37; /* Metallic gold */
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 1.5rem;
 }
+
 /* Tabs Container Styling */
 .tabs {
     display: flex;
@@ -35,7 +36,7 @@
     left: 0;
     width: 0;
     height: 3px;
-    background-color: #2a9d8f;
+    background-color: #D4AF37;
     transition: width 0.3s ease, left 0.3s ease;
 }
 
@@ -43,7 +44,7 @@
 .tab {
     font-size: 1rem;
     font-weight: 500;
-    color: #6c757d; /* Neutral gray color for inactive tabs */
+    color: #18392B; /* Dark green for inactive tabs */
     background: none;
     border: none;
     padding: 10px 15px;
@@ -54,7 +55,7 @@
 
 /* Active Tab Styling */
 .active-tab {
-    color: #2a9d8f; /* Dark pastel green for the active tab */
+    color: #D4AF37; /* Metallic gold for the active tab */
     font-weight: 600;
 }
 
@@ -70,7 +71,7 @@
     left: 0;
     width: 100%;
     height: 3px;
-    background-color: #2a9d8f;
+    background-color: #D4AF37;
     transition: all 0.3s ease;
 }
 
@@ -79,7 +80,7 @@
     font-size: 1.4rem;
     font-weight: 600;
     color: #ffffff;
-    background: linear-gradient(135deg, #a8dadc, #457b9d); /* Gradient background */
+    background: linear-gradient(135deg, #0A5C36, #D4AF37); /* Gradient with green and metallic gold */
     padding: 10px 20px;
     border-radius: 12px;
     display: inline-block;
@@ -111,7 +112,7 @@
     border-radius: 15px; /* Rounded corners */
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    background: linear-gradient(135deg, #e0f7fa, #ffffff); /* Light gradient background */
+    background: linear-gradient(135deg, #14452F, #D4AF37); /* Light gradient background with green and gold */
     border: 1px solid rgba(200, 200, 200, 0.3); /* Subtle border for separation */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
@@ -162,4 +163,30 @@
 /* Show caption on hover */
 .room-card:hover .image-caption {
     opacity: 1;
+}
+
+/* Optional Button Styling (if needed for other buttons in the gallery) */
+.button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #0F5132, #D4AF37); /* Green to gold gradient */
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px; /* Pill-shaped corners */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: inline-block;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
