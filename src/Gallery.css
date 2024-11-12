@@ -9,48 +9,54 @@
     text-align: center;
 }
 
-/* Gallery Header Styling */
+/* Header Styling for "GALLERY" */
 .gallery-header {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #D4AF37; /* Metallic gold */
+    font-size: 2.8rem; /* Larger font size for emphasis */
+    font-weight: 700; /* Bold font weight for prominence */
+    color: #0F5132; /* Deep green color for a strong header */
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 1.5rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px; /* Space for underline */
+}
+
+/* Underline Accent */
+.gallery-header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #D4AF37; /* Metallic gold underline for accent */
+    border-radius: 2px;
 }
 
 /* Tabs Container Styling */
 .tabs {
     display: flex;
     justify-content: center;
-    gap: 30px; /* Increased space between tabs */
+    gap: 25px;
     margin-bottom: 1.5rem;
+    padding-bottom: 8px;
     position: relative;
-    padding-bottom: 8px; /* Space to accommodate underline */
-    border-bottom: 2px solid #e0e0e0; /* Light border for separation */
+    border-bottom: 2px solid #e0e0e0; /* Light border for visual separation */
 }
 
-/* Single underline for active tab */
-.tabs::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    height: 3px;
-    width: 100%; /* Full-width border to visually center the tabs */
-    background-color: transparent;
-}
-
-/* Individual Tab Styling */
+/* General Tab Styling */
 .tab {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 500;
-    color: #18392B; /* Dark green for inactive tabs */
-    background: none;
-    border: none;
+    color: #0F5132; /* Dark green for inactive tabs */
+    background: linear-gradient(135deg, #E5F4EA, #D4EDE5); /* Soft gradient for depth */
     padding: 10px 20px;
+    border: 1px solid #D4AF37; /* Subtle gold border */
+    border-radius: 25px; /* Rounded pill shape */
     cursor: pointer;
-    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s;
-    border-radius: 20px; /* Slightly rounded for a softer look */
+    transition: color 0.3s ease, background 0.3s ease, transform 0.2s;
     display: inline-block;
 }
 
@@ -58,21 +64,22 @@
 .active-tab {
     color: #ffffff; /* White text for active tab */
     font-weight: 600;
-    background-color: #D4AF37; /* Gold background for active tab */
-    border-radius: 20px; /* Rounded background */
-    padding: 10px 20px;
-    transition: all 0.3s ease;
+    background: #0F5132; /* Solid dark green background for active tab */
+    border: 1px solid #0F5132; /* Dark green border for consistency */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Shadow to elevate the active tab */
+    transform: scale(1.05); /* Slight zoom effect */
 }
 
 /* Hover Effect */
 .tab:hover {
-    color: #D4AF37; /* Metallic gold color on hover */
+    background: #D4AF37; /* Gold background on hover */
+    color: #ffffff; /* White text on hover */
     transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
 
 /* Category Title Styling */
-/* Minimal Title Bar Styling with Green and Gold */
+
 .category-title {
     font-size: 1.2rem;
     font-weight: 600;
@@ -192,3 +199,4 @@
     transform: translateY(1px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
