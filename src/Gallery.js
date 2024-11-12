@@ -6,16 +6,16 @@ import './Gallery.css';
 // Define the categories and images for the gallery
 const imageCategories = [
   {
+    category: "CANTEEN",
+    images: ['/canteen1.jpg', '/canteen2.jpg', '/canteen3.jpg']
+  },
+  {
     category: "GENTLEMEN'S RESTROOM AND SHOWER ROOM",
     images: ['/menscr1.jpg', '/menscr2.jpg', '/menscr3.jpg', '/menscr4.jpg', '/menscr5.jpg', '/menscr6.jpg', '/menscr7.jpg', '/menscr8.jpg']
   },
   {
     category: "LADIES' RESTROOM AND SHOWER ROOM",
     images: ['/womenscr1.jpg', '/womenscr2.jpg', '/womenscr3.jpg', '/womenscr4.jpg', '/womenscr5.jpg', '/womenscr6.jpg', '/womenscr7.jpg', '/womenscr8.jpg']
-  },
-  {
-    category: "SHARED FACILITIES",
-    images: ['/shared1.jpg', '/shared2.jpg', '/shared3.jpg']
   }
 ];
 
