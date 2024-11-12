@@ -72,24 +72,30 @@
 
 
 /* Category Title Styling */
+/* Minimal Title Bar Styling with Green and Gold */
 .category-title {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 600;
-    color: #ffffff;
-    background: linear-gradient(135deg, #0A5C36, #D4AF37); /* Gradient with green and metallic gold */
+    color: #ffffff; /* White text for contrast */
+    background-color: #0F5132; /* Dark green background to match logo text */
     padding: 10px 20px;
-    border-radius: 12px;
+    border-radius: 20px; /* Rounded rectangle shape */
     display: inline-block;
     margin-bottom: 1.5rem;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Soft shadow */
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for lift */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Hover Effect */
 .category-title:hover {
-    transform: translateY(-3px); /* Lift on hover */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    background-color: #D4AF37; /* Metallic gold on hover */
+    color: #0F5132; /* Green text on hover for contrast */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
 }
+
+
+
 
 /* Container for each category's images */
 .rooms-container {
