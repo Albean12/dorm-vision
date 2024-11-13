@@ -6,6 +6,26 @@ import './Gallery.css';
 // Define the categories and images for the gallery
 const imageCategories = [
   {
+    category: "ROOM 1 (2 beds)",
+    images: ['/canteen1.jpg', '/canteen2.jpg', '/canteen3.jpg']
+  },
+  {
+    category: "ROOM 2 (4 beds)",
+    images: ['/menscr1.jpg', '/menscr2.jpg', '/menscr3.jpg', '/menscr4.jpg', '/menscr5.jpg', '/menscr6.jpg', '/menscr7.jpg', '/menscr8.jpg']
+  },
+  {
+    category: "ROOM 3 (6 beds)",
+    images: ['/womenscr1.jpg', '/womenscr2.jpg', '/womenscr3.jpg', '/womenscr4.jpg', '/womenscr5.jpg', '/womenscr6.jpg', '/womenscr7.jpg', '/womenscr8.jpg']
+  },
+  {
+    category: "ROOM 4 (8 beds)",
+    images: ['/canteen1.jpg', '/canteen2.jpg', '/canteen3.jpg']
+  },
+  {
+    category: "ROOM 5 (10 beds)",
+    images: ['/menscr1.jpg', '/menscr2.jpg', '/menscr3.jpg', '/menscr4.jpg', '/menscr5.jpg', '/menscr6.jpg', '/menscr7.jpg', '/menscr8.jpg']
+  },
+  {
     category: "CANTEEN",
     images: ['/canteen1.jpg', '/canteen2.jpg', '/canteen3.jpg']
   },
