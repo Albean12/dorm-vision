@@ -39,11 +39,11 @@ const imageCategories = [
   },
   {
     category: "MEN'S RESTROOM AND SHOWER ROOM",
-    images: ['/menscr1.jpg', '/menscr2.jpg', '/menscr3.jpg']
+    images: ['/menscr1.jpg', '/menscr2.jpg', '/menscr3.jpg', '/menscr4.jpg', '/menscr5.jpg', '/menscr6.jpg','/menscr7.jpg', '/menscr8.jpg']
   },
   {
     category: "WOMENS' RESTROOM AND SHOWER ROOM",
-    images: ['/womenscr1.jpg', '/womenscr2.jpg', '/womenscr3.jpg']
+    images: ['/womenscr1.jpg', '/womenscr2.jpg', '/womenscr3.jpg', '/womenscr4.jpg', '/womenscr5.jpg', '/menscr6.jpg','/womenscr7.jpg', '/womenscr8.jpg']
   }
 ];
 
@@ -91,15 +91,15 @@ const Gallery = () => {
 
       {/* Subcategories for Rooms Only */}
       {selectedCategory && selectedCategory.subcategories && (
-        <div className="tabs subcategory-tabs">
+        <div className="subcategory-tabs">
           {selectedCategory.subcategories.map((subcategory, index) => (
-            <button
+            <div
               key={index}
               onClick={() => handleSubcategorySelect(subcategory)}
-              className={selectedSubcategory === subcategory ? "tab active-tab" : "tab"}
+              className={`subcategory-card ${selectedSubcategory === subcategory ? "active-subcategory-card" : ""}`}
             >
               {subcategory.type}
-            </button>
+            </div>
           ))}
         </div>
       )}

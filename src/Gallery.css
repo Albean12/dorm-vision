@@ -77,34 +77,44 @@
     transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
+/* Subcategory Cards Styling */
+.subcategory-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 1.5rem;
+}
 
-/* Category Title Styling */
-
-.category-title {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #ffffff; /* White text for contrast */
-    background-color: #0F5132; /* Dark green background to match logo text */
-    padding: 10px 20px;
-    border-radius: 20px; /* Rounded rectangle shape */
-    display: inline-block;
-    margin-bottom: 1.5rem;
+.subcategory-card {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #0F5132; /* Dark green for inactive cards */
+    background: #F4F9F4; /* Light greenish background */
+    padding: 10px 15px;
+    border: 1px solid #D4AF37; /* Subtle gold border */
+    border-radius: 15px; /* Slightly rounded */
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for lift */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Hover Effect */
-.category-title:hover {
-    background-color: #D4AF37; /* Metallic gold on hover */
-    color: #0F5132; /* Green text on hover for contrast */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+.subcategory-card:hover {
+    background: #D4AF37; /* Gold background on hover */
+    color: #ffffff; /* White text on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+.active-subcategory-card {
+    background: #0F5132; /* Dark green for active card */
+    color: #ffffff; /* White text for active card */
+    border: 1px solid #0F5132; /* Consistent border */
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
 
-
-
-/* Container for each category's images */
+/* Rooms Container */
 .rooms-container {
     display: flex;
     gap: 20px;
@@ -173,30 +183,3 @@
 .room-card:hover .image-caption {
     opacity: 1;
 }
-
-/* Optional Button Styling (if needed for other buttons in the gallery) */
-.button {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #ffffff;
-    background: linear-gradient(135deg, #0F5132, #D4AF37); /* Green to gold gradient */
-    padding: 12px 24px;
-    border: none;
-    border-radius: 30px; /* Pill-shaped corners */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    display: inline-block;
-}
-
-.button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.button:active {
-    transform: translateY(1px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
