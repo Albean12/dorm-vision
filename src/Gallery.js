@@ -39,11 +39,11 @@ const imageCategories = [
     images: ['/canteen1.jpg', '/canteen2.jpg', '/canteen3.jpg']
   },
   {
-    category: "GENTLEMEN'S RESTROOM AND SHOWER ROOM",
+    category: "MEN'S RESTROOM AND SHOWER ROOM",
     images: ['/menscr1.jpg', '/menscr2.jpg', '/menscr3.jpg']
   },
   {
-    category: "LADIES' RESTROOM AND SHOWER ROOM",
+    category: "WOMENS' RESTROOM AND SHOWER ROOM",
     images: ['/womenscr1.jpg', '/womenscr2.jpg', '/womenscr3.jpg']
   }
 ];
