@@ -35,56 +35,66 @@
     border-radius: 2px;
 }
 
-/* Tabs Container Styling */
+/* Align categories evenly */
 .tabs {
     display: flex;
-    justify-content: center;
-    gap: 25px;
+    justify-content: space-around; /* Distribute categories evenly */
+    gap: 10px; /* Slight gap between tabs */
     margin-bottom: 1.5rem;
     padding-bottom: 8px;
     position: relative;
-    border-bottom: 2px solid #e0e0e0; /* Light border for visual separation */
-    flex-wrap: wrap;
+    border-bottom: 2px solid #e0e0e0;
 }
 
-/* General Tab Styling */
+/* Adjust tab width for consistency */
 .tab {
     font-size: 1rem;
     font-weight: 500;
-    color: #0F5132; /* Dark green for inactive tabs */
-    background: linear-gradient(135deg, #E5F4EA, #D4EDE5); /* Soft gradient for depth */
+    color: #0F5132;
+    background: linear-gradient(135deg, #E5F4EA, #D4EDE5);
     padding: 10px 20px;
-    border: 1px solid #D4AF37; /* Subtle gold border */
-    border-radius: 25px; /* Rounded pill shape */
+    border: 1px solid #D4AF37;
+    border-radius: 25px;
     cursor: pointer;
     transition: color 0.3s ease, background 0.3s ease, transform 0.2s;
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 150px; /* Ensure consistent width for all tabs */
+    text-align: center;
 }
 
 /* Active Tab Styling */
 .active-tab {
-    color: #ffffff; /* White text for active tab */
+    color: #ffffff;
     font-weight: 600;
-    background: #0F5132; /* Solid dark green background for active tab */
-    border: 1px solid #0F5132; /* Dark green border for consistency */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Shadow to elevate the active tab */
-    transform: scale(1.05); /* Slight zoom effect */
+    background: #0F5132;
+    border: 1px solid #0F5132;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
 }
 
 /* Hover Effect */
 .tab:hover {
-    background: #D4AF37; /* Gold background on hover */
-    color: #ffffff; /* White text on hover */
-    transform: scale(1.05); /* Slight zoom effect on hover */
+    background: #D4AF37;
+    color: #ffffff;
+    transform: scale(1.05);
 }
 
-/* Subcategory Cards Styling */
+/* Subcategories alignment */
 .subcategory-tabs {
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    justify-content: center; /* Center align subcategories */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    gap: 15px; /* Add space between subcategories */
     margin-top: 1rem;
-    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+/* Subcategory styling */
+.subcategory-tabs .tab {
+    min-width: auto; /* Adjust width for subcategories */
+    padding: 8px 16px; /* Smaller padding for subcategories */
 }
 
 .subcategory-card {
