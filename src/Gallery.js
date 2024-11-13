@@ -6,24 +6,33 @@ import './Gallery.css';
 // Define the categories and images for the gallery
 const imageCategories = [
   {
-    category: "ROOM 1 (2 beds)",
+    category: "ROOMS",
+    subcategories: [
+      {
+        type: "2 bed",
+        images: ['/canteen1.jpg', '/canteen2.jpg', '/canteen3.jpg']
+      },
+      {
+        type: "4 beds",
+        images: ['/canteen1.jpg', '/canteen2.jpg', '/canteen3.jpg']
+      },
+      {
+        type: "6 beds",
+        images: ['/canteen1.jpg', '/canteen2.jpg', '/canteen3.jpg']
+      },
+      {
+        type: "8 beds",
+        images: ['/canteen1.jpg', '/canteen2.jpg', '/canteen3.jpg']
+      },
+      {
+        type: "10 beds",
+        images: ['/canteen1.jpg', '/canteen2.jpg', '/canteen3.jpg']
+      },
+    ]
+  },
+  {
+    category: "HALLWAY",
     images: ['/canteen1.jpg', '/canteen2.jpg', '/canteen3.jpg']
-  },
-  {
-    category: "ROOM 2 (4 beds)",
-    images: ['/menscr1.jpg', '/menscr2.jpg', '/menscr3.jpg', '/menscr4.jpg', '/menscr5.jpg', '/menscr6.jpg', '/menscr7.jpg', '/menscr8.jpg']
-  },
-  {
-    category: "ROOM 3 (6 beds)",
-    images: ['/womenscr1.jpg', '/womenscr2.jpg', '/womenscr3.jpg', '/womenscr4.jpg', '/womenscr5.jpg', '/womenscr6.jpg', '/womenscr7.jpg', '/womenscr8.jpg']
-  },
-  {
-    category: "ROOM 4 (8 beds)",
-    images: ['/canteen1.jpg', '/canteen2.jpg', '/canteen3.jpg']
-  },
-  {
-    category: "ROOM 5 (10 beds)",
-    images: ['/menscr1.jpg', '/menscr2.jpg', '/menscr3.jpg', '/menscr4.jpg', '/menscr5.jpg', '/menscr6.jpg', '/menscr7.jpg', '/menscr8.jpg']
   },
   {
     category: "CANTEEN",
@@ -31,20 +40,20 @@ const imageCategories = [
   },
   {
     category: "GENTLEMEN'S RESTROOM AND SHOWER ROOM",
-    images: ['/menscr1.jpg', '/menscr2.jpg', '/menscr3.jpg', '/menscr4.jpg', '/menscr5.jpg', '/menscr6.jpg', '/menscr7.jpg', '/menscr8.jpg']
+    images: ['/menscr1.jpg', '/menscr2.jpg', '/menscr3.jpg']
   },
   {
     category: "LADIES' RESTROOM AND SHOWER ROOM",
-    images: ['/womenscr1.jpg', '/womenscr2.jpg', '/womenscr3.jpg', '/womenscr4.jpg', '/womenscr5.jpg', '/womenscr6.jpg', '/womenscr7.jpg', '/womenscr8.jpg']
+    images: ['/womenscr1.jpg', '/womenscr2.jpg', '/womenscr3.jpg']
   }
 ];
 
-// Main Gallery component
 const Gallery = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentImages, setCurrentImages] = useState([]);
   const [photoIndex, setPhotoIndex] = useState(0);
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState(null); // Track selected main category
+  const [selectedSubcategory, setSelectedSubcategory] = useState(null); // Track selected subcategory
 
   const openLightbox = (images, index) => {
     setCurrentImages(images);
@@ -52,43 +61,78 @@ const Gallery = () => {
     setIsOpen(true);
   };
 
-  const filteredCategories = selectedCategory === "ALL"
-    ? imageCategories
-    : imageCategories.filter(category => category.category === selectedCategory);
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+    setSelectedSubcategory(null); // Reset subcategory when a new main category is selected
+  };
+
+  const handleSubcategorySelect = (subcategory) => {
+    setSelectedSubcategory(subcategory);
+  };
 
   return (
     <section className="gallery-section">
       <h2 className="gallery-header">GALLERY</h2>
 
-      {/* Tabs for filtering categories */}
+      {/* Main Categories */}
       <div className="tabs">
-        <button onClick={() => setSelectedCategory("ALL")} className={selectedCategory === "All" ? "tab active-tab" : "tab"}>ALL</button>
+        <button onClick={() => { setSelectedCategory(null); setSelectedSubcategory(null); }} className={!selectedCategory ? "tab active-tab" : "tab"}>
+          ALL
+        </button>
         {imageCategories.map((category, index) => (
           <button
             key={index}
-            onClick={() => setSelectedCategory(category.category)}
-            className={selectedCategory === category.category ? "tab active-tab" : "tab"}
+            onClick={() => handleCategorySelect(category)}
+            className={selectedCategory === category ? "tab active-tab" : "tab"}
           >
             {category.category}
           </button>
         ))}
       </div>
 
-      {/* Display filtered categories */}
-      {filteredCategories.map((category, catIndex) => (
-        <div key={catIndex} className="category-section">
-          <h3 className="category-title">{category.category}</h3>
-          <div className="rooms-container">
-            {category.images.map((image, index) => (
-              <div key={index} className="room-card" onClick={() => openLightbox(category.images, index)}>
-                <img src={image} alt={`${category.category} ${index + 1}`} className="room-image" />
-                <div className="image-caption">View Image</div> {/* Updated text here */}
-              </div>
-            ))}
-          </div>
+      {/* Subcategories for Rooms Only */}
+      {selectedCategory && selectedCategory.subcategories && (
+        <div className="tabs subcategory-tabs">
+          {selectedCategory.subcategories.map((subcategory, index) => (
+            <button
+              key={index}
+              onClick={() => handleSubcategorySelect(subcategory)}
+              className={selectedSubcategory === subcategory ? "tab active-tab" : "tab"}
+            >
+              {subcategory.type}
+            </button>
+          ))}
         </div>
-      ))}
+      )}
 
+      {/* Display Images */}
+      <div className="rooms-container">
+        {/* Display subcategory images if subcategory is selected */}
+        {selectedSubcategory && selectedSubcategory.images.map((image, index) => (
+          <div key={index} className="room-card" onClick={() => openLightbox(selectedSubcategory.images, index)}>
+            <img src={image} alt={`${selectedSubcategory.type} ${index + 1}`} className="room-image" />
+            <div className="image-caption">View Image</div>
+          </div>
+        ))}
+
+        {/* Display main category images directly if there are no subcategories */}
+        {!selectedSubcategory && selectedCategory && !selectedCategory.subcategories && selectedCategory.images.map((image, index) => (
+          <div key={index} className="room-card" onClick={() => openLightbox(selectedCategory.images, index)}>
+            <img src={image} alt={`${selectedCategory.category} ${index + 1}`} className="room-image" />
+            <div className="image-caption">View Image</div>
+          </div>
+        ))}
+
+        {/* Display all images when no category is selected */}
+        {!selectedCategory && imageCategories.flatMap(category => category.subcategories ? [] : category.images).map((image, index) => (
+          <div key={index} className="room-card" onClick={() => openLightbox(imageCategories.flatMap(category => category.subcategories ? [] : category.images), index)}>
+            <img src={image} alt={`Image ${index + 1}`} className="room-image" />
+            <div className="image-caption">View Image</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Lightbox */}
       {isOpen && (
         <Lightbox
           images={currentImages.map((img) => ({ url: img }))}
