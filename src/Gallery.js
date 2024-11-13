@@ -32,7 +32,7 @@ const Gallery = () => {
     setIsOpen(true);
   };
 
-  const filteredCategories = selectedCategory === "All"
+  const filteredCategories = selectedCategory === "ALL"
     ? imageCategories
     : imageCategories.filter(category => category.category === selectedCategory);
 
@@ -42,7 +42,7 @@ const Gallery = () => {
 
       {/* Tabs for filtering categories */}
       <div className="tabs">
-        <button onClick={() => setSelectedCategory("All")} className={selectedCategory === "All" ? "tab active-tab" : "tab"}>All</button>
+        <button onClick={() => setSelectedCategory("ALL")} className={selectedCategory === "All" ? "tab active-tab" : "tab"}>ALL</button>
         {imageCategories.map((category, index) => (
           <button
             key={index}
