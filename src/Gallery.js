@@ -3,36 +3,35 @@ import Lightbox from 'react-awesome-lightbox';
 import 'react-awesome-lightbox/build/style.css';
 import './Gallery.css';
 
-// Define the categories and images for the gallery
 const imageCategories = [
   {
     category: "ROOMS",
     subcategories: [
       {
-        type: "2 bed",
-        images: ['/canteen1.jpg', '/canteen2.jpg', '/canteen3.jpg']
+        type: "2 beds",
+        images: ['/2beds1.jpg', '/2beds2.jpg', '/2beds3.jpg']
       },
       {
         type: "4 beds",
-        images: ['/canteen1.jpg', '/canteen2.jpg', '/canteen3.jpg']
+        images: ['/4beds1.jpg']
       },
       {
         type: "6 beds",
-        images: ['/canteen1.jpg', '/canteen2.jpg', '/canteen3.jpg']
+        images: ['/6beds1.jpg', '/6beds2.jpg', '/6beds3.jpg', '/6beds4.jpg']
       },
       {
         type: "8 beds",
-        images: ['/canteen1.jpg', '/canteen2.jpg', '/canteen3.jpg']
+        images: ['/8beds1.jpg', '/8beds2.jpg', '/8beds3.jpg']
       },
       {
         type: "10 beds",
-        images: ['/canteen1.jpg', '/canteen2.jpg', '/canteen3.jpg']
+        images: ['/10beds.jpg', '/10beds1.jpg']
       },
     ]
   },
   {
     category: "HALLWAY",
-    images: ['/canteen1.jpg', '/canteen2.jpg', '/canteen3.jpg']
+    images: ['/hallway1.jpg', '/hallway2.jpg', '/hallway3.jpg', '/hallway4.jpg', '/hallway5.jpg', '/hallway6.jpg', '/hallway8.jpg', '/hallway9.jpg']
   },
   {
     category: "CANTEEN",
@@ -52,8 +51,8 @@ const Gallery = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentImages, setCurrentImages] = useState([]);
   const [photoIndex, setPhotoIndex] = useState(0);
-  const [selectedCategory, setSelectedCategory] = useState(null); // Track selected main category
-  const [selectedSubcategory, setSelectedSubcategory] = useState(null); // Track selected subcategory
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedSubcategory, setSelectedSubcategory] = useState(null);
 
   const openLightbox = (images, index) => {
     setCurrentImages(images);
@@ -63,7 +62,7 @@ const Gallery = () => {
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
-    setSelectedSubcategory(null); // Reset subcategory when a new main category is selected
+    setSelectedSubcategory(null); // Reset subcategory when a new category is selected
   };
 
   const handleSubcategorySelect = (subcategory) => {
@@ -123,9 +122,20 @@ const Gallery = () => {
           </div>
         ))}
 
-        {/* Display all images when no category is selected */}
-        {!selectedCategory && imageCategories.flatMap(category => category.subcategories ? [] : category.images).map((image, index) => (
-          <div key={index} className="room-card" onClick={() => openLightbox(imageCategories.flatMap(category => category.subcategories ? [] : category.images), index)}>
+        {/* Display all images when "ALL" is selected */}
+        {!selectedCategory && imageCategories.flatMap(category =>
+          category.subcategories
+            ? category.subcategories.flatMap(subcategory => subcategory.images) // Include all subcategories' images
+            : category.images // Include main category images
+        ).map((image, index) => (
+          <div key={index} className="room-card" onClick={() => openLightbox(
+            imageCategories.flatMap(category =>
+              category.subcategories
+                ? category.subcategories.flatMap(subcategory => subcategory.images)
+                : category.images
+            ),
+            index
+          )}>
             <img src={image} alt={`Image ${index + 1}`} className="room-image" />
             <div className="image-caption">View Image</div>
           </div>
