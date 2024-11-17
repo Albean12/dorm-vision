@@ -1,0 +1,177 @@
+/* Siguraduhin na walang margin o padding ang body para hindi mag-overlap ang navbar sa top content */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', Arial, sans-serif;
+
+}
+
+.homepage {
+  font-family: 'Inter', Arial, sans-serif;
+
+}
+
+/* Styles para sa Navbar */
+.homepage-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(255, 254, 254, 0.1);
+  transition: background-color 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(10px); /* Optional background blur effect */
+}
+
+/* Kapag nag-scroll na ang user, magiging fully opaque ang navbar */
+.homepage-navbar.scrolled {
+  background-color: rgba(255, 255, 255, 1);
+  opacity: 0.95;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Stronger shadow when scrolled */
+}
+
+/* Container para sa logo ng homepage */
+.homepage-logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.homepage-logo img {
+  max-width: 150px;
+  height: auto;
+}
+
+/* Container para sa navigation links */
+.homepage-nav-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.homepage-nav-links {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.homepage-nav-link {
+  color: #000;
+  text-decoration: none;
+  font-size: 1rem;
+  position: relative;
+  padding: 0.5rem 1rem; /* Added padding for better touch experience */
+  transition: color 0.3s ease-in-out; /* Smooth text color change on hover */
+}
+
+/* Custom underline effect kapag nag-hover sa link */
+.homepage-nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 50%;
+  background-color: #da5d5d;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+
+/* Kapag naka-hover ang mouse, lalabas ang underline */
+.homepage-nav-link:hover {
+  color: #2d50ef; /* Text color changes to red on hover */
+}
+
+.homepage-nav-link:hover::after {
+  width: 100%;
+  background-color: #00008b; /* Dark blue underline on hover */
+}
+
+/* Active state para sa current page link */
+.homepage-nav-link.active {
+  font-weight: bold;
+  color: #da5d5d; /* Active link color */
+}
+
+/* Main content adjustments para hindi ma-overlap ng navbar ang content */
+.homepage-main-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top: 80px; /* Adjusted padding based on navbar height */
+}
+
+.homepage-main-content h1 {
+  font-size: 4rem;
+  font-weight: normal;
+  color: #00008b;
+}
+
+/* Styles para sa login button */
+.homepage-login-button {
+  display: flex;
+  align-items: center;
+  background-color: #f9fafc;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover effect para sa login button */
+.homepage-login-button:hover {
+  background-color: #d0e1ff;
+}
+
+/* Container para sa login button */
+.homepage-login-container {
+  display: flex;
+  align-items: center;
+}
+
+.homepage-login-text {
+  margin-right: 10px;
+  font-size: 1rem;
+  color: #00008b;
+  font-weight: bold;
+}
+
+/* Styling para sa login image/icon */
+.homepage-login-image {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .homepage-navbar {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+
+  .homepage-nav-container {
+    flex-direction: column; /* Stack links vertically */
+  }
+
+  .homepage-logo img {
+    max-width: 100px; /* Smaller logo on mobile */
+  }
+
+  .homepage-nav-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+}
