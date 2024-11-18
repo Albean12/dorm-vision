@@ -162,8 +162,8 @@ const Gallery = () => {
             <button className="close-button" onClick={closeModal}>
               &times;
             </button>
-            <h3>{selectedCategory.category}</h3>
-            <p>{selectedCategory.description}</p>
+            <h3 className="popup-header">{selectedCategory.category}</h3>
+            <p className="popup-subtitle">{selectedCategory.description}</p>
 
             {/* Subcategory Filters */}
             {selectedCategory.subcategories && (
