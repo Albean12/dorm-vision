@@ -46,35 +46,37 @@ const imageCategories = [
       '/images/canteen3.jpg'
     ]
   },
-  {
-    category: "MEN'S RESTROOM AND SHOWER ROOM",
-    description: "Facilities for the gentlemen.",
-    images: [
-      '/images/menscr1.jpg',
-      '/images/menscr2.jpg',
-      '/images/menscr3.jpg',
-      '/images/menscr4.jpg',
-      '/images/menscr5.jpg',
-      '/images/menscr6.jpg',
-      '/images/menscr7.jpg',
-      '/images/menscr8.jpg'
-    ]
-  },
-  {
-    category: "WOMENS' RESTROOM AND SHOWER ROOM",
-    description: "Facilities for the ladies.",
-    images: [
-      '/images/womenscr1.jpg',
-      '/images/womenscr2.jpg',
-      '/images/womenscr3.jpg',
-      '/images/womenscr4.jpg',
-      '/images/womenscr5.jpg',
-      '/images/womenscr6.jpg',
-      '/images/womenscr7.jpg',
-      '/images/womenscr8.jpg'
-    ]
-  }
-];
+  
+    {
+      category: "MEN'S RESTROOM AND SHOWER ROOM",
+      description: "Facilities for the gentlemen.",
+      images: [
+        `${process.env.PUBLIC_URL}/images/menscr1.jpg`,
+        `${process.env.PUBLIC_URL}/images/menscr2.jpg`,
+        `${process.env.PUBLIC_URL}/images/menscr3.jpg`,
+        `${process.env.PUBLIC_URL}/images/menscr4.jpg`,
+        `${process.env.PUBLIC_URL}/images/menscr5.jpg`,
+        `${process.env.PUBLIC_URL}/images/menscr6.jpg`,
+        `${process.env.PUBLIC_URL}/images/menscr7.jpg`,
+        `${process.env.PUBLIC_URL}/images/menscr8.jpg`
+      ]
+    },
+    {
+      category: "WOMENS' RESTROOM AND SHOWER ROOM",
+      description: "Facilities for the ladies.",
+      images: [
+        `${process.env.PUBLIC_URL}/images/womenscr1.jpg`,
+        `${process.env.PUBLIC_URL}/images/womenscr2.jpg`,
+        `${process.env.PUBLIC_URL}/images/womenscr3.jpg`,
+        `${process.env.PUBLIC_URL}/images/womenscr4.jpg`,
+        `${process.env.PUBLIC_URL}/images/womenscr5.jpg`,
+        `${process.env.PUBLIC_URL}/images/womenscr6.jpg`,
+        `${process.env.PUBLIC_URL}/images/womenscr7.jpg`,
+        `${process.env.PUBLIC_URL}/images/womenscr8.jpg`
+      ]
+    }
+  ];
+  
 
 const Gallery = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -94,9 +96,11 @@ const Gallery = () => {
   }, [selectedCategory]);
 
   const openModal = useCallback((category) => {
-    setSelectedCategory(category);
-    setModalOpen(true);
-  }, []);
+    if (selectedCategory?.category !== category.category) {
+      setSelectedCategory(category);
+      setModalOpen(true);
+    }
+  }, [selectedCategory]);
 
   const closeModal = useCallback(() => {
     setModalOpen(false);
@@ -109,15 +113,19 @@ const Gallery = () => {
     setIsOpen(true);
   }, []);
 
+  const closeLightbox = useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
   return (
     <section className="gallery-section">
       <h2 className="gallery-header">GALLERY</h2>
 
       {/* Main Category Grid */}
       <div className="category-grid">
-        {imageCategories.map((category, index) => (
+        {imageCategories.map((category) => (
           <div
-            key={index}
+            key={category.category}
             className="category-card"
             onClick={() => openModal(category)}
           >
@@ -125,7 +133,6 @@ const Gallery = () => {
               src={category.images[0]}
               alt={category.category}
               className="category-image"
-              onError={(e) => (e.target.src = '/images/fallback.jpg')}
             />
             <div className="category-label">{category.category}</div>
           </div>
@@ -148,9 +155,8 @@ const Gallery = () => {
                 >
                   <img
                     src={image}
-                    alt={`${selectedCategory.category} ${index + 1}`}
+                    alt={`${selectedCategory.category} - ${index + 1}`}
                     className="modal-image"
-                    onError={(e) => (e.target.src = '/images/fallback.jpg')}
                   />
                 </div>
               ))}
@@ -164,7 +170,7 @@ const Gallery = () => {
         <Lightbox
           images={currentImages.map((img) => ({ url: img }))}
           startIndex={photoIndex}
-          onClose={() => setIsOpen(false)}
+          onClose={closeLightbox}
         />
       )}
     </section>
