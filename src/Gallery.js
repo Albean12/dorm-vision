@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import Lightbox from 'react-awesome-lightbox';
 import 'react-awesome-lightbox/build/style.css';
 import './Gallery.css';
@@ -7,159 +7,156 @@ const imageCategories = [
   {
     category: "ROOMS",
     description: "Explore the various room configurations available.",
-    subcategories: [
-      {
-        type: "2 beds",
-        images: ['/2beds1.jpg', '/2beds2.jpg', '/2beds3.jpg']
-      },
-      {
-        type: "4 beds",
-        images: ['/4beds1.jpg']
-      },
-      {
-        type: "6 beds",
-        images: ['/6beds1.jpg', '/6beds2.jpg', '/6beds3.jpg', '/6beds4.jpg']
-      },
-      {
-        type: "8 beds",
-        images: ['/8beds1.jpg', '/8beds2.jpg', '/8beds3.jpg']
-      },
-      {
-        type: "10 beds",
-        images: ['/10beds.jpg', '/10beds1.jpg']
-      },
+    images: [
+      '/images/2beds1.jpg',
+      '/images/2beds2.jpg',
+      '/images/2beds3.jpg',
+      '/images/4beds1.jpg',
+      '/images/6beds1.jpg',
+      '/images/6beds2.jpg',
+      '/images/6beds3.jpg',
+      '/images/6beds4.jpg',
+      '/images/8beds1.jpg',
+      '/images/8beds2.jpg',
+      '/images/8beds3.jpg',
+      '/images/10beds.jpg',
+      '/images/10beds1.jpg'
     ]
   },
   {
     category: "HALLWAY",
     description: "Take a look at the spacious hallways.",
-    images: ['/hallway1.jpg', '/hallway2.jpg', '/hallway3.jpg', '/hallway4.jpg', '/hallway5.jpg', '/hallway6.jpg', '/hallway8.jpg', '/hallway9.jpg']
+    images: [
+      '/images/hallway1.jpg',
+      '/images/hallway2.jpg',
+      '/images/hallway3.jpg',
+      '/images/hallway4.jpg',
+      '/images/hallway5.jpg',
+      '/images/hallway6.jpg',
+      '/images/hallway8.jpg',
+      '/images/hallway9.jpg'
+    ]
   },
   {
     category: "CANTEEN",
     description: "Our cozy and well-equipped canteen.",
-    images: ['/canteen1.jpg', '/canteen2.jpg', '/canteen3.jpg']
+    images: [
+      '/images/canteen1.jpg',
+      '/images/canteen2.jpg',
+      '/images/canteen3.jpg'
+    ]
   },
   {
     category: "MEN'S RESTROOM AND SHOWER ROOM",
     description: "Facilities for the gentlemen.",
-    images: ['/menscr1.jpg', '/menscr2.jpg', '/menscr3.jpg', '/menscr4.jpg', '/menscr5.jpg', '/menscr6.jpg','/menscr7.jpg', '/menscr8.jpg']
+    images: [
+      '/images/menscr1.jpg',
+      '/images/menscr2.jpg',
+      '/images/menscr3.jpg',
+      '/images/menscr4.jpg',
+      '/images/menscr5.jpg',
+      '/images/menscr6.jpg',
+      '/images/menscr7.jpg',
+      '/images/menscr8.jpg'
+    ]
   },
   {
     category: "WOMENS' RESTROOM AND SHOWER ROOM",
     description: "Facilities for the ladies.",
-    images: ['/womenscr1.jpg', '/womenscr2.jpg', '/womenscr3.jpg', '/womenscr4.jpg', '/womenscr5.jpg', '/menscr6.jpg','/womenscr7.jpg', '/womenscr8.jpg']
+    images: [
+      '/images/womenscr1.jpg',
+      '/images/womenscr2.jpg',
+      '/images/womenscr3.jpg',
+      '/images/womenscr4.jpg',
+      '/images/womenscr5.jpg',
+      '/images/womenscr6.jpg',
+      '/images/womenscr7.jpg',
+      '/images/womenscr8.jpg'
+    ]
   }
 ];
 
 const Gallery = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [currentImages, setCurrentImages] = useState([]);
   const [photoIndex, setPhotoIndex] = useState(0);
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [selectedSubcategory, setSelectedSubcategory] = useState(null);
-  const [visibleImages, setVisibleImages] = useState(6);
 
-  const openLightbox = (images, index) => {
+  // Preload images to avoid flickering
+  useEffect(() => {
+    if (selectedCategory?.images) {
+      selectedCategory.images.forEach((img) => {
+        const image = new Image();
+        image.src = img;
+      });
+    }
+  }, [selectedCategory]);
+
+  const openModal = useCallback((category) => {
+    setSelectedCategory(category);
+    setModalOpen(true);
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setModalOpen(false);
+    setSelectedCategory(null);
+  }, []);
+
+  const openLightbox = useCallback((images, index) => {
     setCurrentImages(images);
     setPhotoIndex(index);
     setIsOpen(true);
-  };
-
-  const handleCategorySelect = (category) => {
-    setSelectedCategory(category);
-    setSelectedSubcategory(null);
-    setVisibleImages(6); // Reset visible images when switching categories
-  };
-
-  const handleSubcategorySelect = (subcategory) => {
-    setSelectedSubcategory(subcategory);
-    setVisibleImages(6); // Reset visible images when switching subcategories
-  };
-
-  const loadMoreImages = () => {
-    setVisibleImages((prev) => prev + 6);
-  };
-
-  const totalImages = selectedSubcategory
-    ? selectedSubcategory.images.length
-    : selectedCategory && !selectedCategory.subcategories
-    ? selectedCategory.images.length
-    : imageCategories.flatMap(category =>
-        category.subcategories
-          ? category.subcategories.flatMap(subcategory => subcategory.images)
-          : category.images
-      ).length;
+  }, []);
 
   return (
     <section className="gallery-section">
       <h2 className="gallery-header">GALLERY</h2>
 
-      {/* Main Categories */}
-      <div className="tabs">
-        <button onClick={() => { setSelectedCategory(null); setSelectedSubcategory(null); }} className={!selectedCategory ? "tab active-tab" : "tab"}>
-          ALL
-        </button>
+      {/* Main Category Grid */}
+      <div className="category-grid">
         {imageCategories.map((category, index) => (
-          <button
+          <div
             key={index}
-            onClick={() => handleCategorySelect(category)}
-            className={selectedCategory === category ? "tab active-tab" : "tab"}
+            className="category-card"
+            onClick={() => openModal(category)}
           >
-            {category.category}
-          </button>
+            <img
+              src={category.images[0]}
+              alt={category.category}
+              className="category-image"
+              onError={(e) => (e.target.src = '/images/fallback.jpg')}
+            />
+            <div className="category-label">{category.category}</div>
+          </div>
         ))}
       </div>
 
-      {/* Subcategories for Rooms Only */}
-      {selectedCategory && selectedCategory.subcategories && (
-        <div className="subcategory-tabs">
-          {selectedCategory.subcategories.map((subcategory, index) => (
-            <div
-              key={index}
-              onClick={() => handleSubcategorySelect(subcategory)}
-              className={`subcategory-card ${selectedSubcategory === subcategory ? "active-subcategory-card" : ""}`}
-            >
-              {subcategory.type}
+      {/* Modal */}
+      {modalOpen && selectedCategory && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="close-button" onClick={closeModal}>&times;</button>
+            <h3>{selectedCategory.category}</h3>
+            <p>{selectedCategory.description}</p>
+            <div className="modal-images-grid">
+              {selectedCategory.images.map((image, index) => (
+                <div
+                  key={index}
+                  className="modal-image-card"
+                  onClick={() => openLightbox(selectedCategory.images, index)}
+                >
+                  <img
+                    src={image}
+                    alt={`${selectedCategory.category} ${index + 1}`}
+                    className="modal-image"
+                    onError={(e) => (e.target.src = '/images/fallback.jpg')}
+                  />
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
-      )}
-
-      {/* Titles and Descriptions */}
-      {selectedCategory && (
-        <div className="category-header">
-          <h3>{selectedCategory.category}</h3>
-          {selectedCategory.description && <p>{selectedCategory.description}</p>}
-        </div>
-      )}
-
-      {/* Display Images */}
-      <div className="rooms-container">
-        {(selectedSubcategory?.images || selectedCategory?.images || imageCategories.flatMap(category =>
-          category.subcategories
-            ? category.subcategories.flatMap(subcategory => subcategory.images)
-            : category.images
-        ))
-          .slice(0, visibleImages)
-          .map((image, index) => (
-            <div key={index} className="room-card" onClick={() => openLightbox(
-              selectedSubcategory?.images || selectedCategory?.images || imageCategories.flatMap(category =>
-                category.subcategories
-                  ? category.subcategories.flatMap(subcategory => subcategory.images)
-                  : category.images
-              ), index
-            )}>
-              <img src={image} alt={`Image ${index + 1}`} className="room-image" />
-              <div className="image-caption">View Image</div>
-            </div>
-          ))}
-      </div>
-
-      {visibleImages < totalImages && (
-        <button className="load-more-btn" onClick={loadMoreImages}>
-          Load More
-        </button>
       )}
 
       {/* Lightbox */}
