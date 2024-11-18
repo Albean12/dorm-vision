@@ -1,8 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 /* General Styling */
+html {
+  overflow-y: scroll; /* Ensure vertical scrollbar is always visible */
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif; /* Use modern, clean font */
+  background: #f9f9f9;
+  color: #333;
+}
+
+/* Gallery Section */
 .gallery-section {
-  font-family: 'Poppins', sans-serif;
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
@@ -16,17 +27,14 @@
   color: #0F5132;
   text-transform: uppercase;
   margin-bottom: 2rem;
-  position: relative;
 }
 
 .gallery-header::after {
   content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
+  display: block;
   width: 80px;
   height: 4px;
+  margin: 10px auto 0;
   background-color: #D4AF37;
   border-radius: 2px;
 }
@@ -34,283 +42,193 @@
 /* Category Grid */
 .category-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Increased min width */
-  gap: 25px; /* Adjusted gap */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
 }
 
 .category-card {
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
-  position: relative;
   border-radius: 10px;
   overflow: hidden;
   background: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 15px; /* Increased padding */
-  border: 2px solid transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .category-card:hover {
-  transform: scale(1.05);
+  transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  border: 2px solid #D4AF37;
 }
 
 .category-image {
   width: 100%;
-  height: 250px; /* Increased height */
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 10px;
+  height: 250px;
+  object-fit: cover; /* Ensure images are properly scaled */
 }
 
 .category-label {
-  font-size: 1.4rem; /* Increased font size */
+  font-size: 1.4rem;
   font-weight: 600;
-  color: #333;
+  padding: 15px 0;
+  background: #f9f9f9;
 }
 
-.category-card, .modal-image-card {
-  will-change: transform, box-shadow;
-}
-
-/* Decorative Design */
-.category-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.category-card:hover::before {
-  opacity: 1;
-}
-
-.category-card:hover .category-label {
-  color: #0F5132;
-}
-
-/* Modal Styling */
+/* Modal Overlay */
 .modal-overlay {
   position: fixed;
   inset: 0;
+  background: rgba(0, 0, 0, 0.6); /* More prominent semi-transparent background */
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.7);
-}
-
-.modal-content {
-  max-width: 800px;
-  width: 90%;
+  align-items: center;
+  z-index: 1000;
   animation: fadeIn 0.3s ease-in-out;
-  background: #fff;
-  border-radius: 10px;
+}
+
+/* Modal Content */
+.modal-content {
+  width: 90%; /* Slightly reduce width for better layout balance */
+  max-width: 1400px; /* Limit modal size */
+  background: #ffffff;
+  border-radius: 20px; /* Larger rounded corners */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: slideIn 0.4s ease-in-out;
+  position: relative;
+  padding: 25px; /* Add inner padding */
+}
+
+/* Modal Header */
+.modal-header {
   padding: 20px;
-  max-height: 90vh;
-  overflow-y: auto; /* Added scroll bar */
+  background: #0F5132; /* Modern green header */
+  color: #ffffff;
+  text-align: center;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+.modal-header h3 {
+  font-size: 2.2rem; /* Slightly smaller for better fit */
+  font-weight: 700;
+  margin: 0 0 10px 0;
 }
 
-html {
-  overflow-y: scroll; 
-}
-
-.modal-content h3 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-  color: #0F5132;
-}
-
-.modal-content p {
+.modal-header p {
   font-size: 1rem;
-  color: #555;
-  margin-bottom: 20px;
+  margin: 0;
 }
 
-.modal-images-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
+/* Subcategory Filters */
+.subcategory-filters {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Space between buttons */
+  margin-bottom: 20px; /* Space below filters */
 }
 
-.modal-image-card {
+.subcategory-button {
+  background: #f0f0f0;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.modal-image-card:hover {
+.subcategory-button.active {
+  background: #FFD700; /* Highlight active button */
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.subcategory-button:hover {
+  background: #D4AF37; /* Slightly darker hover color */
   transform: scale(1.05);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease-in-out;
+}
+
+/* Image Grid in Modal */
+.modal-images-scroll {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Improved grid layout */
+  gap: 25px; /* Increased spacing */
+  padding: 20px;
+  max-height: 70vh; /* Set height to allow scrolling */
+  overflow-y: auto;
 }
 
 .modal-image {
   width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 180px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Scroll Bar Styling */
-.modal-content::-webkit-scrollbar {
-  width: 10px;
-}
-
-.modal-content::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-
-.modal-content::-webkit-scrollbar-thumb {
-  background: #D4AF37;
-  border-radius: 10px;
-}
-
-.modal-content::-webkit-scrollbar-thumb:hover {
-  background: #0F5132;
+.modal-image:hover {
+  transform: scale(1.15); /* Enhanced zoom on hover */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 /* Close Button */
 .close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
+  top: 15px;
+  right: 15px;
+  background: #FFD700; /* Bright gold */
   border: none;
-  font-size: 1.5rem;
-  color: #333;
-  cursor: pointer;
-  transition: transform 0.2s ease, color 0.2s ease;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.3rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .close-button:hover {
-  transform: scale(1.2);
-  color: #D4AF37;
+  background: #F0A500; /* Slightly darker gold */
+  transform: scale(1.15); /* More noticeable zoom */
 }
 
-/* Rooms Container */
-.rooms-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Increased min width */
-  gap: 25px;
-  margin-bottom: 2rem;
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.room-card {
-  position: relative;
-  cursor: pointer;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+@keyframes slideIn {
+  from {
+    transform: translateY(-30%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-.room-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.room-image {
-  width: 100%;
-  height: 200px; /* Increased height */
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.image-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 10px;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.room-card:hover .image-caption {
-  opacity: 1;
-}
-
-/* Responsive Design */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-  .modal-images-grid {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  }
-
-  .category-grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Adjusted for mobile */
-  }
-
-  .gallery-header {
-    font-size: 2rem;
-  }
-
   .modal-content {
-    padding: 15px;
+    width: 95%;
+    max-width: 600px; /* Adjust for smaller screens */
   }
-}
 
-/* Back Button */
-.back-button {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #ffffff;
-  background: #0F5132;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  margin-bottom: 20px;
-}
+  .subcategory-button {
+    font-size: 0.9rem; /* Reduce button size */
+    padding: 8px 10px;
+  }
 
-.back-button:hover {
-  background: #D4AF37;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
+  .modal-header h3 {
+    font-size: 1.6rem;
+  }
 
-.back-button:active {
-  transform: translateY(1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-/* Ensure lightbox overlay stays on top */
-.lightbox-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1050; /* Higher than modal overlay */
-  background: rgba(0, 0, 0, 0.85);
-}
-
-/* Lightbox Image Styling */
-.lightbox-image {
-  max-width: 90%;
-  max-height: 90%;
-  margin: auto;
-  display: block;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-  border-radius: 8px;
+  .modal-images-scroll {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjust spacing for smaller devices */
+    gap: 15px;
+  }
 }
