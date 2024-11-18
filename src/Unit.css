@@ -1,0 +1,89 @@
+/* Main container */
+.dormitory-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+.main-dormitory1 {
+    width: 100%; /* Makes the image responsive */
+    max-width: 800px; /* Limits the maximum width */
+    height: auto;
+    border-radius: 8px; /* Rounds the corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a soft shadow effect */
+    margin: 20px auto; /* Centers the image and adds vertical spacing */
+    display: block; /* Centers the image when using margin auto */
+}
+
+
+/* Description styling */
+.description h2 {
+    color: #4CAF50;
+    font-weight: bold;
+    margin: 0;
+}
+
+.description h3 {
+    font-size: 24px;
+    margin-top: 5px;
+}
+
+.description p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Unit card container */
+.unit-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+/* Each unit card */
+.unit-card {
+    width: calc(20% - 10px);
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.unit-card:hover {
+    transform: scale(1.05);
+}
+
+/* Unit image styling */
+.unit-image {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Unit info styling */
+.unit-info {
+    padding: 10px;
+    text-align: center;
+}
+
+.unit-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.unit-info a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.unit-info a:hover {
+    text-decoration: underline;
+}
