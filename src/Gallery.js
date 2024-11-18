@@ -3,50 +3,55 @@ import Lightbox from 'react-awesome-lightbox';
 import 'react-awesome-lightbox/build/style.css';
 import './Gallery.css';
 
-const imageCategories = [
-  {
-    category: "ROOMS",
-    description: "Explore the various room configurations available.",
-    images: [
-      '/images/2beds1.jpg',
-      '/images/2beds2.jpg',
-      '/images/2beds3.jpg',
-      '/images/4beds1.jpg',
-      '/images/6beds1.jpg',
-      '/images/6beds2.jpg',
-      '/images/6beds3.jpg',
-      '/images/6beds4.jpg',
-      '/images/8beds1.jpg',
-      '/images/8beds2.jpg',
-      '/images/8beds3.jpg',
-      '/images/10beds.jpg',
-      '/images/10beds1.jpg'
-    ]
-  },
-  {
-    category: "HALLWAY",
-    description: "Take a look at the spacious hallways.",
-    images: [
-      '/images/hallway1.jpg',
-      '/images/hallway2.jpg',
-      '/images/hallway3.jpg',
-      '/images/hallway4.jpg',
-      '/images/hallway5.jpg',
-      '/images/hallway6.jpg',
-      '/images/hallway8.jpg',
-      '/images/hallway9.jpg'
-    ]
-  },
-  {
-    category: "CANTEEN",
-    description: "Our cozy and well-equipped canteen.",
-    images: [
-      '/images/canteen1.jpg',
-      '/images/canteen2.jpg',
-      '/images/canteen3.jpg'
-    ]
-  },
-  
+const Gallery = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentImages, setCurrentImages] = useState([]);
+  const [photoIndex, setPhotoIndex] = useState(0);
+  const imageCategories = [
+    {
+      category: "ROOMS",
+      description: "Explore the various room configurations available.",
+      images: [
+        '/images/2beds1.jpg',
+        '/images/2beds2.jpg',
+        '/images/2beds3.jpg',
+        '/images/4beds1.jpg',
+        '/images/6beds1.jpg',
+        '/images/6beds2.jpg',
+        '/images/6beds3.jpg',
+        '/images/6beds4.jpg',
+        '/images/8beds1.jpg',
+        '/images/8beds2.jpg',
+        '/images/8beds3.jpg',
+        '/images/10beds.jpg',
+        '/images/10beds1.jpg'
+      ]
+    },
+    {
+      category: "HALLWAY",
+      description: "Take a look at the spacious hallways.",
+      images: [
+        '/images/hallway1.jpg',
+        '/images/hallway2.jpg',
+        '/images/hallway3.jpg',
+        '/images/hallway4.jpg',
+        '/images/hallway5.jpg',
+        '/images/hallway6.jpg',
+        '/images/hallway8.jpg',
+        '/images/hallway9.jpg'
+      ]
+    },
+    {
+      category: "CANTEEN",
+      description: "Our cozy and well-equipped canteen.",
+      images: [
+        '/images/canteen1.jpg',
+        '/images/canteen2.jpg',
+        '/images/canteen3.jpg'
+      ]
+    },
     {
       category: "MEN'S RESTROOM AND SHOWER ROOM",
       description: "Facilities for the gentlemen.",
@@ -78,13 +83,6 @@ const imageCategories = [
   ];
   
 
-const Gallery = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
-  const [currentImages, setCurrentImages] = useState([]);
-  const [photoIndex, setPhotoIndex] = useState(0);
-
   // Preload images to avoid flickering
   useEffect(() => {
     if (selectedCategory?.images) {
@@ -96,26 +94,21 @@ const Gallery = () => {
   }, [selectedCategory]);
 
   const openModal = useCallback((category) => {
-    if (selectedCategory?.category !== category.category) {
-      setSelectedCategory(category);
-      setModalOpen(true);
-    }
-  }, [selectedCategory]);
+    setSelectedCategory(category);
+    setPhotoIndex(0); // Reset to first image when opening
+    setModalOpen(true);
+  }, []);
 
   const closeModal = useCallback(() => {
     setModalOpen(false);
     setSelectedCategory(null);
   }, []);
 
-  const openLightbox = useCallback((images, index) => {
-    setCurrentImages(images);
+  const openLightbox = (category, index) => {
+    setCurrentImages(category.images);
     setPhotoIndex(index);
     setIsOpen(true);
-  }, []);
-
-  const closeLightbox = useCallback(() => {
-    setIsOpen(false);
-  }, []);
+  };
 
   return (
     <section className="gallery-section">
@@ -146,12 +139,12 @@ const Gallery = () => {
             <button className="close-button" onClick={closeModal}>&times;</button>
             <h3>{selectedCategory.category}</h3>
             <p>{selectedCategory.description}</p>
-            <div className="modal-images-grid">
+            <div className="modal-images-scroll">
               {selectedCategory.images.map((image, index) => (
                 <div
                   key={index}
                   className="modal-image-card"
-                  onClick={() => openLightbox(selectedCategory.images, index)}
+                  onClick={() => openLightbox(selectedCategory, index)}
                 >
                   <img
                     src={image}
@@ -170,7 +163,7 @@ const Gallery = () => {
         <Lightbox
           images={currentImages.map((img) => ({ url: img }))}
           startIndex={photoIndex}
-          onClose={closeLightbox}
+          onClose={() => setIsOpen(false)}
         />
       )}
     </section>
