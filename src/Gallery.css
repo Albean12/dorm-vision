@@ -19,11 +19,12 @@ body {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  animation: slideInPage 1s ease-out;
 }
 
 /* Header */
 .gallery-header {
-  font-size: 3rem;
+  font-size: 3.5rem; /* Make header larger */
   font-weight: 700;
   color: #4D774E;
   text-transform: uppercase;
@@ -31,18 +32,20 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
   margin-bottom: 2.5rem;
+  animation: fadeInHeader 1.2s ease-in-out;
 }
 
 .gallery-header::after {
   content: "";
   display: block;
-  width: 100px;
-  height: 5px;
+  width: 120px; /* Make underline longer */
+  height: 6px; /* Make underline thicker */
   margin: 15px auto 0;
   background-color: #E18574;
   border-radius: 3px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 /* Category Grid Styling */
@@ -52,6 +55,7 @@ body {
   gap: 20px;
   padding: 2rem;
   text-align: center;
+  animation: fadeInPage 1s ease-in-out;
 }
 
 /* Category Card with Polaroid Style */
@@ -66,6 +70,7 @@ body {
   border: 1px solid #E18574;
   padding: 20px;
   border-bottom: 40px solid #FFF; /* Polaroid-style bottom border */
+  transform: scale(1);
 }
 
 .category-card:hover {
@@ -81,7 +86,7 @@ body {
   object-fit: cover;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
   filter: brightness(0.9);
 }
 
@@ -92,8 +97,8 @@ body {
 
 /* Category Label */
 .category-label {
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 1rem; /* Slightly larger font */
+  font-weight: 600;
   color: #4D774E;
   text-transform: uppercase;
   position: absolute;
@@ -101,110 +106,23 @@ body {
   left: 50%;
   transform: translateX(-50%);
   background: rgba(255, 255, 255, 0.9);
-  padding: 0.3rem 0.6rem;
-  border-radius: 8px;
+  padding: 0.4rem 0.8rem; /* More padding for better visibility */
+  border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, background 0.3s ease;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .category-label:hover {
   background: #E18574;
   color: #FFFFFF;
-  transform: scale(1.05); /* Slight zoom on hover */
-}
-
-/* Modal Overlay */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6); /* More prominent semi-transparent background */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  animation: fadeIn 0.3s ease-in-out;
+  transform: scale(1.1); /* Slight zoom on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Modal Content */
 .modal-content {
-  width: 85%; /* Make modal wider */
-  max-width: 1200px; /* Limit modal size to a rectangle */
-  background: #ffffff;
-  border-radius: 20px; /* Larger rounded corners */
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  animation: slideIn 0.4s ease-in-out;
-  position: relative;
-  padding: 25px; /* Add inner padding */
-}
-
-/* Modal Header */
-.modal-header {
-  padding: 20px;
-  background: #0F5132; /* Modern green header */
-  color: #ffffff;
-  text-align: center;
-}
-
-.modal-header h3 {
-  font-size: 2.2rem; /* Slightly smaller for better fit */
-  font-weight: 700;
-  margin: 0 0 10px 0;
-}
-
-.modal-header p {
-  font-size: 1rem;
-  margin: 0;
-}
-
-/* Subcategory Filters */
-.subcategory-filters {
-  display: flex;
-  justify-content: center;
-  gap: 15px; /* Space between buttons */
-  margin-bottom: 20px; /* Space below filters */
-}
-
-.subcategory-button {
-  background: #f0f0f0;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.subcategory-button.active {
-  background: #FFD700; /* Highlight active button */
-  color: #fff;
-  transform: scale(1.1);
-}
-
-.subcategory-button:hover {
-  background: #D4AF37; /* Slightly darker hover color */
-  transform: scale(1.05);
-}
-
-
-/* Image Grid in Modal */
-.modal-images-scroll {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
-  gap: 15px !important;
-  padding: 20px !important;
-  max-height: 65vh !important;
-  overflow-y: auto !important;
-  align-items: center !important;
-  justify-items: center !important;
-}
-
-
-/* Modal Content */
-.modal-content {
-  width: 90% !important; /* Wider modal */
-  max-width: 1200px !important; /* Constrain max width */
+  width: 95% !important; /* Wider modal */
+  max-width: 1400px !important; /* Constrain modal size */
   max-height: 85vh !important; /* Allow more vertical height */
   background: #ffffff !important;
   border-radius: 15px !important;
@@ -219,41 +137,50 @@ body {
 /* Modal Header */
 .modal-header {
   text-align: center !important;
-  padding: 10px !important;
-  margin-bottom: 15px !important;
+  padding: 15px !important;
+  background: linear-gradient(to right, #4D774E, #E18574) !important;
+  border-bottom: 2px solid #E18574 !important;
+  margin-bottom: 20px !important;
 }
 
 .modal-header h3 {
-  font-size: 2rem !important;
-  color: #333 !important;
+  font-size: 2.5rem !important;
+  font-family: 'Roboto', sans-serif !important;
+  color: #ffffff !important;
   font-weight: 700 !important;
+  text-transform: uppercase !important;
 }
 
-/* Image Grid */
+.modal-header p {
+  font-size: 1.2rem !important;
+  color: #f9f9f9 !important;
+}
+
+/* Modal Images Grid */
 .modal-images-scroll {
   display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
-  gap: 15px !important;
-  justify-items: center !important;
-  align-items: center !important;
-  max-height: 65vh !important; /* Allow grid to scroll */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+  gap: 20px !important; /* Adjust spacing for alignment */
+  justify-content: center !important;
+  max-height: 70vh !important; /* Constrain height for scrolling */
   overflow-y: auto !important;
   padding: 15px !important;
 }
 
-/* Modal Images */
+/* Modal Image Styling */
 .modal-image {
   width: 100% !important;
-  max-width: 140px !important; /* Control image size */
-  height: auto !important;
-  border-radius: 8px !important;
+  max-width: 250px !important; /* Wider images */
+  height: 200px !important; /* Uniform height */
+  border-radius: 12px !important;
   border: 1px solid #ddd !important;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1) !important;
-  transition: transform 0.2s ease-in-out !important;
+  object-fit: cover !important; /* Ensure images don't distort */
+  transition: transform 0.3s ease-in-out !important;
 }
 
 .modal-image:hover {
-  transform: scale(1.1) !important;
+  transform: scale(1.05) !important; /* Slight zoom effect */
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2) !important;
 }
 
@@ -278,9 +205,30 @@ body {
   background: #F0A500 !important;
   transform: scale(1.1) !important;
 }
-
 /* Animations */
-@keyframes fadeIn {
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInHeader {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInOverlay {
   from {
     opacity: 0;
   }
@@ -289,9 +237,9 @@ body {
   }
 }
 
-@keyframes slideIn {
+@keyframes fadeInModal {
   from {
-    transform: translateY(-30%);
+    transform: translateY(-20px);
     opacity: 0;
   }
   to {
@@ -304,11 +252,11 @@ body {
 @media (max-width: 768px) {
   .modal-content {
     width: 95%;
-    max-width: 600px; /* Adjust for smaller screens */
+    max-width: 600px;
   }
 
   .subcategory-button {
-    font-size: 0.9rem; /* Reduce button size */
+    font-size: 0.9rem;
     padding: 8px 10px;
   }
 
@@ -317,7 +265,7 @@ body {
   }
 
   .modal-images-scroll {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjust spacing for smaller devices */
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
   }
 }

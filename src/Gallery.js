@@ -16,29 +16,11 @@ const Gallery = () => {
       category: "ROOMS",
       description: "Explore the various room configurations available.",
       subcategories: {
-        "2 Beds": [
-          '/images/2beds1.jpg',
-          '/images/2beds2.jpg',
-          '/images/2beds3.jpg',
-        ],
-        "4 Beds": [
-          '/images/4beds1.jpg',
-        ],
-        "6 Beds": [
-          '/images/6beds1.jpg',
-          '/images/6beds2.jpg',
-          '/images/6beds3.jpg',
-          '/images/6beds4.jpg',
-        ],
-        "8 Beds": [
-          '/images/8beds1.jpg',
-          '/images/8beds2.jpg',
-          '/images/8beds3.jpg',
-        ],
-        "10 Beds": [
-          '/images/10beds.jpg',
-          '/images/10beds1.jpg',
-        ],
+        "2 Beds": ['/images/2beds1.jpg', '/images/2beds2.jpg', '/images/2beds3.jpg'],
+        "4 Beds": ['/images/4beds1.jpg'],
+        "6 Beds": ['/images/6beds1.jpg', '/images/6beds2.jpg', '/images/6beds3.jpg', '/images/6beds4.jpg'],
+        "8 Beds": ['/images/8beds1.jpg', '/images/8beds2.jpg', '/images/8beds3.jpg'],
+        "10 Beds": ['/images/10beds.jpg', '/images/10beds1.jpg'],
       },
     },
     {
@@ -58,11 +40,7 @@ const Gallery = () => {
     {
       category: "CANTEEN",
       description: "Our cozy and well-equipped canteen.",
-      images: [
-        '/images/canteen1.jpg',
-        '/images/canteen2.jpg',
-        '/images/canteen3.jpg',
-      ],
+      images: ['/images/canteen1.jpg', '/images/canteen2.jpg', '/images/canteen3.jpg'],
     },
     {
       category: "MEN'S RESTROOM AND SHOWER ROOM",
@@ -72,10 +50,6 @@ const Gallery = () => {
         `${process.env.PUBLIC_URL}/images/menscr2.jpg`,
         `${process.env.PUBLIC_URL}/images/menscr3.jpg`,
         `${process.env.PUBLIC_URL}/images/menscr4.jpg`,
-        `${process.env.PUBLIC_URL}/images/menscr5.jpg`,
-        `${process.env.PUBLIC_URL}/images/menscr6.jpg`,
-        `${process.env.PUBLIC_URL}/images/menscr7.jpg`,
-        `${process.env.PUBLIC_URL}/images/menscr8.jpg`,
       ],
     },
     {
@@ -86,15 +60,10 @@ const Gallery = () => {
         `${process.env.PUBLIC_URL}/images/womenscr2.jpg`,
         `${process.env.PUBLIC_URL}/images/womenscr3.jpg`,
         `${process.env.PUBLIC_URL}/images/womenscr4.jpg`,
-        `${process.env.PUBLIC_URL}/images/womenscr5.jpg`,
-        `${process.env.PUBLIC_URL}/images/womenscr6.jpg`,
-        `${process.env.PUBLIC_URL}/images/womenscr7.jpg`,
-        `${process.env.PUBLIC_URL}/images/womenscr8.jpg`,
       ],
     },
   ];
 
-  // Preload images to avoid flickering
   useEffect(() => {
     if (selectedCategory) {
       const imagesToPreload = selectedSubcategory
@@ -109,7 +78,7 @@ const Gallery = () => {
 
   const openModal = useCallback((category) => {
     setSelectedCategory(category);
-    setSelectedSubcategory(null); // Reset subcategory selection
+    setSelectedSubcategory(null);
     setPhotoIndex(0);
     setModalOpen(true);
   }, []);
@@ -121,7 +90,7 @@ const Gallery = () => {
   }, []);
 
   const openLightbox = (images, index) => {
-    setCurrentImages(images);
+    setCurrentImages(images.map((img) => ({ url: img }))); // Map images for Lightbox format
     setPhotoIndex(index);
     setIsOpen(true);
   };
@@ -155,10 +124,7 @@ const Gallery = () => {
       {/* Modal */}
       {modalOpen && selectedCategory && (
         <div className="modal-overlay" onClick={closeModal}>
-          <div
-            className="modal-content"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="close-button" onClick={closeModal}>
               &times;
             </button>
@@ -191,7 +157,7 @@ const Gallery = () => {
               ).map((image, index) => (
                 <div
                   key={index}
-                  className="modal-image-card"
+                  className="modal-image-wrapper"
                   onClick={() =>
                     openLightbox(
                       selectedSubcategory
@@ -202,8 +168,14 @@ const Gallery = () => {
                     )
                   }
                 >
-                  <img src={image} alt={`Slide ${index + 1}: ${selectedCategory.category}`}
- />
+                  <img
+                    src={image}
+                    alt={`Slide ${index + 1}: ${selectedCategory.category}`}
+                    className="modal-image"
+                  />
+                  <a href={image} download>
+                    <button className="download-button">⬇</button>
+                  </a>
                 </div>
               ))}
             </div>
@@ -214,7 +186,7 @@ const Gallery = () => {
       {/* Lightbox */}
       {isOpen && (
         <Lightbox
-          images={currentImages.map((img) => ({ url: img }))}
+          images={currentImages}
           startIndex={photoIndex}
           onClose={() => setIsOpen(false)}
         />
