@@ -202,7 +202,8 @@ const Gallery = () => {
                     )
                   }
                 >
-                  <img src={image} alt={`Image ${index + 1}`} className="modal-image" />
+                  <img src={image} alt={`Slide ${index + 1}: ${selectedCategory.category}`}
+ />
                 </div>
               ))}
             </div>
