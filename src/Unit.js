@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import "./Unit.css";
-const Dormitory = () => {
 
+const Dormitory = () => {
   const units = [
     { id: 1, capacity: 1, price: 900, image: "unit1.jpg" },
     { id: 2, capacity: 2, price: 600, image: "unit2.jpg" },
@@ -15,18 +15,6 @@ const Dormitory = () => {
 
   const [filters, setFilters] = useState({ checkIn: "", checkOut: "", group: "" });
 
-  const unitsContainerRef = useRef(null);
-
-  const handleScroll = (direction) => {
-    const container = unitsContainerRef.current;
-    const scrollAmount = 300; // Adjust for desired scroll distance
-    if (direction === "left") {
-      container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-    } else {
-      container.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    }
-  };
-
   const handleFilterChange = (field, value) => {
     setFilters({ ...filters, [field]: value });
   };
@@ -37,10 +25,10 @@ const Dormitory = () => {
 
   return (
     <div className="dormitory">
-      {/* Dormitory Header */}
+      {/* Dormitory Image */}
       <div className="dormitory-header">
         <img
-          src="dormheader.jpg"
+          src="dormitoryheader.jpg"
           alt="Dormitory"
           className="dormitory-image"
         />
@@ -84,19 +72,17 @@ const Dormitory = () => {
         <button className="find-button">Find Your Perfect Unit</button>
       </div>
 
-      {/* Units Section with Navigation */}
-      <div className="scroll-navigation">
-        <div className="units-container" ref={unitsContainerRef}>
-          {filteredUnits.map((unit) => (
-            <div key={unit.id} className="unit-card">
-              <img src={unit.image} alt={`Unit ${unit.id}`} className="unit-image" />
-              <h3 className="unit-title">Unit {unit.id}</h3>
-              <p className="unit-capacity">Capacity for {unit.capacity} Person(s)</p>
-              <p className="unit-price">From PHP <span className="price">{unit.price}</span></p>
-              <button className="view-details">View Details</button>
-            </div>
-          ))}
-        </div>
+      {/* Units Section */}
+      <div className="units-container">
+        {filteredUnits.map((unit) => (
+          <div key={unit.id} className="unit-card">
+            <img src={unit.image} alt={`Unit ${unit.id}`} className="unit-image" />
+            <h3 className="unit-title">Unit {unit.id}</h3>
+            <p className="unit-capacity">Capacity for {unit.capacity} Person(s)</p>
+            <p className="unit-price">From PHP <span className="price">{unit.price}</span></p>
+            <button className="view-details">View Details</button>
+          </div>
+        ))}
       </div>
     </div>
   );
