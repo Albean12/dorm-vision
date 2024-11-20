@@ -4,14 +4,14 @@ import "./Units.css";
 const Dormitory = () => {
   // List of units with their properties
   const units = [
-    { id: 1, capacity: 1, price: 900, image: "/src/unitimage/unit1.jpg" },
-    { id: 2, capacity: 2, price: 600, image: "/src/unitimage/unit2.jpg" },
-    { id: 3, capacity: 4, price: 450, image: "/src/unitimage/unit3.jpg" },
-    { id: 4, capacity: 6, price: 450, image:"/src/unitimage/unit4.jpg" },
-    { id: 5, capacity: 8, price: 450, image: "/src/unitimage/unit5.jpg" },
-    { id: 6, capacity: 10, price: 450, image: "/src/unitimage/unit3.jpg" },
-    { id: 7, capacity: 12, price: 450, image: "/src/unitimage/unit2.jpg" },
-    { id: 8, capacity: 14, price: 450, image: "/src/unitimage/unit4.jpg" },
+    { id: 1, capacity: 1, price: 900, image:  "unit1.jpg" },
+    { id: 2, capacity: 2, price: 600, image:  "unit2.jpg" },
+    { id: 3, capacity: 4, price: 450, image:  "unit3.jpg" },
+    { id: 4, capacity: 6, price: 450, image:  "unit4.jpg" },
+    { id: 5, capacity: 8, price: 450, image:  "unit5.jpg" },
+    { id: 6, capacity: 10, price: 450, image: "unit3.jpg" },
+    { id: 7, capacity: 12, price: 450, image: "unit2.jpg" },
+    { id: 8, capacity: 14, price: 450, image: "unit4.jpg" },
   ];
 
   // Filters for check-in, check-out, and group size
