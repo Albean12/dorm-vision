@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useState } from "react";
 import "./Units.css";
 
 const Dormitory = () => {
   const units = [
-    { id: 1, capacity: 1, price: 900, image: "unit1.jpg" },
-    { id: 2, capacity: 2, price: 600, image: "unit2.jpg" },
-    { id: 3, capacity: 4, price: 450, image: "unit3.jpg" },
-    { id: 4, capacity: 6, price: 450, image: "unit4.jpg" },
-    { id: 5, capacity: 8, price: 450, image: "unit5.jpg" },
-    { id: 6, capacity: 10, price: 450, image: "unit1.jpg" },
-    { id: 7, capacity: 12, price: 450, image: "unit2.jpg" },
-    { id: 8, capacity: 14, price: 450, image: "unit3.jpg" },
+    { id: 1, capacity: 1, price: 900, image: "Unit1.jpg" },
+    { id: 2, capacity: 2, price: 600, image: "Unit2.jpg" },
+    { id: 3, capacity: 4, price: 450, image: "Unit3.jpg" },
+    { id: 4, capacity: 6, price: 450, image: "Unit4.jpg" },
+    { id: 5, capacity: 8, price: 450, image: "Unit5.jpg" },
+    { id: 6, capacity: 10, price: 450, image: "Unit1.jpg" },
+    { id: 7, capacity: 12, price: 450, image: "Unit2.jpg" },
+    { id: 8, capacity: 14, price: 450, image: "Unit3.jpg" },
   ];
 
   const [filters, setFilters] = useState({ checkIn: "", checkOut: "", group: "" });
