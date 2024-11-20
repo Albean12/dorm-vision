@@ -13,8 +13,12 @@ const Dormitory = () => {
     { id: 8, capacity: 14, price: 450, image: "Room1.jpg" },
   ];
 
-  // Filters for group size
-  const [filters, setFilters] = useState({ group: "" });
+  // Filters for group size and dates
+  const [filters, setFilters] = useState({
+    group: "",
+    checkIn: "",
+    checkOut: "",
+  });
 
   // Track modal states for each unit
   const [openModals, setOpenModals] = useState(
@@ -42,7 +46,9 @@ const Dormitory = () => {
 
   // Apply filters to units based on group size
   const filteredUnits = units.filter(
-    (unit) => !filters.group || unit.capacity === Number(filters.group)
+    (unit) =>
+      (!filters.group || unit.capacity === Number(filters.group)) &&
+      (filters.checkIn === "" || filters.checkOut === "" || true) // Placeholder for date logic
   );
 
   return (
@@ -59,22 +65,52 @@ const Dormitory = () => {
 
       {/* Filter Section */}
       <div className="filter-bar-oval">
-        <h2 className="filter-title">Find Your Perfect Unit</h2>
-        <select
-          className="filter-select"
-          value={filters.group}
-          onChange={(e) => handleFilterChange("group", e.target.value)}
-        >
-          <option value="">All Units</option>
-          <option value="1">1 Person</option>
-          <option value="2">2 Persons</option>
-          <option value="4">4 Persons</option>
-          <option value="6">6 Persons</option>
-          <option value="8">8 Persons</option>
-          <option value="10">10 Persons</option>
-          <option value="12">12 Persons</option>
-          <option value="14">14 Persons</option>
-        </select>
+        <span className="filter-title">Find Your Perfect Unit</span>
+
+        {/* Check-In Date */}
+        <div className="filter-date">
+          <span className="filter-icon">📅</span>
+          <input
+            type="date"
+            placeholder="Check In"
+            value={filters.checkIn}
+            onChange={(e) => handleFilterChange("checkIn", e.target.value)}
+          />
+        </div>
+
+        {/* Check-Out Date */}
+        <div className="filter-date">
+          <span className="filter-icon">📅</span>
+          <input
+            type="date"
+            placeholder="Check Out"
+            value={filters.checkOut}
+            onChange={(e) => handleFilterChange("checkOut", e.target.value)}
+          />
+        </div>
+
+        {/* Separator */}
+        <div className="filter-separator"></div>
+
+        {/* Group Size Dropdown */}
+        <div className="filter-select">
+          <span className="filter-icon">👥</span>
+          <select
+            className="filter-select-dropdown"
+            value={filters.group}
+            onChange={(e) => handleFilterChange("group", e.target.value)}
+          >
+            <option value="">Group For</option>
+            <option value="1">1 Person</option>
+            <option value="2">2 Persons</option>
+            <option value="4">4 Persons</option>
+            <option value="6">6 Persons</option>
+            <option value="8">8 Persons</option>
+            <option value="10">10 Persons</option>
+            <option value="12">12 Persons</option>
+            <option value="14">14 Persons</option>
+          </select>
+        </div>
       </div>
 
       {/* Units Section */}
