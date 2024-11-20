@@ -1,42 +1,115 @@
-
-.unit-card {
-    background-color: #ffffff; /* White background */
+/* General Container Styling */
+.units-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  /* Header Section Styling */
+  .dormitory-header {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .dormitory-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #007bff; /* Blue text */
+    margin: 10px 0;
+  }
+  
+  .description {
+    font-size: 16px;
+    color: #444;
+  }
+  
+  /* Filter Section Styling */
+  .filter-bar-oval {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: #007bff;
+    padding: 15px;
+    border-radius: 30px;
+    margin: 20px auto;
+    max-width: 800px;
+  }
+  
+  .filter-input,
+  .filter-select {
+    padding: 10px;
+    font-size: 14px;
     border: none;
-    border-radius: 15px;
+    border-radius: 5px;
+  }
+  
+  .filter-select {
+    cursor: pointer;
+  }
+  
+  .find-button {
+    background: linear-gradient(to right, #007bff, #1e90ff);
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .find-button:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Individual Unit Card Styling */
+  .unit-card {
+    background-color: #ffffff; /* White background */
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
     overflow: hidden;
     width: 250px;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
   }
   
   .unit-card:hover {
-    transform: translateY(-5px);
+    transform: scale(1.05);
   }
   
   .unit-image {
     width: 100%;
     height: 150px;
     object-fit: cover;
+    border-bottom: 5px solid #007bff; /* Adds a blue bar under the image */
   }
   
   .unit-details {
-    background-color: #007bff; /* Blue background */
     padding: 15px;
     text-align: center;
-    border-radius: 0 0 15px 15px;
   }
   
   .unit-title {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
-    color: #fff; /* White text */
-    margin-bottom: 10px;
+    color: #007bff;
+    margin-bottom: 5px;
   }
   
   .unit-capacity,
   .unit-price {
     font-size: 14px;
-    color: #fff; /* White text */
+    color: #444;
   }
   
   .unit-price .price {
@@ -45,13 +118,11 @@
   }
   
   .view-details {
-    margin-top: 10px;
-    padding: 8px 20px;
-    background-color: #f39c12; /* Button orange */
+    padding: 10px 15px;
+    background-color: #f39c12;
     color: white;
-    font-weight: bold;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
   }
