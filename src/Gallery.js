@@ -138,7 +138,7 @@ const Gallery = () => {
     <section className="gallery-section">
     <div className="gallery-header-container">
       <h2 className="gallery-header">GALLERY</h2>
-      <p className="gallery-description">Welcome! Take a moment to see the comfort we provide.</p>
+      <p className="gallery-description">"Welcome! Your comfort, our priority – take a look around."</p>
     </div>
 
       {/* Main Category Grid */}

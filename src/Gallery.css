@@ -13,24 +13,26 @@ body {
   color: #333;
 }
 
-/* Gallery Section */
+/* General Section Styling */
 .gallery-section {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
   animation: slideInPage 1s ease-out;
+  background: linear-gradient(to bottom, #fefefe, #f9f9f9); /* Subtle background gradient */
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
 }
 
-/* Header */
-/* Gallery Header Container */
+/* Header Container */
 .gallery-header-container {
   text-align: center;
   margin-bottom: 2rem;
-  animation: fadeIn 1.5s ease-in-out;
+  animation: fadeInSlide 1.2s ease-out; /* Smooth entrance animation */
 }
 
-/* Gallery Header */
+/* Header Title */
 .gallery-header {
   font-size: 4rem;
   font-weight: 700;
@@ -43,16 +45,23 @@ body {
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
   margin: 0;
   padding: 0;
+  cursor: pointer; /* Interactive hover effect */
+}
+
+.gallery-header:hover {
+  opacity: 0.9; /* Slight fade effect */
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4); /* More pronounced shadow on hover */
+  transition: all 0.3s ease-in-out;
 }
 
 /* Description */
 .gallery-description {
   font-size: 1.5rem;
   font-weight: 400;
-  color: #666;
+  font-style: italic; /* Emphasize the approachable tone */
+  color: #E18574;
   margin-top: 1rem;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-  animation: fadeInDescription 1.5s ease-in-out;
+  animation: fadeInSlide 1.8s ease-out; /* Delayed animation */
 }
 
 /* Header Divider Line */
@@ -65,9 +74,22 @@ body {
   background: #E18574;
   border-radius: 3px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  animation: fadeInDivider 1.5s ease-in-out;
 }
 
-/* Category Grid Styling */
+/* Divider Animation */
+@keyframes fadeInDivider {
+  0% {
+    opacity: 0;
+    width: 0;
+  }
+  100% {
+    opacity: 1;
+    width: 150px;
+  }
+}
+
+/* Category Grid */
 .category-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -88,6 +110,7 @@ body {
   position: relative;
   border: 1px solid #ddd;
   padding: 15px;
+  cursor: pointer; /* Interactive cards */
 }
 
 .category-card:hover {
@@ -109,6 +132,61 @@ body {
 .category-card:hover .category-image {
   transform: scale(1.05);
   filter: brightness(1);
+}
+
+/* Category Title */
+.category-label {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  text-transform: uppercase;
+  margin-top: 15px;
+  text-align: center;
+  background: #f0f0f0;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-label:hover {
+  background: linear-gradient(to right, #4D774E, #E18574);
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInPage {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes cardAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 /* Category Header Styling */
 .category-header {
