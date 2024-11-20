@@ -1,7 +1,7 @@
 import React from 'react';
-import "./Unit.css";
+import "./Units.css";
 
-const Unit = () => {
+const Dormitory = () => {
   const units = [
     { id: 1, capacity: 1, price: 900, image: "unit1.jpg" },
     { id: 2, capacity: 2, price: 600, image: "unit2.jpg" },
@@ -88,4 +88,4 @@ const Unit = () => {
   );
 };
 
-export default Unit;
+export default Dormitory;
