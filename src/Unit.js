@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from 'react';
 import "./Unit.css";
 
-const Dormitory = () => {
+const Unit = () => {
   const units = [
     { id: 1, capacity: 1, price: 900, image: "unit1.jpg" },
     { id: 2, capacity: 2, price: 600, image: "unit2.jpg" },
@@ -88,4 +88,4 @@ const Dormitory = () => {
   );
 };
 
-export default Dormitory;
+export default Unit;
