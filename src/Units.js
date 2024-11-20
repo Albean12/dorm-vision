@@ -56,10 +56,10 @@ const Dormitory = () => {
       {/* Dormitory Header Section */}
       <div className="dormitory-header">
         <img src="RoomHeader.jpg" alt="Dormitory" className="dormitory-image" />
-        <h1 className="title">Seagold Dormitories, Manila</h1>
+        <h1 className="title">WELCOME TO OUR UNITS</h1>
         <p className="description">
           Seagold Dormitory offers comfort and convenience with a student-friendly
-          environment. Explore our cozy and affordable units.
+          environment. Explore our cozy and affordable units just for you.
         </p>
       </div>
 
