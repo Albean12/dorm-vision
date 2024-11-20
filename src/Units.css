@@ -6,6 +6,29 @@
   padding-bottom: 40px;
 }
 
+/* Styling for the dormitory header */
+.dormitory-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #add8e6; /* Light blue background */
+  color: #333; /* Darker text color for better contrast */
+  text-align: center;
+}
+
+.dormitory-image {
+  width: 100%;
+  max-width: 1200px; /* Restrict the max width for larger screens */
+  height: auto;
+  object-fit: cover; /* Ensures the image covers the container proportionally */
+  border-radius: 8px; /* Adds slight rounding to the corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for the image */
+  margin-bottom: 20px; /* Adds spacing below the image */
+}
+
+
 /* Header Section Styling */
 .dormitory-header {
   text-align: center;
@@ -135,3 +158,17 @@
   background-color: #2980b9;
 }
 
+/* Ensuring all images have the same size */
+.unit-image {
+  width: 150px; /* Set a consistent width */
+  height: 150px; /* Set a consistent height */
+  object-fit: cover; /* Ensures images fill the area proportionally */
+  border-radius: 8px; /* Optional: rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
+}
+
+.unit-card.fade-out {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+}

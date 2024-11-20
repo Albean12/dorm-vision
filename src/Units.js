@@ -4,8 +4,7 @@ import "./Units.css";
 const Dormitory = () => {
   // List of units with their properties
 
-  
-  const units = [
+    const units = [
     { id: 1, capacity: 1, price: 900, image:  "Room1.jpg" },
     { id: 2, capacity: 2, price: 600, image:  "Room2.jpg" },
     { id: 3, capacity: 4, price: 450, image:  "Room3.jpg" },
@@ -34,7 +33,7 @@ const Dormitory = () => {
       {/* Dormitory Header Section */}
       <div className="dormitory-header">
         <img
-          src="UnitHeader.jpg"  // Ensure this image path is correct
+          src="RoomHeader.jpg"  // Ensure this image path is correct
           alt="Dormitory"
           className="dormitory-image"
         />
