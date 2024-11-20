@@ -14,24 +14,18 @@
   justify-content: center;
   padding: 40px 20px;
   background-color: #add8e6; /* Light blue background */
-  color: #333; /* Darker text color for better contrast */
+  color: #333;
   text-align: center;
 }
 
 .dormitory-image {
   width: 100%;
-  max-width: 1200px; /* Restrict the max width for larger screens */
+  max-width: 1200px;
   height: auto;
-  object-fit: cover; /* Ensures the image covers the container proportionally */
-  border-radius: 8px; /* Adds slight rounding to the corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for the image */
-  margin-bottom: 20px; /* Adds spacing below the image */
-}
-
-/* Header Section Styling */
-.dormitory-header {
-  text-align: center;
-  padding: 20px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 .title {
@@ -155,15 +149,6 @@
   background-color: #2980b9;
 }
 
-/* Ensuring all images have the same size */
-.unit-image {
-  width: 150px; /* Set a consistent width */
-  height: 150px; /* Set a consistent height */
-  object-fit: cover; /* Ensures images fill the area proportionally */
-  border-radius: 8px; /* Optional: rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
-}
-
 /* Modal Overlay */
 .modal-overlay {
   position: fixed;
@@ -182,16 +167,18 @@
 .modal-content {
   background-color: white;
   width: 90%;
-  max-width: 800px;
-  padding: 20px;
+  max-width: 900px;
   border-radius: 10px;
+  padding: 20px;
   position: relative;
   overflow-y: auto;
+  max-height: 90vh;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .modal-close {
   position: absolute;
-  top: 10px;
+  top: 15px;
   right: 20px;
   background: none;
   border: none;
@@ -199,42 +186,99 @@
   cursor: pointer;
 }
 
-.modal-header img {
+.modal-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-main-image {
   width: 100%;
-  height: auto;
+  max-height: 300px;
+  object-fit: cover;
   border-radius: 8px;
 }
 
+.modal-gallery {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.modal-gallery img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
 .modal-info {
-  margin-top: 20px;
+  padding: 20px;
 }
 
 .modal-info h1 {
   font-size: 24px;
   color: #007bff;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .modal-info h2 {
   font-size: 18px;
   color: #555;
   margin-bottom: 20px;
+  text-align: center;
 }
 
-.modal-info p {
+.room-offer h3,
+.description h3,
+.amenities h3,
+.payment-transaction h3,
+.payment-terms h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.room-features span {
+  display: inline-block;
+  background: #f1f1f1;
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.amenities ul,
+.payment-transaction ul,
+.payment-terms ul {
+  list-style: none;
+  padding-left: 0;
   margin: 10px 0;
 }
 
-.modal-action {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #3498db;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.amenities li,
+.payment-transaction li,
+.payment-terms li {
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 
-.modal-action:hover {
-  background-color: #2980b9;
+.payment-terms h4 {
+  font-size: 16px;
+  color: #555;
+  margin-top: 5px;
+}
+
+.notes {
+  font-size: 12px;
+  color: #7f8c8d;
+}
+
+.notes ul {
+  list-style-type: disc;
+  margin-left: 20px;
 }
