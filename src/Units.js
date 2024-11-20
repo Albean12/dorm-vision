@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Dormitory.css";
+import "./Units.css";
 
 const Dormitory = () => {
   const units = [
@@ -8,9 +8,9 @@ const Dormitory = () => {
     { id: 3, capacity: 4, price: 450, image: "unit3.jpg" },
     { id: 4, capacity: 6, price: 450, image: "unit4.jpg" },
     { id: 5, capacity: 8, price: 450, image: "unit5.jpg" },
-    { id: 6, capacity: 10, price: 450, image: "unit1.jpg" },
-    { id: 7, capacity: 12, price: 450, image: "unit2.jpg" },
-    { id: 8, capacity: 14, price: 450, image: "unit3.jpg" },
+    { id: 6, capacity: 10, price: 450, image: "unit6.jpg" },
+    { id: 7, capacity: 12, price: 450, image: "unit7.jpg" },
+    { id: 8, capacity: 14, price: 450, image: "unit8.jpg" },
   ];
 
   const [filters, setFilters] = useState({ checkIn: "", checkOut: "", group: "" });
