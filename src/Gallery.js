@@ -15,7 +15,6 @@ const Gallery = () => {
   const imageCategories = [
     {
       category: "ROOMS",
-      description: "Explore the various room configurations available.",
       subcategories: {
         "2 Beds": [
           '/images/2beds1.jpg',
@@ -42,7 +41,6 @@ const Gallery = () => {
     },
     {
       category: "HALLWAY",
-      description: "Take a look at the spacious hallways.",
       images: [
         '/images/hallway1.jpg',
         '/images/hallway2.jpg',
@@ -56,7 +54,6 @@ const Gallery = () => {
     },
     {
       category: "CANTEEN",
-      description: "Our cozy and well-equipped canteen.",
       images: [
         '/images/canteen1.jpg',
         '/images/canteen2.jpg',
@@ -64,31 +61,21 @@ const Gallery = () => {
       ],
     },
     {
-      category: "MEN'S RESTROOM AND SHOWER ROOM",
-      description: "Facilities for the gentlemen.",
+      category: "MEN'S BATHROOM",
       images: [
         `${process.env.PUBLIC_URL}/images/menscr1.jpg`,
         `${process.env.PUBLIC_URL}/images/menscr2.jpg`,
         `${process.env.PUBLIC_URL}/images/menscr3.jpg`,
         `${process.env.PUBLIC_URL}/images/menscr4.jpg`,
-        `${process.env.PUBLIC_URL}/images/menscr5.jpg`,
-        `${process.env.PUBLIC_URL}/images/menscr6.jpg`,
-        `${process.env.PUBLIC_URL}/images/menscr7.jpg`,
-        `${process.env.PUBLIC_URL}/images/menscr8.jpg`,
       ],
     },
     {
-      category: "WOMENS' RESTROOM AND SHOWER ROOM",
-      description: "Facilities for the ladies.",
+      category: "WOMENS' BATHROOM ",
       images: [
         `${process.env.PUBLIC_URL}/images/womenscr1.jpg`,
         `${process.env.PUBLIC_URL}/images/womenscr2.jpg`,
         `${process.env.PUBLIC_URL}/images/womenscr3.jpg`,
         `${process.env.PUBLIC_URL}/images/womenscr4.jpg`,
-        `${process.env.PUBLIC_URL}/images/womenscr5.jpg`,
-        `${process.env.PUBLIC_URL}/images/womenscr6.jpg`,
-        `${process.env.PUBLIC_URL}/images/womenscr7.jpg`,
-        `${process.env.PUBLIC_URL}/images/womenscr8.jpg`,
       ],
     },
   ];
@@ -149,7 +136,10 @@ const Gallery = () => {
 
   return (
     <section className="gallery-section">
+    <div className="gallery-header-container">
       <h2 className="gallery-header">GALLERY</h2>
+      <p className="gallery-description">Welcome! Take a moment to see the comfort we provide.</p>
+    </div>
 
       {/* Main Category Grid */}
       <div className="category-grid">
@@ -173,79 +163,83 @@ const Gallery = () => {
         ))}
       </div>
 
-      {/* Modal */}
-      {modalOpen && selectedCategory && (
-        <div className="modal-overlay" onClick={closeModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="close-button" onClick={closeModal}>
-              &times;
+   {/* Modal */}
+   {modalOpen && selectedCategory && (
+  <div className="modal-overlay" onClick={closeModal}>
+    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <button className="close-button" onClick={closeModal}>
+        &times;
+      </button>
+      <div className="modal-header">
+        <h3>{selectedCategory.category}</h3>
+        <p>{selectedCategory.description}</p>
+      </div>
+
+      {/* Subcategory Filters */}
+      {selectedCategory.subcategories && (
+        <div className="subcategory-filters">
+          {Object.keys(selectedCategory.subcategories).map((subcat) => (
+            <button
+              key={subcat}
+              className={`subcategory-button ${
+                selectedSubcategory === subcat ? "active" : ""
+              }`}
+              onClick={() => setSelectedSubcategory(subcat)}
+            >
+              {subcat}
             </button>
-            <h3 className="popup-header">{selectedCategory.category}</h3>
-            <p className="popup-subtitle">{selectedCategory.description}</p>
-
-            {/* Subcategory Filters */}
-            {selectedCategory.subcategories && (
-              <div className="subcategory-filters">
-                {Object.keys(selectedCategory.subcategories).map((subcat) => (
-                  <button
-                    key={subcat}
-                    className={`subcategory-button ${
-                      selectedSubcategory === subcat ? 'active' : ''
-                    }`}
-                    onClick={() => setSelectedSubcategory(subcat)}
-                  >
-                    {subcat}
-                  </button>
-                ))}
-              </div>
-            )}
-
-            {/* Image Grid */}
-            <div className="modal-images-scroll">
-              {(selectedSubcategory
-                ? selectedCategory.subcategories[selectedSubcategory]
-                : selectedCategory.images ||
-                  Object.values(selectedCategory.subcategories || {}).flat()
-              ).map((image, index) => (
-                <div key={index} className="modal-image-card">
-                  <img
-                    src={image}
-                    alt={`Slide ${index + 1}`}
-                    className="modal-image"
-                    onClick={() =>
-                      openLightbox(
-                        selectedSubcategory
-                          ? selectedCategory.subcategories[selectedSubcategory]
-                          : selectedCategory.images ||
-                            Object.values(selectedCategory.subcategories || {}).flat(),
-                        index
-                      )
-                    }
-                  />
-                  <div className="image-checkbox-wrapper">
-                    <input
-                      type="checkbox"
-                      className="image-select-checkbox"
-                      checked={selectedImages.includes(image)}
-                      onChange={() => toggleImageSelection(image)}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Download Button */}
-            {selectedImages.length > 0 && (
-              <button
-                className="download-selected-button"
-                onClick={downloadSelectedImages}
-              >
-                Download Selected ({selectedImages.length})
-              </button>
-            )}
-          </div>
+          ))}
         </div>
       )}
+
+      {/* Image Grid */}
+      <div className="modal-images-scroll">
+        {(selectedSubcategory
+          ? selectedCategory.subcategories[selectedSubcategory]
+          : selectedCategory.images ||
+            Object.values(selectedCategory.subcategories || {}).flat()
+        ).map((image, index) => (
+          <div key={index} className="modal-image-card">
+            <img
+              src={image}
+              alt={`Slide ${index + 1}`}
+              className="modal-image"
+              onClick={() =>
+                openLightbox(
+                  selectedSubcategory
+                    ? selectedCategory.subcategories[selectedSubcategory]
+                    : selectedCategory.images ||
+                      Object.values(selectedCategory.subcategories || {}).flat(),
+                  index
+                )
+              }
+            />
+            <div className="image-checkbox-wrapper">
+              <input
+                type="checkbox"
+                className="image-select-checkbox"
+                checked={selectedImages.includes(image)}
+                onChange={() => toggleImageSelection(image)}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Download Button */}
+      {selectedImages.length > 0 && (
+        <div className="download-button-wrapper">
+          <button
+            className="download-selected-button"
+            onClick={downloadSelectedImages}
+          >
+            Download Selected ({selectedImages.length})
+          </button>
+        </div>
+      )}
+    </div>
+  </div>
+)}
 
       {/* Lightbox */}
       {isOpen && (
