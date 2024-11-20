@@ -205,67 +205,62 @@ body {
   background: #F0A500 !important;
   transform: scale(1.1) !important;
 }
-/* Animations */
-@keyframes fadeInPage {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+
+/* Checkbox Positioning */
+.image-select-checkbox {
+  margin-top: 10px; /* Space below the image */
+  cursor: pointer;
+  transform: scale(1.2); /* Make the checkbox larger */
+  accent-color: #007bff; /* Blue checkbox color */
 }
 
-@keyframes fadeInHeader {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+/* Download Button */
+.download-button {
+  position: absolute;
+  bottom: 10px; /* Anchor to the bottom of the image card */
+  right: 10px; /* Space from the right edge */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6b73ff, #000dff);
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 10; /* Ensure it's above other elements */
 }
 
-@keyframes fadeInOverlay {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.download-button:hover {
+  transform: scale(1.2); /* Slight zoom effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+.download-selected-button {
+  padding: 12px 24px; /* Comfortable padding */
+  font-size: 1rem; /* Standard font size */
+  font-weight: 600;
+  color: #ffffff; /* White text */
+  background: #4CAF50; /* Flat green color */
+  border: none; /* No border */
+  border-radius: 8px; /* Slightly rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  display: inline-block; /* Ensure it fits the content */
 }
 
-@keyframes fadeInModal {
-  from {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+.download-selected-button:hover {
+  background: #45A049; /* Slightly darker green on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .modal-content {
-    width: 95%;
-    max-width: 600px;
-  }
-
-  .subcategory-button {
-    font-size: 0.9rem;
-    padding: 8px 10px;
-  }
-
-  .modal-header h3 {
-    font-size: 1.6rem;
-  }
-
-  .modal-images-scroll {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 10px;
-  }
+.download-selected-button:active {
+  background: #388E3C; /* Darker green when clicked */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transform: translateY(1px); /* Pressed effect */
 }
