@@ -90,26 +90,95 @@ const Dormitory = () => {
       {isModalOpen && selectedUnit && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            {/* Close Button */}
             <button className="modal-close" onClick={closeModal}>
               &times;
             </button>
+
+            {/* Modal Header with Main Image and Gallery */}
             <div className="modal-header">
               <img
                 src={selectedUnit.image}
                 alt={`Unit ${selectedUnit.id}`}
                 className="modal-main-image"
               />
+              <div className="modal-gallery">
+                <img src="Room1.jpg" alt="Gallery 1" />
+                <img src="Room2.jpg" alt="Gallery 2" />
+                <img src="Room3.jpg" alt="Gallery 3" />
+                <img src="Room4.jpg" alt="Gallery 4" />
+              </div>
             </div>
+
+            {/* Modal Information Section */}
             <div className="modal-info">
-              <h1>Unit {selectedUnit.id} Room for {selectedUnit.capacity} Person(s)</h1>
-              <h2>Seagold Dormitories, Manila</h2>
-              <p className="modal-unit-price">
-                Start at <span>₱{selectedUnit.price}</span> Daily
-              </p>
-              <p>Description: Experience a vibrant student community with modern amenities, unbeatable convenience, and a space designed for both living and learning!</p>
-              <button className="modal-action" onClick={closeModal}>
-                Close
-              </button>
+              <h1>UNIT {selectedUnit.id} ROOM FOR ONE PERSON</h1>
+              <h2>SEAGOLD DORMITORIES, MANILA</h2>
+
+              {/* Room to Offer Section */}
+              <div className="room-offer">
+                <h3>ROOM TO OFFER:</h3>
+                <div className="room-features">
+                  <span>🛏️ Air Conditioned</span>
+                  <span>🛋️ Foam/ Mattress</span>
+                  <span>🛌 Beddings</span>
+                </div>
+              </div>
+
+              {/* Description Section */}
+              <div className="description">
+                <h3>DESCRIPTION:</h3>
+                <p>
+                  Experience a vibrant student community with modern amenities,
+                  unbeatable convenience, and a space designed for both living and
+                  learning!
+                </p>
+              </div>
+
+              {/* Amenities Section */}
+              <div className="amenities">
+                <h3>AMENITIES:</h3>
+                <ul>
+                  <li>📖 Study Hallway</li>
+                  <li>📄 Xerox Photocopy</li>
+                  <li>🍴 Canteen</li>
+                  <li>🏫 Lemar Review Hub</li>
+                </ul>
+              </div>
+
+              {/* Payment Transaction Section */}
+              <div className="payment-transaction">
+                <h3>PAYMENT TRANSACTION:</h3>
+                <ul>
+                  <li>💳 On-site transaction</li>
+                  <li>📱 G-CASH: MS SEAGOLD / 0999992020</li>
+                </ul>
+              </div>
+
+              {/* Payment Terms Section */}
+              <div className="payment-terms">
+                <h3>PAYMENT TERMS FOR:</h3>
+                <h4>SOLO ROOM (CAPACITY FOR 1 PERSON)</h4>
+                <ul>
+                  <li>Monthly: ₱11,000.00</li>
+                  <li>Half Month (Strictly 15 Days): ₱7,500.00</li>
+                  <li>One Week (7 Days): ₱5,000.00</li>
+                  <li>Daily: ₱900.00</li>
+                </ul>
+                <p className="notes">
+                  <strong>NOTES:</strong>
+                  <ul>
+                    <li>
+                      Rules on EXCESS days in half month & monthly basis apply and
+                      will be charged based on the daily rate.
+                    </li>
+                    <li>
+                      Room rates are subject to change without prior notice (effective
+                      01-24).
+                    </li>
+                  </ul>
+                </p>
+              </div>
             </div>
           </div>
         </div>
