@@ -3,15 +3,17 @@ import "./Units.css";
 
 const Dormitory = () => {
   // List of units with their properties
+
+  
   const units = [
-    { id: 1, capacity: 1, price: 900, image:  "Unit1.jpg" },
-    { id: 2, capacity: 2, price: 600, image:  "Unit2.jpg" },
-    { id: 3, capacity: 4, price: 450, image:  "Unit3.jpg" },
-    { id: 4, capacity: 6, price: 450, image:  "Unit4.jpg" },
-    { id: 5, capacity: 8, price: 450, image:  "Unit5.jpg" },
-    { id: 6, capacity: 10, price: 450, image: "Unit3.jpg" },
-    { id: 7, capacity: 12, price: 450, image: "Unit2.jpg" },
-    { id: 8, capacity: 14, price: 450, image: "Unit4.jpg" },
+    { id: 1, capacity: 1, price: 900, image:  "Room1.jpg" },
+    { id: 2, capacity: 2, price: 600, image:  "Room2.jpg" },
+    { id: 3, capacity: 4, price: 450, image:  "Room3.jpg" },
+    { id: 4, capacity: 6, price: 450, image:  "Room4.jpg" },
+    { id: 5, capacity: 8, price: 450, image:  "Room5.jpg" },
+    { id: 6, capacity: 10, price: 450, image: "Room3.jpg" },
+    { id: 7, capacity: 12, price: 450, image: "Room2.jpg" },
+    { id: 8, capacity: 14, price: 450, image: "Room1.jpg" },
   ];
 
   // Filters for check-in, check-out, and group size
@@ -32,7 +34,7 @@ const Dormitory = () => {
       {/* Dormitory Header Section */}
       <div className="dormitory-header">
         <img
-          src="src/UnitHeader.jpg"  // Ensure this image path is correct
+          src="UnitHeader.jpg"  // Ensure this image path is correct
           alt="Dormitory"
           className="dormitory-image"
         />
