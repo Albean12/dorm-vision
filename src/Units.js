@@ -4,14 +4,14 @@ import "./Units.css";
 const Dormitory = () => {
   // List of units with their properties
   const units = [
-    { id: 1, capacity: 1, price: 900, image:  "Unit1.jpg" },
-    { id: 2, capacity: 2, price: 600, image:  "Unit2.jpg" },
-    { id: 3, capacity: 4, price: 450, image:  "Unit3.jpg" },
-    { id: 4, capacity: 6, price: 450, image:  "Unit4.jpg" },
-    { id: 5, capacity: 8, price: 450, image:  "Unit5.jpg" },
-    { id: 6, capacity: 10, price: 450, image: "Unit3.jpg" },
-    { id: 7, capacity: 12, price: 450, image: "Unit2.jpg" },
-    { id: 8, capacity: 14, price: 450, image: "Unit4.jpg" },
+    { id: 1, capacity: 1, price: 900, image:  "src/Unit1.jpg" },
+    { id: 2, capacity: 2, price: 600, image:  "src/Unit2.jpg" },
+    { id: 3, capacity: 4, price: 450, image:  "src/Unit3.jpg" },
+    { id: 4, capacity: 6, price: 450, image:  "src/Unit4.jpg" },
+    { id: 5, capacity: 8, price: 450, image:  "src/Unit5.jpg" },
+    { id: 6, capacity: 10, price: 450, image: "src/Unit3.jpg" },
+    { id: 7, capacity: 12, price: 450, image: "src/Unit2.jpg" },
+    { id: 8, capacity: 14, price: 450, image: "src/Unit4.jpg" },
   ];
 
   // Filters for check-in, check-out, and group size
@@ -32,7 +32,7 @@ const Dormitory = () => {
       {/* Dormitory Header Section */}
       <div className="dormitory-header">
         <img
-          src="UnitHeader.jpg"  // Ensure this image path is correct
+          src="src/UnitHeader.jpg"  // Ensure this image path is correct
           alt="Dormitory"
           className="dormitory-image"
         />
@@ -80,7 +80,7 @@ const Dormitory = () => {
       <div className="units-container">
         {filteredUnits.map((unit) => (
           <div key={unit.id} className="unit-card">
-            <img src={Unit.image} alt={`Unit ${unit.id}`} className="Unit-image" />
+            <img src={unit.image} alt={`Unit ${unit.id}`} className="unit-image" />
             <h3 className="unit-title">Unit {unit.id}</h3>
             <p className="unit-capacity">Capacity for {unit.capacity} Person(s)</p>
             <p className="unit-price">From PHP {unit.price}</p>
