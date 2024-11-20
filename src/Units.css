@@ -6,14 +6,14 @@
   padding-bottom: 40px;
 }
 
-/* Styling for the dormitory header */
+/* Dormitory Header */
 .dormitory-header {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 40px 20px;
-  background-color: #add8e6; /* Light blue background */
+  background-color: #add8e6;
   color: #333;
   text-align: center;
 }
@@ -31,7 +31,7 @@
 .title {
   font-size: 28px;
   font-weight: bold;
-  color: #007bff; /* Blue text */
+  color: #007bff;
   margin: 10px 0;
 }
 
@@ -43,15 +43,7 @@
   color: #7f8c8d;
 }
 
-/* Oval Filter Bar */
-.filter-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 15px;
-  color: #333;
-  text-align: center;
-}
-
+/* Filter Section */
 .filter-bar-oval {
   display: flex;
   justify-content: center;
@@ -64,31 +56,12 @@
   max-width: 800px;
 }
 
-.filter-input,
 .filter-select {
   padding: 10px;
   font-size: 14px;
   border: none;
   border-radius: 5px;
-}
-
-.filter-select {
   cursor: pointer;
-}
-
-.find-button {
-  background: linear-gradient(to right, #007bff, #1e90ff);
-  color: white;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.find-button:hover {
-  transform: scale(1.1);
 }
 
 /* Units Section */
@@ -106,7 +79,7 @@
   padding: 15px;
   min-width: 250px;
   text-align: center;
-  flex: 0 0 auto; /* Allows scrolling */
+  flex: 0 0 auto;
   transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -156,7 +129,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -166,16 +139,15 @@
 /* Modal Content */
 .modal-content {
   background-color: white;
-  width: 90%;
-  max-width: 900px;
-  border-radius: 10px;
-  padding: 20px;
-  position: relative;
+  width: 100%;
+  height: 100%;
   overflow-y: auto;
-  max-height: 90vh;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
 }
 
+/* Modal Close Button */
 .modal-close {
   position: absolute;
   top: 15px;
@@ -184,27 +156,31 @@
   border: none;
   font-size: 24px;
   cursor: pointer;
+  color: #333;
 }
 
+.modal-close:hover {
+  color: red;
+}
+
+/* Modal Header */
 .modal-header {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
   margin-bottom: 20px;
 }
 
 .modal-main-image {
   width: 100%;
-  max-height: 300px;
+  max-height: 400px;
   object-fit: cover;
   border-radius: 8px;
+  margin-bottom: 20px;
 }
 
 .modal-gallery {
   display: flex;
   gap: 10px;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .modal-gallery img {
@@ -213,31 +189,38 @@
   object-fit: cover;
   border-radius: 4px;
   border: 1px solid #ddd;
+  cursor: pointer;
 }
 
-.modal-info {
-  padding: 20px;
+.modal-gallery img:hover {
+  border-color: #007bff;
 }
 
+/* Modal Info Section */
 .modal-info h1 {
-  font-size: 24px;
-  color: #007bff;
-  margin-bottom: 10px;
+  font-size: 28px;
   text-align: center;
+  margin-bottom: 10px;
+  color: #007bff;
 }
 
 .modal-info h2 {
-  font-size: 18px;
-  color: #555;
-  margin-bottom: 20px;
+  font-size: 20px;
   text-align: center;
+  margin-bottom: 20px;
+  color: #555;
 }
 
-.room-offer h3,
-.description h3,
-.amenities h3,
-.payment-transaction h3,
-.payment-terms h3 {
+.modal-info p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+/* Room Offer Section */
+.room-offer h3 {
   font-size: 18px;
   margin-bottom: 10px;
   color: #2c3e50;
@@ -252,19 +235,35 @@
   font-size: 14px;
 }
 
-.amenities ul,
-.payment-transaction ul,
-.payment-terms ul {
+/* Amenities Section */
+.amenities h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.amenities ul {
   list-style: none;
   padding-left: 0;
   margin: 10px 0;
 }
 
-.amenities li,
-.payment-transaction li,
-.payment-terms li {
+.amenities li {
   font-size: 14px;
   margin-bottom: 5px;
+}
+
+/* Payment Terms Section */
+.payment-terms h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.payment-terms ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 10px 0;
 }
 
 .payment-terms h4 {
@@ -273,12 +272,12 @@
   margin-top: 5px;
 }
 
-.notes {
+.payment-terms .notes {
   font-size: 12px;
   color: #7f8c8d;
 }
 
-.notes ul {
+.payment-terms .notes ul {
   list-style-type: disc;
   margin-left: 20px;
 }
