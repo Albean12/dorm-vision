@@ -6,43 +6,17 @@
   padding-bottom: 40px;
 }
 
-/* Unit Image with Border */
-.unit-image {
-  width: 100%;  /* Make image responsive */
-  height: auto;
-  object-fit: cover;  /* Ensure the image covers the container */
-  border-bottom: 2px solid #000;  /* Add a black line under the image */
-  padding-bottom: 10px;  /* Optional: Adds space between image and the line */
-}
-
-/* Dormitory Header with Line */
+/* Header Section Styling */
 .dormitory-header {
-  text-align: center;  /* Center content */
-  padding-bottom: 20px;  /* Space between content and the line */
-  border-bottom: 2px solid #000;  /* Line under the entire header section */
+  text-align: center;
+  padding: 20px;
 }
-
-.dormitory-header h1 {
-  margin-bottom: 10px;  /* Adds space between title and line */
-  padding-bottom: 10px;  /* Optional: Adds space between title and line */
-  border-bottom: 2px solid #000;  /* Line under the title */
-}
-
-/* Optional: Adjusting padding for overall layout */
-.dormitory-header p {
-  padding-bottom: 10px;  /* Optional: Adds space below the paragraph */
-}
-
 
 .title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  font-size: 36px;
+  font-size: 28px;
   font-weight: bold;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+  color: #007bff; /* Blue text */
+  margin: 10px 0;
 }
 
 .description {
