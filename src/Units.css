@@ -288,58 +288,89 @@
   border: 1px solid #ddd;
 }
 
-/* Sa gallery image*/
+.modal-header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.modal-main-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-gallery {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.modal-gallery img {
+  width: calc(25% - 10px); /* Adjust the width to fit 4 images in a row with gaps */
+  max-height: 120px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.modal-gallery img:hover {
+  transform: scale(1.05);
+  border-color: #007bff;
+}
+
 
 .modal-header {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
-  justify-content: flex-start;
   margin-bottom: 20px;
 }
 
 .main-image-container {
-  width: 75%; /* Larger main image area */
+  width: 65%; /* Takes most of the width */
 }
 
 .modal-main-image {
   width: 100%;
   height: auto;
-  max-height: 450px; /* Increased height to make the main image bigger */
+  max-height: 400px; /* Ensures it doesn’t take too much vertical space */
   object-fit: cover;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .gallery-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  justify-content: flex-start;
-  width: 25%; /* Reduced width to fit the new layout */
+  width: 35%; /* Allocates remaining space to the gallery */
 }
 
 .modal-gallery {
-  display: flex;
-  flex-direction: column; /* Align gallery images vertically */
-  gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Creates a two-column layout */
+  gap: 10px;
 }
 
 .modal-gallery img {
   width: 100%;
   height: auto;
-  max-height: 180px; /* Adjusted to make images a bit bigger */
+  max-height: 120px; /* Uniform height for gallery images */
   object-fit: cover;
   border-radius: 5px;
-  border: 1px solid #ddd;
-  transition: transform 0.2s ease-in-out, border-color 0.2s ease;
+  border: 1px solid #ccc;
+  transition: transform 0.3s ease, border-color 0.3s ease;
   cursor: pointer;
 }
 
 .modal-gallery img:hover {
-  transform: scale(1.1); /* Slight hover zoom effect */
-  border-color: #007bff; /* Border color change on hover */
+  transform: scale(1.05);
+  border-color: #007bff;
 }
-
 
 /* Payment Section */
 .payment-terms ul,
