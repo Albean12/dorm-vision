@@ -117,11 +117,11 @@ const Dormitory = () => {
     { id: 1, capacity: 1, price: 900, image: "Room1.jpg", galleryImages: ["Room1.jpg", "Room2.jpg", "Room3.jpg"] },
     { id: 2, capacity: 2, price: 1500, image: "Room2.jpg", galleryImages: ["Room2.jpg", "Room3.jpg", "Room4.jpg"] },
     { id: 3, capacity: 4, price: 2500, image: "Room3.jpg", galleryImages: ["Room3.jpg", "Room4.jpg", "Room5.jpg"] },
-    { id: 4, capacity: 6, price: 3500, image: "Room4.jpg", galleryImages: ["Room4.jpg", "Room5.jpg", "Room6.jpg"] },
-    { id: 5, capacity: 8, price: 4500, image: "Room5.jpg", galleryImages: ["Room5.jpg", "Room6.jpg", "Room7.jpg"] },
-    { id: 6, capacity: 10, price: 5500, image: "Room6.jpg", galleryImages: ["Room6.jpg", "Room7.jpg", "Room8.jpg"] },
-    { id: 7, capacity: 12, price: 6500, image: "Room7.jpg", galleryImages: ["Room7.jpg", "Room8.jpg", "Room9.jpg"] },
-    { id: 8, capacity: 14, price: 7500, image: "Room8.jpg", galleryImages: ["Room8.jpg", "Room9.jpg", "Room10.jpg"] },
+    { id: 4, capacity: 6, price: 3500, image: "Room4.jpg", galleryImages: ["Room4.jpg", "Room5.jpg", "Room5.jpg"] },
+    { id: 5, capacity: 8, price: 4500, image: "Room5.jpg", galleryImages: ["Room5.jpg", "Room1.jpg", "Room4.jpg"] },
+    { id: 6, capacity: 10, price: 5500, image: "Room3.jpg", galleryImages: ["Room3.jpg", "Room2.jpg", "Room3.jpg"] },
+    { id: 7, capacity: 12, price: 6500, image: "Room2.jpg", galleryImages: ["Room2.jpg", "Room3.jpg", "Room2.jpg"] },
+    { id: 8, capacity: 14, price: 7500, image: "Room1.jpg", galleryImages: ["Room1.jpg", "Room4.jpg", "Room1.jpg"] },
   ];
 
   const [filters, setFilters] = useState({
