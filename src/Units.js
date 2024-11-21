@@ -123,19 +123,24 @@ const Dormitory = () => {
                     &times;
                   </button>
 
-                  <div className="modal-header">
-                    <img
-                      src={unit.image}
-                      alt={`Unit ${unit.id}`}
-                      className="modal-main-image"
-                    />
-                    <div className="modal-gallery">
-                      <img src="Room1.jpg" alt="Gallery 1" />
-                      <img src="Room2.jpg" alt="Gallery 2" />
-                      <img src="Room3.jpg" alt="Gallery 3" />
-                      <img src="Room4.jpg" alt="Gallery 4" />
-                    </div>
-                  </div>
+
+<div className="modal-header">
+  <div className="main-image-container">
+    <img
+      src={unit.image}
+      alt={`Unit ${unit.id}`}
+      className="modal-main-image"
+    />
+  </div>
+  <div className="gallery-container">
+    <div className="modal-gallery">
+      <img src="Room1.jpg" alt="Gallery 1" />
+      <img src="Room2.jpg" alt="Gallery 2" />
+      <img src="Room3.jpg" alt="Gallery 3" />
+      <img src="Room4.jpg" alt="Gallery 4" />
+    </div>
+  </div>
+</div>
 
                   <div className="modal-info">
                     <h1>UNIT {unit.id} ROOM FOR {unit.capacity} PERSON(S)</h1>
