@@ -325,6 +325,7 @@
   border-color: #007bff;
 }
 
+
 .modal-header {
   display: flex;
   flex-wrap: wrap;
@@ -370,7 +371,6 @@
   transform: scale(1.05);
   border-color: #007bff;
 }
-
 
 /* Payment Section */
 .payment-terms ul,
