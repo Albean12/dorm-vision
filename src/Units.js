@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Units.css";
 
-// UnitCard Component for each dormitory unit
+// UnitCard Component: Displays a single unit's basic information.
 const UnitCard = ({ unit, index, openModal }) => (
   <div key={unit.id} className="unit-card">
     <img src={unit.image} alt={`Unit ${unit.id}`} className="unit-image" />
@@ -14,96 +14,95 @@ const UnitCard = ({ unit, index, openModal }) => (
   </div>
 );
 
-// Modal for displaying unit details
+// UnitModal Component: Displays detailed information about a unit in a modal.
 const UnitModal = ({ unit, index, openModals, closeModal }) => {
   if (!openModals[index]) return null;
 
   return (
     <div className="modal-overlay" onClick={() => closeModal(index)}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        {/* Close Button */}
         <button className="modal-close" onClick={() => closeModal(index)}>
           &times;
         </button>
 
-        <div className="modal-header">
-          <div className="gallery-container">
-            <div className="main-image">
-              <img
-                src={unit.image}
-                alt={`Unit ${unit.id}`}
-                className="modal-main-image"
-              />
-            </div>
-            <div className="gallery-thumbnails">
-              <img src="Room1.jpg" alt="Gallery 1" />
-              <img src="Room2.jpg" alt="Gallery 2" />
-              <img src="Room3.jpg" alt="Gallery 3" />
-              <img src="Room4.jpg" alt="Gallery 4" />
+        {/* Modal Header: Gallery Section */}
+<div className="modal-header">
+  <div className="gallery-container">
+    {/* Main Image */}
+    <div className="main-image">
+      <img src={unit.image} alt={`Unit ${unit.id}`} />
+    </div>
+
+    {/* Thumbnails Gallery */}
+    <div className="gallery-thumbnails">
+      {unit.galleryImages.map((image, i) => (
+        <img key={i} src={image} alt={`Gallery ${i + 1}`} />
+      ))}
+    </div>
+  </div>
+</div>
+
+
+        {/* Modal Info Section */}
+        <div className="modal-info">
+          <h1>UNIT {unit.id} ROOM FOR {unit.capacity} PERSON(S)</h1>
+          <h2>SEAGOLD DORMITORIES, MANILA</h2>
+
+          {/* Room Features */}
+          <div className="room-offer">
+            <h3>ROOM TO OFFER:</h3>
+            <div className="room-features">
+              <span>🛏️ Air Conditioned</span>
+              <span>🛋️ Foam/ Mattress</span>
+              <span>🛌 Beddings</span>
             </div>
           </div>
 
-          <div className="modal-info">
-            <h1>UNIT {unit.id} ROOM FOR {unit.capacity} PERSON(S)</h1>
-            <h2>SEAGOLD DORMITORIES, MANILA</h2>
+          {/* Room Description */}
+          <div className="description">
+            <h3>DESCRIPTION:</h3>
+            <p>
+              Experience a vibrant student community with modern amenities, unbeatable convenience, and a space designed for both living and learning!
+            </p>
+          </div>
 
-            <div className="room-offer">
-              <h3>ROOM TO OFFER:</h3>
-              <div className="room-features">
-                <span>🛏️ Air Conditioned</span>
-                <span>🛋️ Foam/ Mattress</span>
-                <span>🛌 Beddings</span>
-              </div>
-            </div>
+          {/* Amenities List */}
+          <div className="amenities">
+            <h3>AMENITIES:</h3>
+            <ul>
+              <li>📖 Study Hallway</li>
+              <li>📄 Xerox Photocopy</li>
+              <li>🍴 Canteen</li>
+              <li>🏫 Lemar Review Hub</li>
+            </ul>
+          </div>
 
-            <div className="description">
-              <h3>DESCRIPTION:</h3>
-              <p>
-                Experience a vibrant student community with modern amenities,
-                unbeatable convenience, and a space designed for both living and
-                learning!
-              </p>
-            </div>
+          {/* Payment Transaction Information */}
+          <div className="payment-transaction">
+            <h3>PAYMENT TRANSACTION:</h3>
+            <ul>
+              <li>💳 On-site transaction</li>
+              <li>📱 G-CASH: MS SEAGOLD / 0999992020</li>
+            </ul>
+          </div>
 
-            <div className="amenities">
-              <h3>AMENITIES:</h3>
+          {/* Payment Terms Section */}
+          <div className="payment-terms">
+            <h3>PAYMENT TERMS:</h3>
+            <h4>SOLO ROOM (CAPACITY FOR {unit.capacity} PERSON)</h4>
+            <ul>
+              <li>Monthly: ₱11,000.00</li>
+              <li>Half Month (Strictly 15 Days): ₱7,500.00</li>
+              <li>One Week (7 Days): ₱5,000.00</li>
+              <li>Daily: ₱900.00</li>
+            </ul>
+            <div className="notes">
+              <strong>NOTES:</strong>
               <ul>
-                <li>📖 Study Hallway</li>
-                <li>📄 Xerox Photocopy</li>
-                <li>🍴 Canteen</li>
-                <li>🏫 Lemar Review Hub</li>
+                <li>Rules on EXCESS days in half-month & monthly basis apply and will be charged based on the daily rate.</li>
+                <li>Room rates are subject to change without prior notice (effective 01-24).</li>
               </ul>
-            </div>
-
-            <div className="payment-transaction">
-              <h3>PAYMENT TRANSACTION:</h3>
-              <ul>
-                <li>💳 On-site transaction</li>
-                <li>📱 G-CASH: MS SEAGOLD / 0999992020</li>
-              </ul>
-            </div>
-
-            <div className="payment-terms">
-              <h3>PAYMENT TERMS:</h3>
-              <h4>SOLO ROOM (CAPACITY FOR {unit.capacity} PERSON)</h4>
-              <ul>
-                <li>Monthly: ₱11,000.00</li>
-                <li>Half Month (Strictly 15 Days): ₱7,500.00</li>
-                <li>One Week (7 Days): ₱5,000.00</li>
-                <li>Daily: ₱900.00</li>
-              </ul>
-              <p className="notes">
-                <strong>NOTES:</strong>
-                <ul>
-                  <li>
-                    Rules on EXCESS days in half-month & monthly basis apply
-                    and will be charged based on the daily rate.
-                  </li>
-                  <li>
-                    Room rates are subject to change without prior notice
-                    (effective 01-24).
-                  </li>
-                </ul>
-              </p>
             </div>
           </div>
         </div>
@@ -112,7 +111,7 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
   );
 };
 
-// FilterBar Component for selecting filter options
+// FilterBar Component: Displays filter options to refine unit search.
 const FilterBar = ({ filters, handleFilterChange }) => (
   <div className="filter-bar-oval">
     <span className="filter-title">Find Your Perfect Unit</span>
@@ -160,19 +159,21 @@ const FilterBar = ({ filters, handleFilterChange }) => (
   </div>
 );
 
-// Dormitory Component - Main Component
+// Dormitory Component: Main Component displaying all units and applying filters.
 const Dormitory = () => {
+  // Sample units data
   const units = [
-    { id: 1, capacity: 1, price: 900, image: "Room1.jpg" },
-    { id: 2, capacity: 2, price: 600, image: "Room2.jpg" },
-    { id: 3, capacity: 4, price: 450, image: "Room3.jpg" },
-    { id: 4, capacity: 6, price: 450, image: "Room4.jpg" },
-    { id: 5, capacity: 8, price: 450, image: "Room5.jpg" },
-    { id: 6, capacity: 10, price: 450, image: "Room3.jpg" },
-    { id: 7, capacity: 12, price: 450, image: "Room2.jpg" },
-    { id: 8, capacity: 14, price: 450, image: "Room1.jpg" },
+    { id: 1, capacity: 1, price: 900, image: "Room1.jpg", galleryImages: ["Room1.jpg", "Room2.jpg", "Room3.jpg"] },
+    { id: 2, capacity: 2, price: 600, image: "Room2.jpg", galleryImages: ["Room2.jpg", "Room3.jpg", "Room4.jpg"] },
+    { id: 3, capacity: 4, price: 450, image: "Room3.jpg", galleryImages: ["Room3.jpg", "Room4.jpg", "Room5.jpg"] },
+    { id: 4, capacity: 6, price: 450, image: "Room4.jpg", galleryImages: ["Room4.jpg", "Room5.jpg", "Room1.jpg"] },
+    { id: 5, capacity: 8, price: 450, image: "Room5.jpg", galleryImages: ["Room5.jpg", "Room1.jpg", "Room2.jpg"] },
+    { id: 6, capacity: 10, price: 450, image: "Room3.jpg", galleryImages: ["Room3.jpg", "Room4.jpg", "Room5.jpg"] },
+    { id: 7, capacity: 12, price: 450, image: "Room2.jpg", galleryImages: ["Room2.jpg", "Room3.jpg", "Room4.jpg"] },
+    { id: 8, capacity: 14, price: 450, image: "Room1.jpg", galleryImages: ["Room1.jpg", "Room2.jpg", "Room3.jpg"] },
   ];
 
+  // State for filters and modals
   const [filters, setFilters] = useState({
     group: "",
     checkIn: "",
@@ -181,22 +182,26 @@ const Dormitory = () => {
 
   const [openModals, setOpenModals] = useState(Array(units.length).fill(false));
 
+  // Handle filter change
   const handleFilterChange = (field, value) => {
     setFilters({ ...filters, [field]: value });
   };
 
+  // Open modal for a unit
   const openModal = (index) => {
     const updatedModals = [...openModals];
     updatedModals[index] = true;
     setOpenModals(updatedModals);
   };
 
+  // Close modal for a unit
   const closeModal = (index) => {
     const updatedModals = [...openModals];
     updatedModals[index] = false;
     setOpenModals(updatedModals);
   };
 
+  // Filter units based on selected criteria
   const filteredUnits = units.filter(
     (unit) =>
       (!filters.group || unit.capacity === Number(filters.group)) &&
@@ -205,6 +210,7 @@ const Dormitory = () => {
 
   return (
     <div className="dormitory">
+      {/* Header Section */}
       <header className="dormitory-header">
         <img src="RoomHeader.jpg" alt="Dormitory" className="dormitory-image" />
         <h1 className="title">WELCOME TO OUR UNITS</h1>
@@ -214,8 +220,10 @@ const Dormitory = () => {
         </p>
       </header>
 
+      {/* Filter Bar */}
       <FilterBar filters={filters} handleFilterChange={handleFilterChange} />
 
+      {/* Units Container */}
       <div className="units-container">
         {filteredUnits.map((unit, index) => (
           <div key={unit.id}>
