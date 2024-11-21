@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Units.css";
 
 const Dormitory = () => {
+  // Sample units data
   const units = [
     { id: 1, capacity: 1, price: 900, image: "Room1.jpg" },
     { id: 2, capacity: 2, price: 600, image: "Room2.jpg" },
@@ -13,49 +14,52 @@ const Dormitory = () => {
     { id: 8, capacity: 14, price: 450, image: "Room1.jpg" },
   ];
 
+  // State for filters and modals
   const [filters, setFilters] = useState({
     group: "",
     checkIn: "",
     checkOut: "",
   });
 
-  const [openModals, setOpenModals] = useState(
-    Array(units.length).fill(false) // Tracks whether each modal is open
-  );
+  const [openModals, setOpenModals] = useState(Array(units.length).fill(false));
 
+  // Handle filter changes
   const handleFilterChange = (field, value) => {
     setFilters({ ...filters, [field]: value });
   };
 
+  // Open specific modal
   const openModal = (index) => {
     const updatedModals = [...openModals];
     updatedModals[index] = true;
     setOpenModals(updatedModals);
   };
 
+  // Close specific modal
   const closeModal = (index) => {
     const updatedModals = [...openModals];
     updatedModals[index] = false;
     setOpenModals(updatedModals);
   };
 
+  // Filter units based on the selected criteria
   const filteredUnits = units.filter(
     (unit) =>
       (!filters.group || unit.capacity === Number(filters.group)) &&
-      (!filters.checkIn || !filters.checkOut || true) // Placeholder for date logic
+      (!filters.checkIn || !filters.checkOut || true)
   );
 
   return (
     <div className="dormitory">
       {/* Header Section */}
-      <div className="dormitory-header">
+      <header className="dormitory-header">
         <img src="RoomHeader.jpg" alt="Dormitory" className="dormitory-image" />
         <h1 className="title">WELCOME TO OUR UNITS</h1>
         <p className="description">
           Seagold Dormitory offers comfort and convenience with a student-friendly
           environment. Explore our cozy and affordable units just for you.
         </p>
-      </div>
+      </header>
 
       {/* Filter Section */}
       <div className="filter-bar-oval">
@@ -123,25 +127,30 @@ const Dormitory = () => {
                     &times;
                   </button>
 
+                  <div className="modal-header">
+                    {/* Main image and gallery */}
+                    <div className="main-image-container">
+                      <img
+                        src={unit.image}
+                        alt={`Unit ${unit.id}`}
+                        className="modal-main-image"
+                      />
+                    </div>
+                    <div className="gallery-container">
+                      <div className="modal-gallery">
+                        <div className="main-image">
+                          <img src="Room1.jpg" alt="Gallery 1" />
+                        </div>
+                        <div className="gallery-thumbnails">
+                          <img src="Room2.jpg" alt="Gallery 2" />
+                          <img src="Room3.jpg" alt="Gallery 3" />
+                          <img src="Room4.jpg" alt="Gallery 4" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-<div className="modal-header">
-  <div className="main-image-container">
-    <img
-      src={unit.image}
-      alt={`Unit ${unit.id}`}
-      className="modal-main-image"
-    />
-  </div>
-  <div className="gallery-container">
-    <div className="modal-gallery">
-      <img src="Room1.jpg" alt="Gallery 1" />
-      <img src="Room2.jpg" alt="Gallery 2" />
-      <img src="Room3.jpg" alt="Gallery 3" />
-      <img src="Room4.jpg" alt="Gallery 4" />
-    </div>
-  </div>
-</div>
-
+                  {/* Modal Information */}
                   <div className="modal-info">
                     <h1>UNIT {unit.id} ROOM FOR {unit.capacity} PERSON(S)</h1>
                     <h2>SEAGOLD DORMITORIES, MANILA</h2>
