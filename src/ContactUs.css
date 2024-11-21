@@ -2,19 +2,20 @@
 .contact-page-container {
   display: flex;
   flex-direction: row;
-  width: 90%;
-  max-width: 1200px;
+  width: 95%;
+  max-width: 1100px;
   margin: 50px auto;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   overflow: hidden;
+  gap: 20px;
 }
 
 /* Left Section: Get in Touch */
 .get-in-touch {
   background-color: #ffffff;
-  flex: 2;
-  padding: 30px 40px;
+  flex: 1.5;
+  padding: 30px;
   display: flex;
   flex-direction: column;
 }
@@ -23,27 +24,40 @@
   font-size: 24px;
   color: #263238;
   margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
 }
 
 /* Contact Form */
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
 .form-row {
   display: flex;
-  gap: 15px;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+label {
+  font-size: 14px;
+  color: #546e7a;
+  margin-bottom: 5px;
 }
 
 input {
-  flex: 1;
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #cfd8dc;
   border-radius: 5px;
   font-size: 14px;
-  box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
 input:focus {
@@ -52,8 +66,9 @@ input:focus {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Submit Button */
 .send-message-button {
-  padding: 12px;
+  padding: 15px;
   border: none;
   background-color: #607d8b;
   color: white;
@@ -61,6 +76,8 @@ input:focus {
   font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
+  align-self: center;
+  width: 60%;
 }
 
 .send-message-button:hover {
@@ -71,53 +88,78 @@ input:focus {
 /* Button Group */
 .button-group {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 15px;
   margin-top: 20px;
 }
 
 .facebook-button,
 .feedback-button {
-  flex: 1;
-  padding: 12px 15px;
+  padding: 12px 20px;
   text-align: center;
   text-decoration: none;
   font-size: 14px;
   color: white;
   border-radius: 5px;
   background-color: #546e7a;
+  cursor: pointer;
   transition: all 0.3s ease;
-  margin: 0 10px;
 }
 
 .facebook-button:hover,
 .feedback-button:hover {
   background-color: #37474f;
-  transform: scale(1.05);
 }
 
 /* Right Section: Contact Information */
 .contact-information {
-  background-color: #263238;
+  background-color: #37474f;
   color: white;
   flex: 1;
-  padding: 30px 20px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 1.5;
 }
 
 .contact-information h2 {
-  font-size: 24px;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.contact-information .intro-text {
+  font-size: 14px;
+  color: #cfd8dc;
   margin-bottom: 20px;
 }
 
-.contact-information p {
-  margin-bottom: 10px;
-  font-size: 14px;
+.contact-information .info-section {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.contact-information i {
-  font-size: 18px;
+.contact-information .info-block {
+  background-color: #455a64;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.contact-information .info-block h3 {
+  font-size: 16px;
+  color: #90caf9;
+  margin-bottom: 5px;
+}
+
+.contact-information .info-block p {
+  font-size: 14px;
+  color: #cfd8dc;
+}
+
+.contact-information .description {
+  font-size: 13px;
+  color: #cfd8dc;
+  margin-top: 20px;
 }
 
 /* Modal Styling */
@@ -153,41 +195,6 @@ input:focus {
   background: none;
 }
 
-.form-group {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-input, textarea {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #cfd8dc;
-  border-radius: 5px;
-  font-size: 14px;
-  resize: none;
-}
-
-textarea {
-  width: 100%;
-}
-
-textarea:focus, input:focus {
-  outline: none;
-  border-color: #607d8b;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.form-question {
-  text-align: left;
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-}
-
 .submit-feedback-button {
   padding: 12px 20px;
   background-color: #607d8b;
@@ -204,13 +211,17 @@ label {
   transform: scale(1.05);
 }
 
+/* Responsiveness */
 @media (max-width: 768px) {
   .contact-page-container {
     flex-direction: column;
   }
-  .get-in-touch,
-  .contact-information {
-    flex: none;
+
+  .get-in-touch, .contact-information {
+    width: 100%;
+  }
+
+  .send-message-button {
     width: 100%;
   }
 }
