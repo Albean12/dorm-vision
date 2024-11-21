@@ -4,70 +4,75 @@ import './ContactUs.css';
 const ContactUs = () => {
   const [showModal, setShowModal] = useState(false);
 
+  // Open feedback modal
   const handleModalOpen = () => {
     setShowModal(true);
   };
 
+  // Close feedback modal
   const handleModalClose = () => {
     setShowModal(false);
   };
 
-  const handleFeedbackSubmit = (e) => {
-    e.preventDefault();
-    alert('Thank you for your feedback!');
-    setShowModal(false);
-  };
-
   return (
-    <div className="contact-page">
-      {/* GET IN TOUCH FORM */}
+    <div className="contact-page-container">
+      {/* Left Section: Get in Touch Form */}
       <div className="get-in-touch">
-        <h2>GET IN TOUCH</h2>
-        <p>Read, Understand. & shall observe the house rules</p>
+        <h2>Get in Touch</h2>
         <form className="contact-form">
-          <div className="form-group">
+          {/* First Row: Name and Check-in Time */}
+          <div className="form-row">
             <input type="text" placeholder="Name" required />
             <input type="text" placeholder="Check-in Time/Date" required />
           </div>
-          <div className="form-group">
+          {/* Second Row: Address and Duration */}
+          <div className="form-row">
             <input type="text" placeholder="Address" required />
             <input type="text" placeholder="Duration" required />
           </div>
-          <div className="form-group">
+          {/* Third Row: Contact Number and Reservation */}
+          <div className="form-row">
             <input type="text" placeholder="Contact Number" required />
             <input type="text" placeholder="Reservation" required />
           </div>
-          <div className="form-group">
+          {/* Fourth Row: Occupation/Rank */}
+          <div className="form-row">
             <input type="text" placeholder="Occupation/Rank" required />
           </div>
-          <button type="submit" className="send-button">SEND</button>
+          {/* Submit Button */}
+          <button type="submit" className="send-message-button">Send Message</button>
         </form>
-      </div>
 
-      {/* Footer with Social Icons and Location */}
-      <div className="footer-section">
-        <div className="footer-icons">
-          <a 
-            href="https://www.facebook.com/profile.php?id=61551676772866" 
-            target="_blank" 
+        {/* Buttons: Visit Facebook and Feedback Form */}
+        <div className="button-group">
+          <a
+            href="https://www.facebook.com/profile.php?id=61551676772866"
+            target="_blank"
             rel="noopener noreferrer"
-            className="facebook-link"
+            className="facebook-button"
           >
-            <i className="fa fa-facebook"></i> Visit Our Facebook Page
+            Visit Our Facebook Page
           </a>
           <button onClick={handleModalOpen} className="feedback-button">
-            <i className="fa fa-comments"></i> Feedback Form
+            Feedback Form
           </button>
         </div>
+      </div>
 
-        {/* Location Information */}
-        <div className="location">
-          <p>
-            <strong>Seagold Dormitory</strong><br />
-            3/F Fern Building, 827 P. Paredes St.,<br />
-            Cor. S.H. Loyola St., Sampaloc, Manila 1008, Philippines
-          </p>
-        </div>
+      {/* Right Section: Contact Information */}
+      <div className="contact-information">
+        <h2>Contact Information</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>
+          <i className="fa fa-map-marker"></i> 3/F Fern Building, 827 P. Paredes St.,
+          Cor. S.H. Loyola St., Sampaloc, Manila 1008, Philippines
+        </p>
+        <p>
+          <i className="fa fa-phone"></i> +1235 2355 98
+        </p>
+        <p>
+          <i className="fa fa-envelope"></i> info@yourdormitory.com
+        </p>
       </div>
 
       {/* Feedback Modal */}
@@ -78,26 +83,13 @@ const ContactUs = () => {
               &times;
             </button>
             <h2>Feedback Form</h2>
-            <form onSubmit={handleFeedbackSubmit}>
-              <div>
-                <label htmlFor="name">Name:</label>
-                <input type="text" id="name" name="name" required />
-              </div>
-              <div>
-                <label htmlFor="email">Email:</label>
-                <input type="email" id="email" name="email" required />
-              </div>
-              <div>
-                <p>Rate your experience:</p>
-                <div className="rating">
-                  ★ ★ ★ ★ ★
-                </div>
-              </div>
-              <div>
-                <label htmlFor="comments">Suggestions or Comments:</label>
-                <textarea id="comments" name="comments" rows="4" required></textarea>
-              </div>
-              <button type="submit" className="submit-button">Submit</button>
+            <form>
+              <input type="text" placeholder="Name" required />
+              <input type="email" placeholder="Email" required />
+              <textarea placeholder="Your Feedback" rows="4" required></textarea>
+              <button type="submit" className="submit-feedback-button">
+                Submit
+              </button>
             </form>
           </div>
         </div>
@@ -105,11 +97,5 @@ const ContactUs = () => {
     </div>
   );
 };
-
-<div className="get-in-touch">
-  <h2>GET IN TOUCH</h2>
-  <p>Form should appear here</p>
-</div>
-
 
 export default ContactUs;
