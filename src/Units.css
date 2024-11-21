@@ -157,20 +157,6 @@
   background-color: #2980b9;
 }
 
-/* Modal Overlay */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
 /* General modal styling */
 .modal-overlay {
   position: fixed;
@@ -210,86 +196,52 @@
   cursor: pointer;
 }
 
-/* Modal Header */
-.modal-header {
+/* Updated Gallery Container */
+.gallery-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-  background: linear-gradient(90deg, #67a873, #d9936a); /* Matches the gradient bar */
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  color: white;
+  flex-direction: column; /* Stack main image and thumbnails vertically */
+  align-items: center; /* Center content horizontally */
+  gap: 15px;
+  width: 100%; /* Ensure full-width responsiveness */
 }
 
+/* Main Image Styling */
+.main-image {
+  width: 100%;
+  max-width: 600px; /* Limit the maximum size */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-/* Main content sections */
-.modal-info {
+.main-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Thumbnails Section */
+.gallery-thumbnails {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap; /* Wrap thumbnails into rows on smaller screens */
+  gap: 10px;
   width: 100%;
 }
 
-.modal-info h1,
-.modal-info h2 {
-  margin: 0;
-}
-
-.room-offer,
-.description,
-.amenities,
-.payment-transaction,
-.payment-terms {
-  padding: 10px;
-  border: 1px solid #ddd;
+.gallery-thumbnails img {
+  width: 100px; /* Thumbnail dimensions */
+  height: 80px;
+  object-fit: cover;
   border-radius: 5px;
-  background: #f9f9f9;
+  cursor: pointer;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  border: 2px solid #ccc;
 }
 
-.room-offer h3,
-.description h3,
-.amenities h3,
-.payment-transaction h3,
-.payment-terms h3 {
-  margin-bottom: 10px;
-  font-size: 18px;
-  color: #007bff;
-}
-
-.room-features span {
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.amenities ul,
-.payment-transaction ul,
-.payment-terms ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.amenities ul li,
-.payment-transaction ul li,
-.payment-terms ul li {
-  margin-bottom: 8px;
-}
-
-.payment-terms ul li {
-  font-weight: bold;
-}
-
-.payment-terms .notes ul {
-  list-style-type: disc;
-  margin-left: 20px;
-  color: #555;
-}
-
-.notes strong {
-  font-size: 16px;
-  display: block;
-  margin-bottom: 10px;
+.gallery-thumbnails img:hover {
+  transform: scale(1.1); /* Enlarge slightly on hover */
+  border-color: #007bff;
 }
 
 /* Responsive Design */
@@ -302,14 +254,12 @@
     width: 100%;
   }
 
-  .gallery-thumbnails {
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-
   .gallery-thumbnails img {
     width: calc(33.33% - 10px); /* Three images per row */
     max-height: 100px;
+  }
+
+  .main-image {
+    max-width: 100%; /* Ensure full responsiveness */
   }
 }

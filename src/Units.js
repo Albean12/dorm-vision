@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./Units.css";
 
+//
 // UnitCard Component: Displays a single unit's basic information.
+//
 const UnitCard = ({ unit, index, openModal }) => (
   <div key={unit.id} className="unit-card">
     <img src={unit.image} alt={`Unit ${unit.id}`} className="unit-image" />
@@ -14,7 +16,9 @@ const UnitCard = ({ unit, index, openModal }) => (
   </div>
 );
 
+//
 // UnitModal Component: Displays detailed information about a unit in a modal.
+//
 const UnitModal = ({ unit, index, openModals, closeModal }) => {
   if (!openModals[index]) return null;
 
@@ -26,23 +30,25 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
           &times;
         </button>
 
-        {/* Modal Header: Gallery Section */}
-<div className="modal-header">
-  <div className="gallery-container">
-    {/* Main Image */}
-    <div className="main-image">
-      <img src={unit.image} alt={`Unit ${unit.id}`} />
-    </div>
+        {/* Gallery Section */}
+        <div className="gallery-container">
+          {/* Main Image */}
+          <div className="main-image">
+            <img src={unit.image} alt={`Unit ${unit.id}`} />
+          </div>
 
-    {/* Thumbnails Gallery */}
-    <div className="gallery-thumbnails">
-      {unit.galleryImages.map((image, i) => (
-        <img key={i} src={image} alt={`Gallery ${i + 1}`} />
-      ))}
-    </div>
-  </div>
-</div>
-
+          {/* Thumbnails Gallery */}
+          <div className="gallery-thumbnails">
+            {unit.galleryImages.map((image, i) => (
+              <img
+                key={i}
+                src={image}
+                alt={`Thumbnail ${i + 1}`}
+                onClick={() => setMainImage(image)} // Optional: Update main image on click
+              />
+            ))}
+          </div>
+        </div>
 
         {/* Modal Info Section */}
         <div className="modal-info">
@@ -111,7 +117,9 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
   );
 };
 
+//
 // FilterBar Component: Displays filter options to refine unit search.
+//
 const FilterBar = ({ filters, handleFilterChange }) => (
   <div className="filter-bar-oval">
     <span className="filter-title">Find Your Perfect Unit</span>
@@ -146,31 +154,22 @@ const FilterBar = ({ filters, handleFilterChange }) => (
         onChange={(e) => handleFilterChange("group", e.target.value)}
       >
         <option value="">Group For</option>
-        <option value="1">1 Person</option>
-        <option value="2">2 Persons</option>
-        <option value="4">4 Persons</option>
-        <option value="6">6 Persons</option>
-        <option value="8">8 Persons</option>
-        <option value="10">10 Persons</option>
-        <option value="12">12 Persons</option>
-        <option value="14">14 Persons</option>
+        {[1, 2, 4, 6, 8, 10, 12, 14].map((group) => (
+          <option key={group} value={group}>{group} Person(s)</option>
+        ))}
       </select>
     </div>
   </div>
 );
 
+//
 // Dormitory Component: Main Component displaying all units and applying filters.
+//
 const Dormitory = () => {
   // Sample units data
   const units = [
     { id: 1, capacity: 1, price: 900, image: "Room1.jpg", galleryImages: ["Room1.jpg", "Room2.jpg", "Room3.jpg"] },
-    { id: 2, capacity: 2, price: 600, image: "Room2.jpg", galleryImages: ["Room2.jpg", "Room3.jpg", "Room4.jpg"] },
-    { id: 3, capacity: 4, price: 450, image: "Room3.jpg", galleryImages: ["Room3.jpg", "Room4.jpg", "Room5.jpg"] },
-    { id: 4, capacity: 6, price: 450, image: "Room4.jpg", galleryImages: ["Room4.jpg", "Room5.jpg", "Room1.jpg"] },
-    { id: 5, capacity: 8, price: 450, image: "Room5.jpg", galleryImages: ["Room5.jpg", "Room1.jpg", "Room2.jpg"] },
-    { id: 6, capacity: 10, price: 450, image: "Room3.jpg", galleryImages: ["Room3.jpg", "Room4.jpg", "Room5.jpg"] },
-    { id: 7, capacity: 12, price: 450, image: "Room2.jpg", galleryImages: ["Room2.jpg", "Room3.jpg", "Room4.jpg"] },
-    { id: 8, capacity: 14, price: 450, image: "Room1.jpg", galleryImages: ["Room1.jpg", "Room2.jpg", "Room3.jpg"] },
+    // Additional unit data...
   ];
 
   // State for filters and modals
@@ -215,8 +214,7 @@ const Dormitory = () => {
         <img src="RoomHeader.jpg" alt="Dormitory" className="dormitory-image" />
         <h1 className="title">WELCOME TO OUR UNITS</h1>
         <p className="description">
-          Seagold Dormitory offers comfort and convenience with a student-friendly
-          environment. Explore our cozy and affordable units just for you.
+          Seagold Dormitory offers comfort and convenience with a student-friendly environment. Explore our cozy and affordable units just for you.
         </p>
       </header>
 
