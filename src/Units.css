@@ -182,122 +182,133 @@
 /* Modal Content */
 .modal-content {
   background-color: white;
-  width: 100%;
-  height: 100%;
+  width: 90%; /* Ensure the modal takes up 90% of the viewport width */
+  max-width: 800px; /* Set a max width for larger screens */
+  max-height: 90%;
   overflow-y: auto;
   padding: 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border-radius: 0; /* Remove rounding for full screen */
-  position: relative; /* Position within overlay */
-}
-
-/* Modal Close Button */
-.modal-close {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: #333;
-}
-
-.modal-close:hover {
-  color: red;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
 /* Modal Header */
 .modal-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+  text-align: center;
   margin-bottom: 20px;
 }
 
 .modal-main-image {
   width: 100%;
-  max-height: 400px;
+  max-height: 300px;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
 }
 
+/* Gallery Section */
 .modal-gallery {
   display: flex;
-  gap: 10px;
   justify-content: center;
-  margin-bottom: 20px;
+  gap: 10px;
+  flex-wrap: wrap; /* Ensure gallery wraps properly for responsiveness */
 }
 
 .modal-gallery img {
-  width: 100px;
-  height: 100px;
+  width: 80px; /* Adjust gallery image size */
+  height: 80px;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 5px;
   border: 1px solid #ddd;
-  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .modal-gallery img:hover {
+  transform: scale(1.1);
   border-color: #007bff;
 }
 
-/* Modal Info Section */
-.modal-info {
+/* "Room to Offer" Section */
+.room-offer {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  font-family: Arial, sans-serif;
-  color: #2c3e50;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.modal-info h1 {
-  font-size: 28px;
-  text-align: center;
-  color: #007bff;
-}
-
-.modal-info h2 {
-  font-size: 20px;
-  text-align: center;
+.room-features span {
+  display: inline-block;
+  margin: 5px 10px;
+  font-size: 14px;
   color: #555;
+  text-align: center;
 }
 
-/* Payment Terms Section */
+/* Amenities Section */
+.amenities ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap; /* Ensure proper wrapping for items */
+  gap: 10px;
+  justify-content: center;
+}
+
+.amenities ul li {
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Payment Terms */
 .payment-terms {
-  background: #f0f8ff; /* Light blue background */
+  background-color: #f0f8ff;
   padding: 15px;
   border-radius: 8px;
-}
-
-.payment-terms h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #2c3e50;
-}
-
-.payment-terms ul {
-  list-style: none;
-  padding-left: 0;
+  margin-top: 20px;
 }
 
 .payment-terms h4 {
   font-size: 16px;
-  color: #555;
-  margin-top: 5px;
+  color: #333;
+  margin-bottom: 10px;
 }
 
-.payment-terms .notes {
+.payment-terms ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.payment-terms ul li {
+  font-size: 14px;
+  margin: 5px 0;
+  color: #555;
+}
+
+.notes {
   font-size: 12px;
   color: #7f8c8d;
+  margin-top: 10px;
+  text-align: justify;
 }
 
-.payment-terms .notes ul {
-  list-style-type: disc;
-  margin-left: 20px;
+/* General Fixes */
+h1, h2, h3 {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
 }
