@@ -457,14 +457,16 @@ body {
 
 /* Checkbox Styling */
 .image-select-checkbox {
-  margin: 10px auto;
-  width: 24px;
-  height: 24px;
+  width: 275px;
+  max-width: 500px; /* Adjust the size as needed */
+  height: 30px; /* Adjust the height as needed */
+  border-radius: 10px; /* Makes the corners rounded */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+  margin: 20px auto; /* Center it with margin */
   cursor: pointer;
   appearance: none;
   outline: none;
   border: 2px solid #4D774E; /* Match modal green color */
-  border-radius: 50%; /* Rounded checkbox */
   background-color: transparent;
   transition: all 0.3s ease-in-out;
   position: relative;
