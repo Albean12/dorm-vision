@@ -1,4 +1,3 @@
-// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './Navbar'; // Navbar component
@@ -11,7 +10,13 @@ import ContactUs from './ContactUs';
 import Login from './Login';
 import CreateAccount from './CreateAccount';
 import AdminDashboard from './AdminDashboard';
-import TenantDashboard from './TenantDashboard';
+import TenantDashboard from './TenantDashboard/TenantDashboard';
+import HomeTenant from './TenantDashboard/HomeTenant'; // Add tenant components
+import RoomInfo from './TenantDashboard/RoomInfoTenant';
+import Messages from './TenantDashboard/MessageTenant';
+import Bills from './TenantDashboard/BillsTenant';
+import Maintenance from './TenantDashboard/MaintenanceTenant';
+import Map from './TenantDashboard/MapTenant';
 import './App.css';
 
 const App = () => {
@@ -42,9 +47,17 @@ const App = () => {
 
           {/* Tenant-only route */}
           <Route
-            path="/tenant/dashboard"
+            path="/tenant/dashboard/*"
             element={role === 'tenant' ? <TenantDashboard /> : <Navigate to="/login" />}
-          />
+          >
+            {/* Nested routes for tenant dashboard menu */}
+                <Route path="home" element={<HomeTenant />} />
+                <Route path="room-info" element={<RoomInfo />} />
+                <Route path="messages" element={<Messages />} />
+                <Route path="bills" element={<Bills />} />
+                <Route path="maintenance" element={<Maintenance />} />
+                <Route path="map" element={<Map />} />
+          </Route>
 
           {/* Redirect any unknown routes to the Home page */}
           <Route path="*" element={<Navigate to="/" />} />
