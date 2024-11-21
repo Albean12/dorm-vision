@@ -13,47 +13,41 @@ const Dormitory = () => {
     { id: 8, capacity: 14, price: 450, image: "Room1.jpg" },
   ];
 
-  // Filters for group size and dates
   const [filters, setFilters] = useState({
     group: "",
     checkIn: "",
     checkOut: "",
   });
 
-  // Track modal states for each unit
   const [openModals, setOpenModals] = useState(
     Array(units.length).fill(false) // Tracks whether each modal is open
   );
 
-  // Handle filter changes
   const handleFilterChange = (field, value) => {
     setFilters({ ...filters, [field]: value });
   };
 
-  // Open a specific modal
   const openModal = (index) => {
     const updatedModals = [...openModals];
     updatedModals[index] = true;
     setOpenModals(updatedModals);
   };
 
-  // Close a specific modal
   const closeModal = (index) => {
     const updatedModals = [...openModals];
     updatedModals[index] = false;
     setOpenModals(updatedModals);
   };
 
-  // Apply filters to units based on group size
   const filteredUnits = units.filter(
     (unit) =>
       (!filters.group || unit.capacity === Number(filters.group)) &&
-      (filters.checkIn === "" || filters.checkOut === "" || true) // Placeholder for date logic
+      (!filters.checkIn || !filters.checkOut || true) // Placeholder for date logic
   );
 
   return (
     <div className="dormitory">
-      {/* Dormitory Header Section */}
+      {/* Header Section */}
       <div className="dormitory-header">
         <img src="RoomHeader.jpg" alt="Dormitory" className="dormitory-image" />
         <h1 className="title">WELCOME TO OUR UNITS</h1>
@@ -67,7 +61,6 @@ const Dormitory = () => {
       <div className="filter-bar-oval">
         <span className="filter-title">Find Your Perfect Unit</span>
 
-        {/* Check-In Date */}
         <div className="filter-date">
           <span className="filter-icon">📅</span>
           <input
@@ -78,7 +71,6 @@ const Dormitory = () => {
           />
         </div>
 
-        {/* Check-Out Date */}
         <div className="filter-date">
           <span className="filter-icon">📅</span>
           <input
@@ -89,10 +81,8 @@ const Dormitory = () => {
           />
         </div>
 
-        {/* Separator */}
         <div className="filter-separator"></div>
 
-        {/* Group Size Dropdown */}
         <div className="filter-select">
           <span className="filter-icon">👥</span>
           <select
@@ -125,19 +115,14 @@ const Dormitory = () => {
               View Details
             </button>
 
-            {/* Individual Modal for Each Unit */}
+            {/* Modal for each unit */}
             {openModals[index] && (
               <div className="modal-overlay" onClick={() => closeModal(index)}>
-                <div
-                  className="modal-content"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  {/* Close Button */}
+                <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                   <button className="modal-close" onClick={() => closeModal(index)}>
                     &times;
                   </button>
 
-                  {/* Modal Header with Main Image and Gallery */}
                   <div className="modal-header">
                     <img
                       src={unit.image}
@@ -152,14 +137,10 @@ const Dormitory = () => {
                     </div>
                   </div>
 
-                  {/* Modal Information Section */}
                   <div className="modal-info">
-                    <h1>
-                      UNIT {unit.id} ROOM FOR {unit.capacity} PERSON(S)
-                    </h1>
+                    <h1>UNIT {unit.id} ROOM FOR {unit.capacity} PERSON(S)</h1>
                     <h2>SEAGOLD DORMITORIES, MANILA</h2>
 
-                    {/* Room to Offer Section */}
                     <div className="room-offer">
                       <h3>ROOM TO OFFER:</h3>
                       <div className="room-features">
@@ -169,7 +150,6 @@ const Dormitory = () => {
                       </div>
                     </div>
 
-                    {/* Description Section */}
                     <div className="description">
                       <h3>DESCRIPTION:</h3>
                       <p>
@@ -179,7 +159,6 @@ const Dormitory = () => {
                       </p>
                     </div>
 
-                    {/* Amenities Section */}
                     <div className="amenities">
                       <h3>AMENITIES:</h3>
                       <ul>
@@ -190,7 +169,6 @@ const Dormitory = () => {
                       </ul>
                     </div>
 
-                    {/* Payment Transaction Section */}
                     <div className="payment-transaction">
                       <h3>PAYMENT TRANSACTION:</h3>
                       <ul>
@@ -199,9 +177,8 @@ const Dormitory = () => {
                       </ul>
                     </div>
 
-                    {/* Payment Terms Section */}
                     <div className="payment-terms">
-                      <h3>PAYMENT TERMS FOR:</h3>
+                      <h3>PAYMENT TERMS:</h3>
                       <h4>SOLO ROOM (CAPACITY FOR {unit.capacity} PERSON)</h4>
                       <ul>
                         <li>Monthly: ₱11,000.00</li>
@@ -213,8 +190,8 @@ const Dormitory = () => {
                         <strong>NOTES:</strong>
                         <ul>
                           <li>
-                            Rules on EXCESS days in half month & monthly basis apply
-                            and will be charged based on the daily rate.
+                            Rules on EXCESS days in half-month & monthly basis
+                            apply and will be charged based on the daily rate.
                           </li>
                           <li>
                             Room rates are subject to change without prior notice
