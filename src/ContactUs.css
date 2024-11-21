@@ -1,154 +1,196 @@
-/* General Container */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap');
+
+/* General Styling */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #eceff1; /* Light gray background */
+  margin: 0;
+  padding: 0;
+}
+
+/* Page Container */
 .contact-page-container {
   display: flex;
   flex-direction: row;
-  width: 95%;
-  max-width: 1100px;
+  width: 90%;
+  max-width: 1200px;
   margin: 50px auto;
+  background: #ffffff;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   overflow: hidden;
-  gap: 20px;
+  gap: 20px; /* Space between sections */
+  align-items: flex-start; /* Aligns the sections at the top */
 }
 
-/* Left Section: Get in Touch */
+/* Left Section: Get in Touch Form */
 .get-in-touch {
-  background-color: #ffffff;
-  flex: 1.5;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
+  flex: 2;
+  padding: 40px;
+  background: #ffffff;
 }
 
 .get-in-touch h2 {
   font-size: 24px;
-  color: #263238;
+  color: #455a64;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 2px solid #607d8b;
+  padding-bottom: 10px;
   margin-bottom: 20px;
-  text-align: center;
-  font-weight: bold;
 }
 
-/* Contact Form */
 .contact-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns layout */
+  gap: 20px; /* Space between rows and columns */
+}
+
+.contact-form .form-group {
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
 
-.form-row {
-  display: flex;
-  gap: 20px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-label {
+.contact-form label {
   font-size: 14px;
   color: #546e7a;
   margin-bottom: 5px;
 }
 
-input {
+.contact-form input {
   padding: 12px;
+  font-size: 14px;
   border: 1px solid #cfd8dc;
   border-radius: 5px;
-  font-size: 14px;
   transition: all 0.3s ease;
 }
 
-input:focus {
+.contact-form input:focus {
   outline: none;
   border-color: #607d8b;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Submit Button */
-.send-message-button {
-  padding: 15px;
-  border: none;
+.contact-form .send-message-button {
+  grid-column: span 2; /* Make the button span both columns */
   background-color: #607d8b;
   color: white;
-  border-radius: 5px;
   font-size: 16px;
+  font-weight: 600;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
-  align-self: center;
-  width: 60%;
+  text-align: center;
 }
 
-.send-message-button:hover {
+.contact-form .send-message-button:hover {
   background-color: #455a64;
-  transform: scale(1.05);
 }
 
 /* Button Group */
 .button-group {
   display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
+  justify-content: center; /* Centers the buttons */
+  gap: 20px; /* Adds spacing between the buttons */
+  margin-top: 20px; /* Adds spacing above the button group */
 }
 
-.facebook-button,
+.feedback-container {
+  display: flex;
+  justify-content: center; /* Centers the Feedback Form button */
+  margin-top: 20px; /* Space between Send Message and Feedback Form */
+}
+
 .feedback-button {
   padding: 12px 20px;
-  text-align: center;
+  background: #546e7a;
+  color: white;
   text-decoration: none;
   font-size: 14px;
-  color: white;
+  font-weight: 500;
   border-radius: 5px;
-  background-color: #546e7a;
+  text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-.facebook-button:hover,
 .feedback-button:hover {
-  background-color: #37474f;
+  background: #37474f;
+  transform: scale(1.05);
+}
+
+.send-message-button {
+  padding: 15px 40px;
+  background: #546e7a;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15); /* Prominent shadow */
+  align-self: center; /* Centers the button horizontally */
+  margin-top: 20px; /* Space above the button */
+}
+
+.send-message-button:hover {
+  background: #37474f;
+  transform: scale(1.05);
+}
+
+.send-message-button:hover {
+  background: #37474f;
+  transform: scale(1.05);
 }
 
 /* Right Section: Contact Information */
 .contact-information {
-  background-color: #37474f;
-  color: white;
   flex: 1;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  line-height: 1.5;
+  background: #37474f;
+  color: white;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between items */
 }
 
 .contact-information h2 {
   font-size: 20px;
-  margin-bottom: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #90caf9;
+  padding-bottom: 10px;
 }
 
-.contact-information .intro-text {
+.contact-information p {
   font-size: 14px;
   color: #cfd8dc;
-  margin-bottom: 20px;
+  margin-bottom: 10px; /* Reduced spacing for closer alignment */
 }
 
 .contact-information .info-section {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 }
 
 .contact-information .info-block {
-  background-color: #455a64;
-  padding: 10px;
-  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .contact-information .info-block h3 {
   font-size: 16px;
+  font-weight: 500;
   color: #90caf9;
-  margin-bottom: 5px;
 }
 
 .contact-information .info-block p {
@@ -156,72 +198,203 @@ input:focus {
   color: #cfd8dc;
 }
 
-.contact-information .description {
-  font-size: 13px;
-  color: #cfd8dc;
-  margin-top: 20px;
+.contact-information a {
+  text-decoration: none;
+  color: #90caf9;
+  font-weight: 500;
 }
 
-/* Modal Styling */
+.contact-information a:hover {
+  color: #bbdefb;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-page-container {
+    flex-direction: column;
+  }
+
+  .get-in-touch,
+  .contact-information {
+    width: 100%;
+  }
+
+  .contact-form {
+    grid-template-columns: 1fr; /* Single-column layout on small screens */
+  }
+}
+/* Modal Overlay */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
 
+/* Modal Content */
 .modal-content {
-  background: white;
+  background: #ffffff;
   padding: 30px;
-  border-radius: 10px;
-  width: 500px;
+  width: 400px;
+  max-width: 90%;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   text-align: center;
-  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Close Button */
 .close-button {
   position: absolute;
-  top: 10px;
+  top: 15px;
   right: 20px;
-  font-size: 20px;
-  cursor: pointer;
-  border: none;
   background: none;
+  border: none;
+  font-size: 18px;
+  color: #546e7a;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-.submit-feedback-button {
-  padding: 12px 20px;
-  background-color: #607d8b;
+.close-button:hover {
+  color: #37474f;
+}
+
+/* Modal Header */
+.modal-content h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #37474f;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.modal-content p {
+  font-size: 14px;
+  color: #546e7a;
+  margin-bottom: 20px;
+}
+
+/* Emoji Container */
+.emoji-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  gap: 10px;
+}
+
+.emoji-button {
+  font-size: 32px;
   border: none;
+  background: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.emoji-button:hover {
+  transform: scale(1.2);
+  background-color: #eceff1; /* Subtle hover effect */
+}
+
+.emoji-button.selected {
+  background-color: #90caf9; /* Highlight selected emoji */
   color: white;
+  transform: scale(1.3); /* Slightly enlarge */
+}
+
+/* Input Fields */
+.feedback-form .form-group {
+  margin-bottom: 15px;
+}
+
+.feedback-form input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #cfd8dc;
   border-radius: 5px;
-  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.feedback-form input:focus {
+  border-color: #90caf9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+/* Feedback Text Area */
+.feedback-form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #cfd8dc;
+  border-radius: 5px;
+  resize: none;
+  height: 100px;
+  transition: all 0.3s ease;
+}
+
+.feedback-form textarea:focus {
+  border-color: #90caf9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+/* Buttons */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.submit-button,
+.skip-button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.submit-feedback-button:hover {
-  background-color: #455a64;
-  transform: scale(1.05);
+.submit-button {
+  background-color: #607d8b;
+  color: white;
 }
 
-/* Responsiveness */
-@media (max-width: 768px) {
-  .contact-page-container {
-    flex-direction: column;
-  }
+.submit-button:hover {
+  background-color: #455a64;
+}
 
-  .get-in-touch, .contact-information {
-    width: 100%;
-  }
+.skip-button {
+  background-color: #eceff1;
+  color: #546e7a;
+  border: 1px solid #cfd8dc;
+}
 
-  .send-message-button {
-    width: 100%;
-  }
+.skip-button:hover {
+  background-color: #cfd8dc;
 }
