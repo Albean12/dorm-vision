@@ -32,12 +32,9 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
 
         {/* Gallery Section */}
         <div className="gallery-container">
-          {/* Main Image */}
           <div className="main-image">
             <img src={unit.image} alt={`Unit ${unit.id}`} />
           </div>
-
-          {/* Thumbnails Gallery */}
           <div className="gallery-thumbnails">
             {unit.galleryImages.map((image, i) => (
               <img
@@ -55,7 +52,6 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
           <h1>UNIT {unit.id} ROOM FOR {unit.capacity} PERSON(S)</h1>
           <h2>SEAGOLD DORMITORIES, MANILA</h2>
 
-          {/* Room Features */}
           <div className="room-offer">
             <h3>ROOM TO OFFER:</h3>
             <div className="room-features">
@@ -65,7 +61,6 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
             </div>
           </div>
 
-          {/* Room Description */}
           <div className="description">
             <h3>DESCRIPTION:</h3>
             <p>
@@ -73,7 +68,6 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
             </p>
           </div>
 
-          {/* Amenities List */}
           <div className="amenities">
             <h3>AMENITIES:</h3>
             <ul>
@@ -84,7 +78,6 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
             </ul>
           </div>
 
-          {/* Payment Transaction Information */}
           <div className="payment-transaction">
             <h3>PAYMENT TRANSACTION:</h3>
             <ul>
@@ -93,15 +86,14 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
             </ul>
           </div>
 
-          {/* Payment Terms Section */}
           <div className="payment-terms">
             <h3>PAYMENT TERMS:</h3>
             <h4>SOLO ROOM (CAPACITY FOR {unit.capacity} PERSON)</h4>
             <ul>
-              <li>Monthly: ₱11,000.00</li>
-              <li>Half Month (Strictly 15 Days): ₱7,500.00</li>
-              <li>One Week (7 Days): ₱5,000.00</li>
-              <li>Daily: ₱900.00</li>
+              <li>Monthly: ₱{unit.price * 12 / 1000},000.00</li>
+              <li>Half Month: ₱{Math.ceil(unit.price * 0.75)}.00</li>
+              <li>One Week: ₱{Math.ceil(unit.price * 0.5)}.00</li>
+              <li>Daily: ₱{Math.ceil(unit.price / 30)}.00</li>
             </ul>
             <div className="notes">
               <strong>NOTES:</strong>
@@ -118,61 +110,20 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
 };
 
 //
-// FilterBar Component: Displays filter options to refine unit search.
-//
-const FilterBar = ({ filters, handleFilterChange }) => (
-  <div className="filter-bar-oval">
-    <span className="filter-title">Find Your Perfect Unit</span>
-
-    <div className="filter-date">
-      <span className="filter-icon">📅</span>
-      <input
-        type="date"
-        placeholder="Check In"
-        value={filters.checkIn}
-        onChange={(e) => handleFilterChange("checkIn", e.target.value)}
-      />
-    </div>
-
-    <div className="filter-date">
-      <span className="filter-icon">📅</span>
-      <input
-        type="date"
-        placeholder="Check Out"
-        value={filters.checkOut}
-        onChange={(e) => handleFilterChange("checkOut", e.target.value)}
-      />
-    </div>
-
-    <div className="filter-separator"></div>
-
-    <div className="filter-select">
-      <span className="filter-icon">👥</span>
-      <select
-        className="filter-select-dropdown"
-        value={filters.group}
-        onChange={(e) => handleFilterChange("group", e.target.value)}
-      >
-        <option value="">Group For</option>
-        {[1, 2, 4, 6, 8, 10, 12, 14].map((group) => (
-          <option key={group} value={group}>{group} Person(s)</option>
-        ))}
-      </select>
-    </div>
-  </div>
-);
-
-//
 // Dormitory Component: Main Component displaying all units and applying filters.
 //
 const Dormitory = () => {
-  // Sample units data
   const units = [
     { id: 1, capacity: 1, price: 900, image: "Room1.jpg", galleryImages: ["Room1.jpg", "Room2.jpg", "Room3.jpg"] },
-    // Additional unit data...
+    { id: 2, capacity: 2, price: 1500, image: "Room2.jpg", galleryImages: ["Room2.jpg", "Room3.jpg", "Room4.jpg"] },
+    { id: 3, capacity: 4, price: 2500, image: "Room3.jpg", galleryImages: ["Room3.jpg", "Room4.jpg", "Room5.jpg"] },
+    { id: 4, capacity: 6, price: 3500, image: "Room4.jpg", galleryImages: ["Room4.jpg", "Room5.jpg", "Room6.jpg"] },
+    { id: 5, capacity: 8, price: 4500, image: "Room5.jpg", galleryImages: ["Room5.jpg", "Room6.jpg", "Room7.jpg"] },
+    { id: 6, capacity: 10, price: 5500, image: "Room6.jpg", galleryImages: ["Room6.jpg", "Room7.jpg", "Room8.jpg"] },
+    { id: 7, capacity: 12, price: 6500, image: "Room7.jpg", galleryImages: ["Room7.jpg", "Room8.jpg", "Room9.jpg"] },
+    { id: 8, capacity: 14, price: 7500, image: "Room8.jpg", galleryImages: ["Room8.jpg", "Room9.jpg", "Room10.jpg"] },
   ];
 
-  // State for filters and modals
   const [filters, setFilters] = useState({
     group: "",
     checkIn: "",
@@ -181,26 +132,22 @@ const Dormitory = () => {
 
   const [openModals, setOpenModals] = useState(Array(units.length).fill(false));
 
-  // Handle filter change
   const handleFilterChange = (field, value) => {
     setFilters({ ...filters, [field]: value });
   };
 
-  // Open modal for a unit
   const openModal = (index) => {
     const updatedModals = [...openModals];
     updatedModals[index] = true;
     setOpenModals(updatedModals);
   };
 
-  // Close modal for a unit
   const closeModal = (index) => {
     const updatedModals = [...openModals];
     updatedModals[index] = false;
     setOpenModals(updatedModals);
   };
 
-  // Filter units based on selected criteria
   const filteredUnits = units.filter(
     (unit) =>
       (!filters.group || unit.capacity === Number(filters.group)) &&
@@ -209,7 +156,6 @@ const Dormitory = () => {
 
   return (
     <div className="dormitory">
-      {/* Header Section */}
       <header className="dormitory-header">
         <img src="RoomHeader.jpg" alt="Dormitory" className="dormitory-image" />
         <h1 className="title">WELCOME TO OUR UNITS</h1>
@@ -217,11 +163,6 @@ const Dormitory = () => {
           Seagold Dormitory offers comfort and convenience with a student-friendly environment. Explore our cozy and affordable units just for you.
         </p>
       </header>
-
-      {/* Filter Bar */}
-      <FilterBar filters={filters} handleFilterChange={handleFilterChange} />
-
-      {/* Units Container */}
       <div className="units-container">
         {filteredUnits.map((unit, index) => (
           <div key={unit.id}>
