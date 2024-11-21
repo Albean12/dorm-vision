@@ -171,56 +171,6 @@
   z-index: 1000;
 }
 
-/* Container for Gallery Layout */
-.gallery-container {
-  display: flex;
-  justify-content: flex-start; /* Align the main image and thumbnails to the left */
-  gap: 10px; /* Reduce the gap between the main image and thumbnails */
-}
-
-.modal-gallery {
-  display: flex;
-  flex-direction: row; /* Layout the gallery thumbnails horizontally */
-  gap: 10px;
-}
-
-.main-image {
-  flex: 2; /* Makes the large image take more space */
-  max-width: 60%; /* Adjust the width of the main image */
-}
-
-.main-image img {
-  width: 100%;
-  height: auto;
-  object-fit: cover; /* Ensures the large image scales correctly */
-  border-radius: 5px;
-  max-height: 300px; /* Adjusted to align better with the overall layout */
-}
-
-.gallery-thumbnails {
-  display: flex;
-  flex-direction: column; /* Stacks the thumbnails vertically */
-  gap: 8px; /* Adds space between thumbnails */
-  flex: 1; /* Allows thumbnails to fit in less space compared to the main image */
-  max-width: 20%; /* Restricts thumbnail area width */
-}
-
-.gallery-thumbnails img {
-  width: 100%;
-  height: auto;
-  max-height: 80px; /* Smaller, consistent height for thumbnails */
-  object-fit: cover;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  transition: transform 0.3s ease, border-color 0.3s ease;
-  cursor: pointer;
-}
-
-.gallery-thumbnails img:hover {
-  transform: scale(1.05);
-  border-color: #007bff;
-}
-
 /* General modal styling */
 .modal-overlay {
   position: fixed;
@@ -260,7 +210,6 @@
   cursor: pointer;
 }
 
-/* Header with gallery and thumbnails */
 /* Modal Header */
 .modal-header {
   display: flex;
@@ -273,54 +222,7 @@
   color: white;
 }
 
-/* Gallery Container */
-.gallery-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  width: 100%;
-}
 
-/* Main Image Styling */
-.main-image {
-  width: 90%; /* Adjust for responsiveness */
-  max-height: 300px;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.main-image img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-/* Thumbnails Gallery */
-.gallery-thumbnails {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  overflow-x: auto;
-  padding: 0.5rem;
-  scrollbar-width: thin;
-  width: 100%;
-}
-
-.gallery-thumbnails img {
-  width: 70px; /* Adjust thumbnail size */
-  height: 50px;
-  object-fit: cover;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.gallery-thumbnails img:hover {
-  transform: scale(1.1);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
 /* Main content sections */
 .modal-info {
   display: flex;
