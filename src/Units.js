@@ -118,22 +118,19 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
 // Dormitory Component: Main Component displaying all units and applying filters.
 //
 const Dormitory = () => {
-  const headerImages = [
-    "HOVERA.jpg",
-    "HOVERB.jpg",
-    "HOVERC.jpg",
-  ];
-
+  const headerImages = ["HOVERA.jpg", "HOVERB.jpg", "HOVERC.jpg"];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
   const [openModals, setOpenModals] = useState(Array(8).fill(false));
+  const [filters, setFilters] = useState({ group: "" });
 
+  // Open Modal Function
   const openModal = (index) => {
     const updatedModals = [...openModals];
     updatedModals[index] = true;
     setOpenModals(updatedModals);
   };
 
+  // Close Modal Function
   const closeModal = (index) => {
     const updatedModals = [...openModals];
     updatedModals[index] = false;
@@ -152,19 +149,63 @@ const Dormitory = () => {
   }, [headerImages.length]);
 
   const units = [
-    { id: 1, capacity: 1, price: 900, image: "Room1.jpg", galleryImages: ["Room1.jpg", "Room2.jpg", "Room3.jpg"] },
-    { id: 2, capacity: 2, price: 1500, image: "Room2.jpg", galleryImages: ["Room2.jpg", "Room3.jpg", "Room4.jpg"] },
-    { id: 3, capacity: 4, price: 2500, image: "Room3.jpg", galleryImages: ["Room3.jpg", "Room4.jpg", "Room5.jpg"] },
-    { id: 4, capacity: 6, price: 3500, image: "Room4.jpg", galleryImages: ["Room4.jpg", "Room5.jpg", "Room5.jpg"] },
-    { id: 5, capacity: 8, price: 4500, image: "Room5.jpg", galleryImages: ["Room5.jpg", "Room1.jpg", "Room4.jpg"] },
-    { id: 6, capacity: 10, price: 5500, image: "Room3.jpg", galleryImages: ["Room3.jpg", "Room2.jpg", "Room3.jpg"] },
-    { id: 7, capacity: 12, price: 6500, image: "Room2.jpg", galleryImages: ["Room2.jpg", "Room3.jpg", "Room2.jpg"] },
-    { id: 8, capacity: 14, price: 7500, image: "Room1.jpg", galleryImages: ["Room1.jpg", "Room4.jpg", "Room1.jpg"] },
+    {
+      id: 1,
+      capacity: 1,
+      price: 900,
+      image: "Room1.jpg",
+      galleryImages: ["Room1.jpg", "Room2.jpg", "Room3.jpg"],
+    },
+    {
+      id: 2,
+      capacity: 2,
+      price: 1500,
+      image: "Room2.jpg",
+      galleryImages: ["Room2.jpg", "Room3.jpg", "Room4.jpg"],
+    },
+    {
+      id: 3,
+      capacity: 4,
+      price: 2500,
+      image: "Room3.jpg",
+      galleryImages: ["Room3.jpg", "Room4.jpg", "Room5.jpg"],
+    },
+    {
+      id: 4,
+      capacity: 6,
+      price: 3500,
+      image: "Room4.jpg",
+      galleryImages: ["Room4.jpg", "Room5.jpg", "Room5.jpg"],
+    },
+    {
+      id: 5,
+      capacity: 8,
+      price: 4500,
+      image: "Room5.jpg",
+      galleryImages: ["Room5.jpg", "Room1.jpg", "Room4.jpg"],
+    },
+    {
+      id: 6,
+      capacity: 10,
+      price: 5500,
+      image: "Room3.jpg",
+      galleryImages: ["Room3.jpg", "Room2.jpg", "Room3.jpg"],
+    },
+    {
+      id: 7,
+      capacity: 12,
+      price: 6500,
+      image: "Room2.jpg",
+      galleryImages: ["Room2.jpg", "Room3.jpg", "Room2.jpg"],
+    },
+    {
+      id: 8,
+      capacity: 14,
+      price: 7500,
+      image: "Room1.jpg",
+      galleryImages: ["Room1.jpg", "Room4.jpg", "Room1.jpg"],
+    },
   ];
-
-  const [filters, setFilters] = useState({
-    group: "",
-  });
 
   const filteredUnits = units.filter(
     (unit) => !filters.group || unit.capacity === Number(filters.group)
@@ -204,6 +245,7 @@ const Dormitory = () => {
         </select>
       </div>
 
+      {/* Units Section */}
       <div className="units-container">
         {filteredUnits.map((unit, index) => (
           <div key={unit.id}>
