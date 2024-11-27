@@ -1,7 +1,10 @@
+
 import React, { useState } from "react";
 import "./Units.css";
 
+//
 // UnitCard Component: Displays a single unit's basic information.
+//
 const UnitCard = ({ unit, index, openModal }) => (
   <div key={unit.id} className="unit-card">
     <img src={unit.image} alt={`Unit ${unit.id}`} className="unit-image" />
@@ -14,28 +17,37 @@ const UnitCard = ({ unit, index, openModal }) => (
   </div>
 );
 
+//
 // UnitModal Component: Displays detailed information about a unit in a modal.
+//
 const UnitModal = ({ unit, index, openModals, closeModal }) => {
   if (!openModals[index]) return null;
 
   return (
     <div className="modal-overlay" onClick={() => closeModal(index)}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        {/* Close Button */}
         <button className="modal-close" onClick={() => closeModal(index)}>
           &times;
         </button>
 
+        {/* Gallery Section */}
         <div className="gallery-container">
           <div className="main-image">
             <img src={unit.image} alt={`Unit ${unit.id}`} />
           </div>
           <div className="gallery-thumbnails">
             {unit.galleryImages.map((image, i) => (
-              <img key={i} src={image} alt={`Thumbnail ${i + 1}`} />
+              <img
+                key={i}
+                src={image}
+                alt={`Thumbnail ${i + 1}`}
+              />
             ))}
           </div>
         </div>
 
+        {/* Modal Info Section */}
         <div className="modal-info">
           <h1>UNIT {unit.id} ROOM FOR {unit.capacity} PERSON(S)</h1>
           <h2>SEAGOLD DORMITORIES, MANILA</h2>
@@ -52,9 +64,7 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
           <div className="description">
             <h3>DESCRIPTION:</h3>
             <p>
-              Experience a vibrant student community with modern amenities,
-              unbeatable convenience, and a space designed for both living and
-              learning!
+              Experience a vibrant student community with modern amenities, unbeatable convenience, and a space designed for both living and learning!
             </p>
           </div>
 
@@ -80,7 +90,7 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
             <h3>PAYMENT TERMS:</h3>
             <h4>SOLO ROOM (CAPACITY FOR {unit.capacity} PERSON)</h4>
             <ul>
-              <li>Monthly: ₱{(unit.price * 12) / 1000},000.00</li>
+              <li>Monthly: ₱{unit.price * 12 / 1000},000.00</li>
               <li>Half Month: ₱{Math.ceil(unit.price * 0.75)}.00</li>
               <li>One Week: ₱{Math.ceil(unit.price * 0.5)}.00</li>
               <li>Daily: ₱{Math.ceil(unit.price / 30)}.00</li>
@@ -88,14 +98,8 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
             <div className="notes">
               <strong>NOTES:</strong>
               <ul>
-                <li>
-                  Rules on EXCESS days in half-month & monthly basis apply and
-                  will be charged based on the daily rate.
-                </li>
-                <li>
-                  Room rates are subject to change without prior notice
-                  (effective 01-24).
-                </li>
+                <li>Rules on EXCESS days in half-month & monthly basis apply and will be charged based on the daily rate.</li>
+                <li>Room rates are subject to change without prior notice (effective 01-24).</li>
               </ul>
             </div>
           </div>
@@ -105,24 +109,19 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
   );
 };
 
+//
 // Dormitory Component: Main Component displaying all units and applying filters.
+//
 const Dormitory = () => {
   const units = [
-    {
-      id: 1,
-      capacity: 1,
-      price: 900,
-      image: "Room1.jpg",
-      galleryImages: ["Room1.jpg", "Room2.jpg", "Room3.jpg"],
-    },
-    {
-      id: 2,
-      capacity: 2,
-      price: 1500,
-      image: "Room2.jpg",
-      galleryImages: ["Room2.jpg", "Room3.jpg", "Room4.jpg"],
-    },
-    // Add more units here...
+    { id: 1, capacity: 1, price: 900, image: "Room1.jpg", galleryImages: ["Room1.jpg", "Room2.jpg", "Room3.jpg"] },
+    { id: 2, capacity: 2, price: 1500, image: "Room2.jpg", galleryImages: ["Room2.jpg", "Room3.jpg", "Room4.jpg"] },
+    { id: 3, capacity: 4, price: 2500, image: "Room3.jpg", galleryImages: ["Room3.jpg", "Room4.jpg", "Room5.jpg"] },
+    { id: 4, capacity: 6, price: 3500, image: "Room4.jpg", galleryImages: ["Room4.jpg", "Room5.jpg", "Room5.jpg"] },
+    { id: 5, capacity: 8, price: 4500, image: "Room5.jpg", galleryImages: ["Room5.jpg", "Room1.jpg", "Room4.jpg"] },
+    { id: 6, capacity: 10, price: 5500, image: "Room3.jpg", galleryImages: ["Room3.jpg", "Room2.jpg", "Room3.jpg"] },
+    { id: 7, capacity: 12, price: 6500, image: "Room2.jpg", galleryImages: ["Room2.jpg", "Room3.jpg", "Room2.jpg"] },
+    { id: 8, capacity: 14, price: 7500, image: "Room1.jpg", galleryImages: ["Room1.jpg", "Room4.jpg", "Room1.jpg"] },
   ];
 
   const [filters, setFilters] = useState({
@@ -158,13 +157,10 @@ const Dormitory = () => {
   return (
     <div className="dormitory">
       <header className="dormitory-header">
-        <div className="image-container">
-        </div>
+        <img src="RoomHeader.jpg" alt="Dormitory" className="dormitory-image" />
         <h1 className="title">WELCOME TO OUR UNITS</h1>
         <p className="description">
-          Seagold Dormitory offers comfort and convenience with a
-          student-friendly environment. Explore our cozy and affordable units
-          just for you.
+          Seagold Dormitory offers comfort and convenience with a student-friendly environment. Explore our cozy and affordable units just for you.
         </p>
       </header>
       <div className="units-container">

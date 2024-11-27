@@ -42,7 +42,7 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
                 key={i}
                 src={image}
                 alt={`Thumbnail ${i + 1}`}
-                onClick={() => setMainImage(image)} // Optional: Update main image on click
+
               />
             ))}
           </div>

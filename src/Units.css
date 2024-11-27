@@ -46,63 +46,32 @@
 }
 
 /* Filter Section */
-.filter-bar-oval {
+
+.filter-section {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #add8e6; /* Light blue background */
-  padding: 15px 25px;
-  border-radius: 30px;
-  margin: 20px auto;
-  max-width: 800px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  gap: 15px;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
 }
 
-.filter-title {
-  font-size: 14px;
-  font-weight: bold;
+.filter-section label {
+  font-size: 1rem;
   color: #333;
-  text-transform: uppercase;
-  margin-right: 15px;
+  align-self: center;
 }
 
-.filter-date,
-.filter-select {
-  display: flex;
-  align-items: center;
-  background-color: white;
+.filter-section select,
+.filter-section input {
+  padding: 10px;
+  font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 8px 12px;
-  font-size: 14px;
-  gap: 8px;
-}
-
-.filter-date input {
-  border: none;
   outline: none;
-  font-size: 14px;
-  width: 150px;
-}
-
-.filter-select select {
-  border: none;
-  outline: none;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.filter-icon {
-  font-size: 16px;
-  color: #333;
-}
-
-.filter-separator {
-  width: 1px;
-  height: 40px;
-  background-color: #ccc;
-  margin: 0 10px;
+  transition: border-color 0.3s ease;
 }
 
 /* Units Section */
