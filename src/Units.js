@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import "./Units.css";
 
@@ -38,12 +37,7 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
           </div>
           <div className="gallery-thumbnails">
             {unit.galleryImages.map((image, i) => (
-              <img
-                key={i}
-                src={image}
-                alt={`Thumbnail ${i + 1}`}
-
-              />
+              <img key={i} src={image} alt={`Thumbnail ${i + 1}`} />
             ))}
           </div>
         </div>
@@ -91,7 +85,7 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
             <h3>PAYMENT TERMS:</h3>
             <h4>SOLO ROOM (CAPACITY FOR {unit.capacity} PERSON)</h4>
             <ul>
-              <li>Monthly: ₱{unit.price * 12 / 1000},000.00</li>
+              <li>Monthly: ₱{(unit.price * 12) / 1000},000.00</li>
               <li>Half Month: ₱{Math.ceil(unit.price * 0.75)}.00</li>
               <li>One Week: ₱{Math.ceil(unit.price * 0.5)}.00</li>
               <li>Daily: ₱{Math.ceil(unit.price / 30)}.00</li>
@@ -127,8 +121,6 @@ const Dormitory = () => {
 
   const [filters, setFilters] = useState({
     group: "",
-    checkIn: "",
-    checkOut: "",
   });
 
   const [openModals, setOpenModals] = useState(Array(units.length).fill(false));
@@ -150,9 +142,7 @@ const Dormitory = () => {
   };
 
   const filteredUnits = units.filter(
-    (unit) =>
-      (!filters.group || unit.capacity === Number(filters.group)) &&
-      (!filters.checkIn || !filters.checkOut || true)
+    (unit) => !filters.group || unit.capacity === Number(filters.group)
   );
 
   return (
@@ -164,6 +154,24 @@ const Dormitory = () => {
           Seagold Dormitory offers comfort and convenience with a student-friendly environment. Explore our cozy and affordable units just for you.
         </p>
       </header>
+
+      {/* Filter Section */}
+      <div className="filter-section">
+        <label htmlFor="group">Group Size:</label>
+        <select
+          id="group"
+          value={filters.group}
+          onChange={(e) => handleFilterChange("group", e.target.value)}
+        >
+          <option value="">All</option>
+          {[1, 2, 4, 6, 8, 10, 12, 14].map((size) => (
+            <option key={size} value={size}>
+              {size} Person(s)
+            </option>
+          ))}
+        </select>
+      </div>
+
       <div className="units-container">
         {filteredUnits.map((unit, index) => (
           <div key={unit.id}>
