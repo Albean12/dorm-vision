@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Units.css";
 
 //
@@ -44,7 +44,9 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
 
         {/* Modal Info Section */}
         <div className="modal-info">
-          <h1>UNIT {unit.id} ROOM FOR {unit.capacity} PERSON(S)</h1>
+          <h1>
+            UNIT {unit.id} ROOM FOR {unit.capacity} PERSON(S)
+          </h1>
           <h2>SEAGOLD DORMITORIES, MANILA</h2>
 
           <div className="room-offer">
@@ -59,7 +61,9 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
           <div className="description">
             <h3>DESCRIPTION:</h3>
             <p>
-              Experience a vibrant student community with modern amenities, unbeatable convenience, and a space designed for both living and learning!
+              Experience a vibrant student community with modern amenities,
+              unbeatable convenience, and a space designed for both living and
+              learning!
             </p>
           </div>
 
@@ -93,8 +97,14 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
             <div className="notes">
               <strong>NOTES:</strong>
               <ul>
-                <li>Rules on EXCESS days in half-month & monthly basis apply and will be charged based on the daily rate.</li>
-                <li>Room rates are subject to change without prior notice (effective 01-24).</li>
+                <li>
+                  Rules on EXCESS days in half-month & monthly basis apply and
+                  will be charged based on the daily rate.
+                </li>
+                <li>
+                  Room rates are subject to change without prior notice
+                  (effective 01-24).
+                </li>
               </ul>
             </div>
           </div>
@@ -108,6 +118,26 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
 // Dormitory Component: Main Component displaying all units and applying filters.
 //
 const Dormitory = () => {
+  const headerImages = [
+    "HOVERA.jpg",
+    "HOVERB.jpg",
+    "HOVERC.jpg",
+    "HOVERD.jpg",
+  ]; // Replace with your image paths
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Automatically switch images in the header carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === headerImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000); // Change image every 3 seconds
+
+    return () => clearInterval(interval); // Cleanup on component unmount
+  }, [headerImages.length]);
+
   const units = [
     { id: 1, capacity: 1, price: 900, image: "Room1.jpg", galleryImages: ["Room1.jpg", "Room2.jpg", "Room3.jpg"] },
     { id: 2, capacity: 2, price: 1500, image: "Room2.jpg", galleryImages: ["Room2.jpg", "Room3.jpg", "Room4.jpg"] },
@@ -123,35 +153,24 @@ const Dormitory = () => {
     group: "",
   });
 
-  const [openModals, setOpenModals] = useState(Array(units.length).fill(false));
-
-  const handleFilterChange = (field, value) => {
-    setFilters({ ...filters, [field]: value });
-  };
-
-  const openModal = (index) => {
-    const updatedModals = [...openModals];
-    updatedModals[index] = true;
-    setOpenModals(updatedModals);
-  };
-
-  const closeModal = (index) => {
-    const updatedModals = [...openModals];
-    updatedModals[index] = false;
-    setOpenModals(updatedModals);
-  };
-
   const filteredUnits = units.filter(
     (unit) => !filters.group || unit.capacity === Number(filters.group)
   );
 
   return (
     <div className="dormitory">
+      {/* Header Carousel */}
       <header className="dormitory-header">
-        <img src="RoomHeader.jpg" alt="Dormitory" className="dormitory-image" />
+        <img
+          src={headerImages[currentImageIndex]}
+          alt="Dormitory Header"
+          className="dormitory-image"
+        />
         <h1 className="title">WELCOME TO OUR UNITS</h1>
         <p className="description">
-          Seagold Dormitory offers comfort and convenience with a student-friendly environment. Explore our cozy and affordable units just for you.
+          Seagold Dormitory offers comfort and convenience with a
+          student-friendly environment. Explore our cozy and affordable units
+          just for you.
         </p>
       </header>
 
@@ -161,7 +180,7 @@ const Dormitory = () => {
         <select
           id="group"
           value={filters.group}
-          onChange={(e) => handleFilterChange("group", e.target.value)}
+          onChange={(e) => setFilters({ ...filters, group: e.target.value })}
         >
           <option value="">All</option>
           {[1, 2, 4, 6, 8, 10, 12, 14].map((size) => (
@@ -175,13 +194,7 @@ const Dormitory = () => {
       <div className="units-container">
         {filteredUnits.map((unit, index) => (
           <div key={unit.id}>
-            <UnitCard unit={unit} index={index} openModal={openModal} />
-            <UnitModal
-              unit={unit}
-              index={index}
-              openModals={openModals}
-              closeModal={closeModal}
-            />
+            <UnitCard unit={unit} index={index} openModal={() => {}} />
           </div>
         ))}
       </div>

@@ -26,6 +26,12 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.dormitory-image:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
 }
 
 .title {
@@ -45,8 +51,54 @@
   word-spacing: 1.5px;
 }
 
-/* Filter Section */
+/* Header Carousel */
+.carousel-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  margin-bottom: 10px;
+}
 
+.carousel-header img {
+  width: 100px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.carousel-header img.active {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.carousel-header img:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Hover Line for Carousel */
+.hover-line {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 4px;
+  background-color: #007bff;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+.carousel-header:hover .hover-line {
+  width: 80%;
+}
+
+/* Filter Section */
 .filter-section {
   display: flex;
   justify-content: center;
@@ -74,6 +126,7 @@
   background-color: #ffffff;
   transition: border-color 0.3s ease;
 }
+
 /* Units Section */
 .units-container {
   display: flex;
