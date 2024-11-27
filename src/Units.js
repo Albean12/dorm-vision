@@ -37,20 +37,19 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
           </div>
           <div className="gallery-thumbnails">
             {unit.galleryImages.map((image, i) => (
-              <img
-                key={i}
-                src={image}
-                alt={`Thumbnail ${i + 1}`}
-              />
+              <img key={i} src={image} alt={`Thumbnail ${i + 1}`} />
             ))}
           </div>
         </div>
 
         {/* Modal Info Section */}
         <div className="modal-info">
-          <h1>UNIT {unit.id} ROOM FOR {unit.capacity} PERSON(S)</h1>
+          <h1>
+            UNIT {unit.id} ROOM FOR {unit.capacity} PERSON(S)
+          </h1>
           <h2>SEAGOLD DORMITORIES, MANILA</h2>
 
+          {/* Room Offer */}
           <div className="room-offer">
             <h3>ROOM TO OFFER:</h3>
             <div className="room-features">
@@ -60,13 +59,17 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
             </div>
           </div>
 
+          {/* Description */}
           <div className="description">
             <h3>DESCRIPTION:</h3>
             <p>
-              Experience a vibrant student community with modern amenities, unbeatable convenience, and a space designed for both living and learning!
+              Experience a vibrant student community with modern amenities,
+              unbeatable convenience, and a space designed for both living and
+              learning!
             </p>
           </div>
 
+          {/* Amenities */}
           <div className="amenities">
             <h3>AMENITIES:</h3>
             <ul>
@@ -77,6 +80,7 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
             </ul>
           </div>
 
+          {/* Payment Transaction */}
           <div className="payment-transaction">
             <h3>PAYMENT TRANSACTION:</h3>
             <ul>
@@ -85,6 +89,7 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
             </ul>
           </div>
 
+          {/* Payment Terms */}
           <div className="payment-terms">
             <h3>PAYMENT TERMS:</h3>
             <h4>SOLO ROOM (CAPACITY FOR {unit.capacity} PERSON)</h4>
@@ -97,8 +102,14 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
             <div className="notes">
               <strong>NOTES:</strong>
               <ul>
-                <li>Rules on EXCESS days in half-month & monthly basis apply and will be charged based on the daily rate.</li>
-                <li>Room rates are subject to change without prior notice (effective 01-24).</li>
+                <li>
+                  Rules on EXCESS days in half-month & monthly basis apply and
+                  will be charged based on the daily rate.
+                </li>
+                <li>
+                  Room rates are subject to change without prior notice
+                  (effective 01-24).
+                </li>
               </ul>
             </div>
           </div>
@@ -113,14 +124,21 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
 //
 const Dormitory = () => {
   const units = [
-    { id: 1, capacity: 1, price: 900, image: "Room1.jpg", galleryImages: ["Room1.jpg", "Room2.jpg", "Room3.jpg"] },
-    { id: 2, capacity: 2, price: 1500, image: "Room2.jpg", galleryImages: ["Room2.jpg", "Room3.jpg", "Room4.jpg"] },
-    { id: 3, capacity: 4, price: 2500, image: "Room3.jpg", galleryImages: ["Room3.jpg", "Room4.jpg", "Room5.jpg"] },
-    { id: 4, capacity: 6, price: 3500, image: "Room4.jpg", galleryImages: ["Room4.jpg", "Room5.jpg", "Room5.jpg"] },
-    { id: 5, capacity: 8, price: 4500, image: "Room5.jpg", galleryImages: ["Room5.jpg", "Room1.jpg", "Room4.jpg"] },
-    { id: 6, capacity: 10, price: 5500, image: "Room3.jpg", galleryImages: ["Room3.jpg", "Room2.jpg", "Room3.jpg"] },
-    { id: 7, capacity: 12, price: 6500, image: "Room2.jpg", galleryImages: ["Room2.jpg", "Room3.jpg", "Room2.jpg"] },
-    { id: 8, capacity: 14, price: 7500, image: "Room1.jpg", galleryImages: ["Room1.jpg", "Room4.jpg", "Room1.jpg"] },
+    {
+      id: 1,
+      capacity: 1,
+      price: 900,
+      image: "Room1.jpg",
+      galleryImages: ["Room1.jpg", "Room2.jpg", "Room3.jpg"],
+    },
+    {
+      id: 2,
+      capacity: 2,
+      price: 1500,
+      image: "Room2.jpg",
+      galleryImages: ["Room2.jpg", "Room3.jpg", "Room4.jpg"],
+    },
+    // Add more units here...
   ];
 
   const [filters, setFilters] = useState({
@@ -156,10 +174,19 @@ const Dormitory = () => {
   return (
     <div className="dormitory">
       <header className="dormitory-header">
-        <img src="RoomHeader.jpg" alt="Dormitory" className="dormitory-image" />
+        <div className="image-container">
+          <img
+            src="RoomHeader1.jpg"
+            alt="Dormitory"
+            className="dormitory-image"
+          />
+          {/* Add additional header images */}
+        </div>
         <h1 className="title">WELCOME TO OUR UNITS</h1>
         <p className="description">
-          Seagold Dormitory offers comfort and convenience with a student-friendly environment. Explore our cozy and affordable units just for you.
+          Seagold Dormitory offers comfort and convenience with a
+          student-friendly environment. Explore our cozy and affordable units
+          just for you.
         </p>
       </header>
       <div className="units-container">
