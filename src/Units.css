@@ -1,4 +1,3 @@
-
 /* General Styling */
 .dormitory {
   font-family: Arial, sans-serif;
@@ -14,7 +13,7 @@
   align-items: center;
   justify-content: center;
   padding: 40px 20px;
-  background-color: #add8e6;
+  background-color: #add8e6; /* Light blue */
   color: #333;
   text-align: center;
 }
@@ -172,43 +171,15 @@
   z-index: 1000;
 }
 
-/* General modal styling */
-.modal-overlay {
-  position: fixed;
-  cursor: pointer;
-}
-
-/* Modal Header */
-.modal-header {
-/* Updated Gallery Container */
-.gallery-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-  background: linear-gradient(90deg, #67a873, #d9936a); /* Matches the gradient bar */
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  color: white;
-  flex-direction: column; /* Stack main image and thumbnails vertically */
-  align-items: center; /* Center content horizontally */
-  gap: 15px;
-  width: 100%; /* Ensure full-width responsiveness */
-}
-
-
-/* Main content sections */
+/* Modal Content */
 .modal-info {
   display: flex;
   flex-direction: column;
   gap: 20px;
-/* Main Image Styling */
-.main-image {
-  width: 100%;
-  max-width: 600px; /* Limit the maximum size */
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #f9f9f9;
 }
 
 .modal-info h1,
@@ -237,11 +208,6 @@
   color: #007bff;
 }
 
-.room-features span {
-  display: inline-block;
-  margin-right: 10px;
-}
-
 .amenities ul,
 .payment-transaction ul,
 .payment-terms ul {
@@ -254,61 +220,59 @@
 .payment-transaction ul li,
 .payment-terms ul li {
   margin-bottom: 8px;
-.main-image img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
 }
 
-.payment-terms ul li {
-  font-weight: bold;
-/* Thumbnails Section */
+/* Gallery Section */
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: linear-gradient(90deg, #67a873, #d9936a);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: white;
+  gap: 15px;
+  width: 100%;
+}
+
+.main-image img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .gallery-thumbnails {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap; /* Wrap thumbnails into rows on smaller screens */
+  flex-wrap: wrap;
   gap: 10px;
   width: 100%;
 }
 
-.payment-terms .notes ul {
-  list-style-type: disc;
-  margin-left: 20px;
-  color: #555;
 .gallery-thumbnails img {
-  width: 100px; /* Thumbnail dimensions */
+  width: 100px;
   height: 80px;
   object-fit: cover;
   border-radius: 5px;
   cursor: pointer;
-  transition: transform 0.3s ease, border-color 0.3s ease;
   border: 2px solid #ccc;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.notes strong {
-  font-size: 16px;
-  display: block;
-  margin-bottom: 10px;
 .gallery-thumbnails img:hover {
-  transform: scale(1.1); /* Enlarge slightly on hover */
+  transform: scale(1.1);
   border-color: #007bff;
 }
 
 /* Responsive Design */
-  }
-
-  .gallery-thumbnails {
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-
+@media (max-width: 768px) {
   .gallery-thumbnails img {
-    width: calc(33.33% - 10px); /* Three images per row */
-    max-height: 100px;
+    width: calc(33.33% - 10px);
   }
 
-  .main-image {
-    max-width: 100%; /* Ensure full responsiveness */
+  .main-image img {
+    max-width: 100%;
   }
 }
