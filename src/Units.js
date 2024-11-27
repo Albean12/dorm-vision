@@ -118,7 +118,13 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
 // Dormitory Component: Main Component displaying all units and applying filters.
 //
 const Dormitory = () => {
-  const headerImages = ["HOVERA.jpg", "HOVERB.jpg", "HOVERC.jpg"];
+  const headerImages = [
+    "HOVERA.jpg",
+    "HOVERB.jpg",
+    "HOVERC.jpg",
+    "HOVERD.jpg", // Added an additional image
+  ];
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [openModals, setOpenModals] = useState(Array(8).fill(false));
   const [filters, setFilters] = useState({ group: "" });
