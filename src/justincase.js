@@ -122,8 +122,7 @@ const Dormitory = () => {
     "HOVERA.jpg",
     "HOVERB.jpg",
     "HOVERC.jpg",
-    "HOVERD.jpg",
-  ]; // Replace with your image paths
+  ]; 
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -133,7 +132,7 @@ const Dormitory = () => {
       setCurrentImageIndex((prevIndex) =>
         prevIndex === headerImages.length - 1 ? 0 : prevIndex + 1
       );
-    }, 3000); // Change image every 3 seconds
+    }, 2000); // Change image every 2 seconds
 
     return () => clearInterval(interval); // Cleanup on component unmount
   }, [headerImages.length]);

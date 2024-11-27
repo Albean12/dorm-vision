@@ -35,20 +35,22 @@
 }
 
 .title {
-  font-size: 28px;
+  font-size: 32px; /* Increased size */
   font-weight: bold;
-  color: #007bff;
-  margin: 10px 0;
+  color: #0056b3; /* Deeper blue shade */
+  margin: 20px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Adds subtle shadow for depth */
 }
 
 .description {
   margin: 20px auto 0;
   max-width: 80%;
-  font-size: 16px;
+  font-size: 18px; /* Slightly larger text */
   text-align: center;
-  color: #7f8c8d;
-  line-height: 1.5;
+  color: #4a4a4a; /* Darker gray for better readability */
+  line-height: 1.6; /* Improved spacing between lines */
   word-spacing: 1.5px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
 /* Header Carousel */
@@ -62,23 +64,23 @@
 }
 
 .carousel-header img {
-  width: 100px;
-  height: 70px;
-  object-fit: cover;
+  width: 120px; /* Ensures all images have the same width */
+  height: 90px; /* Ensures all images have the same height */
+  object-fit: cover; /* Ensures the image fills the container proportionally */
   border-radius: 8px;
   cursor: pointer;
   opacity: 0.6;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out; /* Faster transitions */
 }
 
 .carousel-header img.active {
   opacity: 1;
-  transform: scale(1.1);
+  transform: scale(1.15); /* Slightly larger scale */
 }
 
 .carousel-header img:hover {
   opacity: 1;
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 /* Hover Line for Carousel */
@@ -91,7 +93,7 @@
   height: 4px;
   background-color: #007bff;
   border-radius: 2px;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out; /* Faster hover-line animation */
 }
 
 .carousel-header:hover .hover-line {
