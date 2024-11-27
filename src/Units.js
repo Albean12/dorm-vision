@@ -122,9 +122,23 @@ const Dormitory = () => {
     "HOVERA.jpg",
     "HOVERB.jpg",
     "HOVERC.jpg",
-  ]; 
+  ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const [openModals, setOpenModals] = useState(Array(8).fill(false));
+
+  const openModal = (index) => {
+    const updatedModals = [...openModals];
+    updatedModals[index] = true;
+    setOpenModals(updatedModals);
+  };
+
+  const closeModal = (index) => {
+    const updatedModals = [...openModals];
+    updatedModals[index] = false;
+    setOpenModals(updatedModals);
+  };
 
   // Automatically switch images in the header carousel
   useEffect(() => {
@@ -193,7 +207,13 @@ const Dormitory = () => {
       <div className="units-container">
         {filteredUnits.map((unit, index) => (
           <div key={unit.id}>
-            <UnitCard unit={unit} index={index} openModal={() => {}} />
+            <UnitCard unit={unit} index={index} openModal={openModal} />
+            <UnitModal
+              unit={unit}
+              index={index}
+              openModals={openModals}
+              closeModal={closeModal}
+            />
           </div>
         ))}
       </div>
