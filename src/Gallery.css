@@ -106,17 +106,18 @@ body {
   border-radius: 0;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   position: relative;
-  border: 1px solid #ddd;
+  border: 2px solid #ddd; /* Default border */
   padding: 15px;
   cursor: pointer; /* Interactive cards */
 }
 
 .category-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(0, 251, 113, 0.2);
+  box-shadow: 0 12px 24px rgba(218, 46, 115, 0.2);
   background: #f9f9f9;
+  border-color: #E18574; /* Add this to create a colored border */
 }
 
 /* Category Image */
@@ -217,7 +218,7 @@ body {
   text-align: center;
   background: #f0f0f0;
   padding: 0.5rem 1rem;
-  border-radius: 8px;
+  border-radius: 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
@@ -405,13 +406,13 @@ body {
   width: 275px;
   max-width: 500px; /* Adjust the size as needed */
   height: 30px; /* Adjust the height as needed */
-  border-radius: 10px; /* Makes the corners rounded */
+  border-radius: 5px; 
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
   margin: 20px auto; /* Center it with margin */
   cursor: pointer;
   appearance: none;
   outline: none;
-  border: 2px solid #4D774E; /* Match modal green color */
+  border: 2px solid #bec3be; /* Match modal green color */
   background-color: transparent;
   transition: all 0.3s ease-in-out;
   position: relative;
