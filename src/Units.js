@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import "./Units.css";
 
-//
 // UnitCard Component: Displays a single unit's basic information.
-//
 const UnitCard = ({ unit, index, openModal }) => (
   <div key={unit.id} className="unit-card">
     <img src={unit.image} alt={`Unit ${unit.id}`} className="unit-image" />
@@ -16,21 +14,17 @@ const UnitCard = ({ unit, index, openModal }) => (
   </div>
 );
 
-//
 // UnitModal Component: Displays detailed information about a unit in a modal.
-//
 const UnitModal = ({ unit, index, openModals, closeModal }) => {
   if (!openModals[index]) return null;
 
   return (
     <div className="modal-overlay" onClick={() => closeModal(index)}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        {/* Close Button */}
         <button className="modal-close" onClick={() => closeModal(index)}>
           &times;
         </button>
 
-        {/* Gallery Section */}
         <div className="gallery-container">
           <div className="main-image">
             <img src={unit.image} alt={`Unit ${unit.id}`} />
@@ -42,14 +36,10 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
           </div>
         </div>
 
-        {/* Modal Info Section */}
         <div className="modal-info">
-          <h1>
-            UNIT {unit.id} ROOM FOR {unit.capacity} PERSON(S)
-          </h1>
+          <h1>UNIT {unit.id} ROOM FOR {unit.capacity} PERSON(S)</h1>
           <h2>SEAGOLD DORMITORIES, MANILA</h2>
 
-          {/* Room Offer */}
           <div className="room-offer">
             <h3>ROOM TO OFFER:</h3>
             <div className="room-features">
@@ -59,7 +49,6 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
             </div>
           </div>
 
-          {/* Description */}
           <div className="description">
             <h3>DESCRIPTION:</h3>
             <p>
@@ -69,7 +58,6 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
             </p>
           </div>
 
-          {/* Amenities */}
           <div className="amenities">
             <h3>AMENITIES:</h3>
             <ul>
@@ -80,7 +68,6 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
             </ul>
           </div>
 
-          {/* Payment Transaction */}
           <div className="payment-transaction">
             <h3>PAYMENT TRANSACTION:</h3>
             <ul>
@@ -89,12 +76,11 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
             </ul>
           </div>
 
-          {/* Payment Terms */}
           <div className="payment-terms">
             <h3>PAYMENT TERMS:</h3>
             <h4>SOLO ROOM (CAPACITY FOR {unit.capacity} PERSON)</h4>
             <ul>
-              <li>Monthly: ₱{unit.price * 12 / 1000},000.00</li>
+              <li>Monthly: ₱{(unit.price * 12) / 1000},000.00</li>
               <li>Half Month: ₱{Math.ceil(unit.price * 0.75)}.00</li>
               <li>One Week: ₱{Math.ceil(unit.price * 0.5)}.00</li>
               <li>Daily: ₱{Math.ceil(unit.price / 30)}.00</li>
@@ -119,9 +105,7 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
   );
 };
 
-//
 // Dormitory Component: Main Component displaying all units and applying filters.
-//
 const Dormitory = () => {
   const units = [
     {
@@ -175,12 +159,10 @@ const Dormitory = () => {
     <div className="dormitory">
       <header className="dormitory-header">
         <div className="image-container">
-          <img
-            src="RoomHeader1.jpg"
-            alt="Dormitory"
-            className="dormitory-image"
-          />
-          {/* Add additional header images */}
+          <img src="HOVER A.jpg" alt="Dormitory" className="dormitory-image" />
+          <img src="HOVER B.jpg" alt="Dormitory" className="dormitory-image hidden" />
+          <img src="HOVER C.jpg" alt="Dormitory" className="dormitory-image hidden" />
+          <img src="HOVER D.jpg" alt="Dormitory" className="dormitory-image hidden" />
         </div>
         <h1 className="title">WELCOME TO OUR UNITS</h1>
         <p className="description">
