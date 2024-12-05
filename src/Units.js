@@ -92,7 +92,7 @@ const UnitModal = ({ unit, index, openModals, closeModal }) => {
               <li>Monthly: ₱{(unit.price * 12) / 1000},000.00</li>
               <li>Half Month: ₱{Math.ceil(unit.price * 0.75)}.00</li>
               <li>One Week: ₱{Math.ceil(unit.price * 0.5)}.00</li>
-              <li>Daily: ₱{Math.ceil(unit.price / 30)}.00</li>
+              <li>Daily: ₱{Math.ceil(unit.price / 600)}.00</li>
             </ul>
             <div className="notes">
               <strong>NOTES:</strong>
