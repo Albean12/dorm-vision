@@ -122,7 +122,6 @@ const Dormitory = () => {
     "HOVERA.jpg",
     "HOVERB.jpg",
     "HOVERC.jpg",
-    "HOVERD.jpg", // Added an additional image
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
