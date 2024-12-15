@@ -7,13 +7,13 @@ const Units = () => {
 
   const rentals = [
     { id: 1, title: "Solo Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 11000, availability: "1 Capacity", image: "unit1.jpg", tag: "Room 1", features: ["Aircon", "Wifi"] },
-    { id: 2, title: "Duo Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 6000, availability: "2 Capacity", image: "unit2.jpg", tag: "Room 2", features: ["Aircon", "Wifi"] },
+    { id: 2, title: "Duo Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 6000, availability: "2 Capacity", image: "unit2.jpg", tag: "Room 2", features: ["Wifi"] },
     { id: 3, title: "Quadro Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 5000, availability: "4 Capacity", image: "unit3.jpg", tag: "Room 3", features: ["Wifi", "Aircon"] },
     { id: 4, title: "Sixto Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 7000, availability: "6 Capacity", image: "unit1.jpg", tag: "Room 4", features: ["Wifi", "Aircon"] },
-    { id: 5, title: "Otso Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 8000, availability: "8 Capacity", image: "unit2.jpg", tag: "Room 5", features: ["Wifi","Aircon"] },
+    { id: 5, title: "Otso Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 8000, availability: "8 Capacity", image: "unit2.jpg", tag: "Room 5", features: ["Wifi"] },
     { id: 6, title: "XL Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 4500, availability: "12 Capacity", image: "unit1.jpg", tag: "Room 6", features: ["Aircon","Wifi"] },
     { id: 7, title: "Large Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 3500, availability: "14 Capacity", image: "unit2.jpg", tag: "Room 7", features: ["Aircon","Wifi"] },
-    { id: 8, title: "Mega Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 10000, availability: "10 Capacity", image: "unit3.jpg", tag: "Room 8", features: ["Aircon", "Wifi"] },
+    { id: 8, title: "Mega Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 10000, availability: "10 Capacity", image: "unit3.jpg", tag: "Room 8", features: ["Wifi"] },
   ];
 
   const filterRentals = (type, value) => {

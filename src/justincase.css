@@ -76,7 +76,7 @@ body {
   position: absolute;
   top: 10px;
   left: 10px;
-  background-color: #28a745;
+  background-color: #007bff;
   color: white;
   padding: 5px 10px;
   border-radius: 5px;
@@ -120,7 +120,7 @@ body {
 
 .rental-availability {
   font-size: 0.9rem;
-  color: #28a745;
+  color: #007bff;
   margin-bottom: 10px;
 }
 
