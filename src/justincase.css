@@ -13,7 +13,7 @@ body {
   padding: 10px;
 }
 
-/* Search and Filter Bar */
+/* Filter Bar */
 .filter-bar {
   background-color: #ffffff;
   border: 1px solid #ddd;
@@ -69,9 +69,6 @@ body {
 }
 
 .filters button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: white;
   border: 2px solid #007bff;
   color: #007bff;
@@ -90,10 +87,6 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.filter-icon {
-  margin-right: 5px;
-}
-
 /* Rental Container */
 #rental-container {
   display: grid;
@@ -109,9 +102,9 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.3s ease;
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s ease;
 }
 
 .rental-card:hover {
@@ -123,46 +116,6 @@ body {
   background-color: #f5f5f5;
 }
 
-/* Carousel Container */
-.carousel-container {
-  position: relative;
-  width: 100%;
-  height: 200px;
-}
-
-.rental-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  font-size: 18px;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: background-color 0.3s ease;
-}
-
-.carousel-btn:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-.carousel-btn.prev {
-  left: 10px;
-}
-
-.carousel-btn.next {
-  right: 10px;
-}
-
-/* Badge */
 .verified-badge {
   position: absolute;
   top: 10px;
@@ -173,6 +126,39 @@ body {
   border-radius: 5px;
   font-size: 12px;
   font-weight: bold;
+}
+
+.carousel-container {
+  position: relative;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  z-index: 2;
+}
+
+.carousel-btn.prev {
+  left: 5px;
+}
+
+.carousel-btn.next {
+  right: 5px;
+}
+
+.rental-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
 }
 
 /* Rental Content */
@@ -240,4 +226,19 @@ body {
   #rental-container {
     grid-template-columns: 1fr;
   }
+
+  .carousel-btn {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  .rental-image {
+    height: 150px;
+  }
 }
+
+.carousel-images {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+

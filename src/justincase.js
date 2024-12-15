@@ -11,14 +11,94 @@ const Units = () => {
   const [carouselIndices, setCarouselIndices] = useState({});
 
   const rentals = [
-    { id: 1, title: "Solo Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 11000, availability: "1", images: ["unit1.jpg"], tag: "Room 1", features: ["Aircon", "Wifi"] },
-    { id: 2, title: "Duo Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 6000, availability: "2", images: ["unit2.jpg"], tag: "Room 2", features: ["Aircon", "Wifi"] },
-    { id: 3, title: "Quadro Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 5000, availability: "4", images: ["unit3.jpg"], tag: "Room 3", features: ["Aircon", "Wifi"] },
-    { id: 4, title: "Sixto Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 7000, availability: "6", images: ["unit4.jpg"], tag: "Room 4", features: ["Aircon", "Wifi"] },
-    { id: 5, title: "Otso Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 8000, availability: "8", images: ["unit5.jpg"], tag: "Room 5", features: ["Aircon", "Wifi"] },
-    { id: 6, title: "XL Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 4500, availability: "12", images: ["unit6.jpg"], tag: "Room 6", features: ["Aircon", "Wifi"] },
-    { id: 7, title: "Large Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 3500, availability: "14", images: ["unit7.jpg"], tag: "Room 7", features: ["Aircon", "Wifi"] },
-    { id: 8, title: "Mega Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 10000, availability: "10", images: ["unit8.jpg"], tag: "Room 8", features: ["Aircon", "Wifi"] },
+    {
+      id: 1,
+      title: "Solo Room",
+      inclusion: "Air Conditioned",
+      inclusion2: "Wifi",
+      price: 11000,
+      availability: "1",
+      images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"],
+      tag: "Room 1",
+      features: ["Aircon", "Wifi"],
+    },
+    {
+      id: 2,
+      title: "Duo Room",
+      inclusion: "Air Conditioned",
+      inclusion2: "Wifi",
+      price: 6000,
+      availability: "2",
+      images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"],
+      tag: "Room 2",
+      features: ["Aircon", "Wifi"],
+    },
+    {
+      id: 3,
+      title: "Quadro Room",
+      inclusion: "Air Conditioned",
+      inclusion2: "Wifi",
+      price: 5000,
+      availability: "4",
+      images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"],
+      tag: "Room 3",
+      features: ["Aircon", "Wifi"],
+    },
+    {
+      id: 4,
+      title: "Sixto Room",
+      inclusion: "Air Conditioned",
+      inclusion2: "Wifi",
+      price: 7000,
+      availability: "6",
+      images: ["Room4.jpg", "Room5.jpg", "Room6.jpg"],
+      tag: "Room 4",
+      features: ["Aircon", "Wifi"],
+    },
+    {
+      id: 5,
+      title: "Otso Room",
+      inclusion: "Air Conditioned",
+      inclusion2: "Wifi",
+      price: 8000,
+      availability: "8",
+      images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"],
+      tag: "Room 5",
+      features: ["Aircon", "Wifi"],
+    },
+    {
+      id: 6,
+      title: "XL Room",
+      inclusion: "Air Conditioned",
+      inclusion2: "Wifi",
+      price: 4500,
+      availability: "12",
+      images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"],
+      tag: "Room 6",
+      features: ["Aircon", "Wifi"],
+    },
+    {
+      id: 7,
+      title: "Large Room",
+      inclusion: "Air Conditioned",
+      inclusion2: "Wifi",
+      price: 3500,
+      availability: "14",
+      images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"],
+      tag: "Room 7",
+      features: ["Aircon", "Wifi"],
+    },
+    {
+      id: 8,
+      title: "Mega Room",
+      inclusion: "Air Conditioned",
+      inclusion2: "Wifi",
+      price: 10000,
+      availability: "10",
+      images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"],
+      tag: "Room 8",
+      features: ["Aircon", "Wifi"],
+    },
   ];
 
   const handleFilterClick = (type, value) => {
@@ -49,21 +129,8 @@ const Units = () => {
         filters.features.length === 0 ||
         filters.features.every((feature) => rental.features.includes(feature));
 
-        const matchesAvailability =
-        filters.availability === "" ||
-        (parseInt(filters.availability) <= 1 && rental.availability === "1") ||
-        (parseInt(filters.availability) <= 2 && rental.availability === "2") ||
-        (parseInt(filters.availability) <= 3 && rental.availability === "4") ||
-        (parseInt(filters.availability) <= 4 && rental.availability === "4") ||
-        (parseInt(filters.availability) <= 5 && rental.availability === "6") ||
-        (parseInt(filters.availability) <= 6 && rental.availability === "6") ||
-        (parseInt(filters.availability) <= 7 && rental.availability === "8") ||
-        (parseInt(filters.availability) <= 8 && rental.availability === "8") ||
-        (parseInt(filters.availability) <= 9 && rental.availability === "10") ||
-        (parseInt(filters.availability) <= 10 && rental.availability === "10") ||
-        (parseInt(filters.availability) <= 11 && rental.availability === "12") ||
-        (parseInt(filters.availability) <= 12 && rental.availability === "12") ||
-        (parseInt(filters.availability) <= 14 && rental.availability === "14");
+      const matchesAvailability =
+        filters.availability === "" || parseInt(filters.availability) <= parseInt(rental.availability);
 
       return matchesPrice && matchesFeatures && matchesAvailability;
     });
@@ -126,11 +193,16 @@ const Units = () => {
                 >
                   &#8592;
                 </button>
-                <img
-                  src={rental.images[carouselIndices[rental.id] || 0]}
-                  alt={rental.title}
-                  className="rental-image"
-                />
+                <div
+                  className="carousel-images"
+                  style={{
+                    transform: `translateX(-${(carouselIndices[rental.id] || 0) * 100}%)`,
+                  }}
+                >
+                  {rental.images.map((image, index) => (
+                    <img key={index} src={image} alt={rental.title} className="rental-image" />
+                  ))}
+                </div>
                 <button
                   className="carousel-btn next"
                   onClick={() => handleCarousel(rental.id, "next")}

@@ -10,7 +10,6 @@ const Units = () => {
   });
   const [carouselIndices, setCarouselIndices] = useState({});
 
-  // Complete 8 Room Data
   const rentals = [
     {
       id: 1,
@@ -52,7 +51,7 @@ const Units = () => {
       inclusion2: "Wifi",
       price: 7000,
       availability: "6",
-      images: ["Room4.jpg", "Room5.jpg,", "Room1.jpg" ],
+      images: ["Room4.jpg", "Room5.jpg", "Room6.jpg"],
       tag: "Room 4",
       features: ["Aircon", "Wifi"],
     },
@@ -102,7 +101,6 @@ const Units = () => {
     },
   ];
 
-  // Filter Logic
   const handleFilterClick = (type, value) => {
     setFilters((prev) => {
       const newFilters = { ...prev };
@@ -140,7 +138,6 @@ const Units = () => {
     setFilteredRentals(filtered);
   }, [filters]);
 
-  // Carousel Navigation
   const handleCarousel = (rentalId, direction) => {
     setCarouselIndices((prev) => {
       const currentIndex = prev[rentalId] || 0;
@@ -196,11 +193,16 @@ const Units = () => {
                 >
                   &#8592;
                 </button>
-                <img
-                  src={rental.images[carouselIndices[rental.id] || 0]}
-                  alt={rental.title}
-                  className="rental-image"
-                />
+                <div
+                  className="carousel-images"
+                  style={{
+                    transform: `translateX(-${(carouselIndices[rental.id] || 0) * 100}%)`,
+                  }}
+                >
+                  {rental.images.map((image, index) => (
+                    <img key={index} src={image} alt={rental.title} className="rental-image" />
+                  ))}
+                </div>
                 <button
                   className="carousel-btn next"
                   onClick={() => handleCarousel(rental.id, "next")}
