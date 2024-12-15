@@ -156,7 +156,10 @@ const Units = () => {
     <div className="Units">
       <div className="filter-bar">
         <div className="search-section">
-          <h1>Find rooms for rent with Dormy</h1>
+          <h1 className="sea-gold-heading">
+            <span className="unit-text">Unit</span>
+            <span className="description-text">The Room that start your dream</span>
+          </h1>
           <div className="search-input">
             <span className="search-icon">🔍</span>
             <input
@@ -195,9 +198,7 @@ const Units = () => {
                 </button>
                 <div
                   className="carousel-images"
-                  style={{
-                    transform: `translateX(-${(carouselIndices[rental.id] || 0) * 100}%)`,
-                  }}
+                  style={{ transform: `translateX(-${(carouselIndices[rental.id] || 0) * 100}%)` }}
                 >
                   {rental.images.map((image, index) => (
                     <img key={index} src={image} alt={rental.title} className="rental-image" />
