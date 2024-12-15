@@ -80,11 +80,15 @@ body {
   transition: all 0.3s ease;
 }
 
-.filters button.active,
-.filters button:hover {
+.filters button.active {
   background-color: #007bff;
   color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.filters button:hover {
+  background-color: #007bff;
+  color: white;
 }
 
 /* Rental Container */
@@ -126,10 +130,27 @@ body {
   border-radius: 5px;
   font-size: 12px;
   font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 2;
 }
 
+/* Carousel Container */
 .carousel-container {
   position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 200px;
+}
+
+.carousel-images {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-images img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
 .carousel-btn {
@@ -143,22 +164,15 @@ body {
   cursor: pointer;
   border-radius: 5px;
   font-size: 16px;
-  z-index: 2;
+  z-index: 3;
 }
 
 .carousel-btn.prev {
-  left: 5px;
+  left: 10px;
 }
 
 .carousel-btn.next {
-  right: 5px;
-}
-
-.rental-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
+  right: 10px;
 }
 
 /* Rental Content */
@@ -236,9 +250,3 @@ body {
     height: 150px;
   }
 }
-
-.carousel-images {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-

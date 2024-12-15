@@ -156,7 +156,10 @@ const Units = () => {
     <div className="Units">
       <div className="filter-bar">
         <div className="search-section">
-          <h1>Find rooms for rent with Dormy</h1>
+        <h1 class="sea-gold-heading">
+        <span class="sea">Sea</span>
+        <span class="gold">Gold</span>
+        <span class="unit">Unit</span> </h1>
           <div className="search-input">
             <span className="search-icon">🔍</span>
             <input
