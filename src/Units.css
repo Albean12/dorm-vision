@@ -13,6 +13,12 @@ body {
   padding: 10px;
 }
 
+.rental-image {
+  width: 100%; /* Full width of the card */
+  height: 200px; /* Fixed height for all images */
+  object-fit: cover; /* Ensures images scale properly without distortion */
+}
+
 /* Filter Section */
 .filter-section {
   display: flex;
