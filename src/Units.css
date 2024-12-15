@@ -10,20 +10,25 @@ body {
 /* Units Container */
 #rental-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-  margin: 20px;
+  margin: 20px auto;
   padding: 10px;
+  max-width: 1200px;
 }
 
 /* Rental Card */
 .rental-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 10px;
-  overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
+  overflow: hidden;
+  min-height: 400px; /* Ensures consistent height */
+  transition: transform 0.3s ease;
 }
 
 .rental-card:hover {
@@ -40,7 +45,7 @@ body {
   top: 10px;
   left: 10px;
   background-color: #007bff;
-  color: #fff;
+  color: white;
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 12px;
@@ -58,28 +63,20 @@ body {
 .rental-content {
   padding: 15px;
   text-align: left;
-}
-
-.rental-tag {
-  display: inline-block;
-  margin-bottom: 8px;
-  background-color: #f1f1f1;
-  padding: 5px 8px;
-  border-radius: 5px;
-  color: #333;
-  font-size: 12px;
-  font-weight: bold;
+  flex: 1;
 }
 
 .rental-title {
   font-size: 1rem;
   font-weight: bold;
   margin: 5px 0;
+  color: #2c3e50;
 }
 
 .rental-location {
   font-size: 0.9rem;
   color: #555;
+  margin: 5px 0;
 }
 
 .rental-price {
@@ -92,6 +89,7 @@ body {
 .rental-availability {
   font-size: 0.9rem;
   color: #28a745;
+  margin-bottom: 10px;
 }
 
 /* View Details Button */
@@ -99,16 +97,27 @@ body {
   display: block;
   width: 100%;
   padding: 10px;
-  text-align: center;
   background-color: #007bff;
   color: white;
   border: none;
-  cursor: pointer;
   border-radius: 0 0 10px 10px;
+  text-align: center;
+  cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s ease;
 }
 
 .details-button:hover {
   background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #rental-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .rental-card {
+    min-height: 350px;
+  }
 }
