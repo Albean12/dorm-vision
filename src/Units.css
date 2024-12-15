@@ -37,19 +37,6 @@
   background-size: contain;
 }
 
-/* Icon Styles */
-.peso-icon {
-  background-image: url('public/images/peso-icon.png'); /* Add actual icon */
-}
-
-.wifi-icon {
-  background-image: url('public/images/wifi-icon.png');
-}
-
-.aircon-icon {
-  background-image: url('public/images/aircon-icon.png');
-}
-
 /* Rental Container */
 #rental-container {
   display: grid;
