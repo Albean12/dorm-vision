@@ -157,9 +157,9 @@ const Units = () => {
       <div className="filter-bar">
         <div className="search-section">
         <h1 class="sea-gold-heading">
-        <span class="sea">Sea</span>
-        <span class="gold">Gold</span>
-        <span class="unit">Unit</span> </h1>
+        <span class="sea">SeaGold</span>
+        <span class="gold">Unit</span>
+        <span class="unit">The Room that start your dream</span> </h1>
           <div className="search-input">
             <span className="search-icon">🔍</span>
             <input
