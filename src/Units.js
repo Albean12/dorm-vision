@@ -12,14 +12,14 @@ const Units = () => {
   });
 
   const rentals = [
-    { id: 1, title: "Solo Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 11000, availability: "1", images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"], tag: "Room 1", features: ["Aircon", "Wifi"] },
-    { id: 2, title: "Duo Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 6000, availability: "2", images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"], tag: "Room 2", features: ["Aircon", "Wifi"] },
-    { id: 3, title: "Quadro Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 5000, availability: "4", images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"], tag: "Room 3", features: ["Aircon", "Wifi"] },
-    { id: 4, title: "Sixto Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 7000, availability: "6", images: ["Room4.jpg", "Room5.jpg", "Room6.jpg"], tag: "Room 4", features: ["Aircon", "Wifi"] },
-    { id: 5, title: "Otso Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 8000, availability: "8", images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"], tag: "Room 5", features: ["Aircon", "Wifi"] },
-    { id: 6, title: "XL Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 4500, availability: "12", images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"], tag: "Room 6", features: ["Aircon", "Wifi"] },
-    { id: 7, title: "Large Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 3500, availability: "14", images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"], tag: "Room 7", features: ["Aircon", "Wifi"] },
-    { id: 8, title: "Mega Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 10000, availability: "10", images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"], tag: "Room 8", features: ["Aircon", "Wifi"] },
+    { id: 1, title: "Unit 1", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 11000, availability: "1", images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"], tag: "Room 1", features: ["Aircon", "Wifi"] },
+    { id: 2, title: "Unit 2", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 6000, availability: "2", images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"], tag: "Room 2", features: ["Aircon", "Wifi"] },
+    { id: 3, title: "Unit 3", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 5000, availability: "4", images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"], tag: "Room 3", features: ["Aircon", "Wifi"] },
+    { id: 4, title: "Unit 4", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 7000, availability: "6", images: ["Room4.jpg", "Room5.jpg", "Room6.jpg"], tag: "Room 4", features: ["Aircon", "Wifi"] },
+    { id: 5, title: "Unit 5", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 8000, availability: "8", images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"], tag: "Room 5", features: ["Aircon", "Wifi"] },
+    { id: 6, title: "Unit 6", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 4500, availability: "12", images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"], tag: "Room 6", features: ["Aircon", "Wifi"] },
+    { id: 7, title: "Unit 7", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 3500, availability: "14", images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"], tag: "Room 7", features: ["Aircon", "Wifi"] },
+    { id: 8, title: "Unit 8", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 10000, availability: "10", images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"], tag: "Room 8", features: ["Aircon", "Wifi"] },
   ];
 
   const handleFilterClick = (type, value) => {
