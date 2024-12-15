@@ -25,21 +25,21 @@ body {
 
 .sea-gold-heading .sea {
   color: #79C9F4; /* Light Blue */
-  font-size: 4rem; /* Increased size */
+  font-size: 5rem; /* Increased size */
   font-style: italic;
   font-weight: 700;
 }
 
 .sea-gold-heading .gold {
   color: #53BDF1; /* Slightly Deeper Blue */
-  font-size: 4rem; /* Increased size */
+  font-size: 5rem; /* Increased size */
   font-weight: bold;
 }
 
 .sea-gold-heading .unit {
   display: block;
   color: #003366; /* Deep Navy Blue */
-  font-size: 3.5rem; /* Increased size */
+  font-size: 5.5rem; /* Increased size */
   font-style: italic;
   margin-top: -10px;
 }
