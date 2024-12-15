@@ -1,54 +1,79 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Units.css';
 
 const Units = () => {
-  useEffect(() => {
-    const rentals = [
-      { id: 1, title: "Male Bedspace for Rent in Quezon City at The Avenue Residences", location: "Talipapa, Quezon City", price: "3,500 monthly", availability: "2 Available", image: "unit1.jpg", tag: "Dormy 474" },
-      { id: 2, title: "Room near UST", location: "Sampaloc, Manila", price: "4,000 monthly", availability: "1 Available", image: "unit2.jpg", tag: "Dormy 123" },
-      { id: 3, title: "Condo Share w/ WiFi", location: "Taguig", price: "5,000 monthly", availability: "3 Available", image: "unit3.jpg", tag: "Dormy 567" },
-      { id: 4, title: "Male Bedspace for Rent in Quezon City at The Avenue Residences", location: "Talipapa, Quezon City", price: "3,500 monthly", availability: "2 Available", image: "unit1.jpg", tag: "Dormy 474" },
-      { id: 5, title: "Room near UST", location: "Sampaloc, Manila", price: "4,000 monthly", availability: "1 Available", image: "unit2.jpg", tag: "Dormy 123" },
-      { id: 6, title: "Condo Share w/ WiFi", location: "Taguig", price: "5,000 monthly", availability: "3 Available", image: "unit3.jpg", tag: "Dormy 567" },
-      { id: 7, title: "Male Bedspace for Rent in Quezon City at The Avenue Residences", location: "Talipapa, Quezon City", price: "3,500 monthly", availability: "2 Available", image: "unit1.jpg", tag: "Dormy 474" },
-      { id: 8, title: "Room near UST", location: "Sampaloc, Manila", price: "4,000 monthly", availability: "1 Available", image: "unit2.jpg", tag: "Dormy 123" },
-      { id: 9, title: "Condo Share w/ WiFi", location: "Taguig", price: "5,000 monthly", availability: "3 Available", image: "unit3.jpg", tag: "Dormy 567" },
-      { id: 10, title: "Male Bedspace for Rent in Quezon City at The Avenue Residences", location: "Talipapa, Quezon City", price: "3,500 monthly", availability: "2 Available", image: "unit1.jpg", tag: "Dormy 474" },
-      { id: 11, title: "Room near UST", location: "Sampaloc, Manila", price: "4,000 monthly", availability: "1 Available", image: "unit2.jpg", tag: "Dormy 123" },
-      { id: 12, title: "Condo Share w/ WiFi", location: "Taguig", price: "5,000 monthly", availability: "3 Available", image: "unit3.jpg", tag: "Dormy 567" },
-    ];
+  const [filteredRentals, setFilteredRentals] = useState([]);
+  const [filters, setFilters] = useState({ price: 'All', features: [] });
 
-    const renderRentals = () => {
-      const rentalContainer = document.getElementById("rental-container");
-      if (rentalContainer) {
-        rentalContainer.innerHTML = ""; // Clear existing content
-        rentals.forEach((rental) => {
-          const rentalCard = document.createElement("div");
-          rentalCard.classList.add("rental-card");
-          rentalCard.innerHTML = `
-            <div class="rental-header">
-              <span class="verified-badge">${rental.tag}</span>
-            </div>
-            <img src="${rental.image}" alt="${rental.title}" class="rental-image" />
-            <div class="rental-content">
-              <h3 class="rental-title">${rental.title}</h3>
-              <p class="rental-location">${rental.location}</p>
-              <p class="rental-price">Starts at <strong>₱${rental.price}</strong></p>
-              <p class="rental-availability">${rental.availability}</p>
-              <button class="details-button">View Details</button>
-            </div>
-          `;
-          rentalContainer.appendChild(rentalCard);
-        });
+  const rentals = [
+    { id: 1, title: "Solo Room", inclusion: "Fully AIR CONDITIONED", price: 11000, availability: "1 Capacity", image: "unit1.jpg", tag: "Room 1", features: ["Aircon"] },
+    { id: 2, title: "Duo Room", inclusion: "Fully AIR CONDITIONED", price: 6000, availability: "2 Capacity", image: "unit2.jpg", tag: "Room 2", features: ["Aircon"] },
+    { id: 3, title: "Quadro Room", inclusion: "Fully AIR CONDITIONED", price: 5000, availability: "4 Capacity", image: "unit3.jpg", tag: "Room 3", features: ["Wifi"] },
+    { id: 4, title: "Sixto Room", inclusion: "Fully AIR CONDITIONED", price: 7000, availability: "6 Capacity", image: "unit1.jpg", tag: "Room 4", features: ["Wifi", "Aircon"] },
+    { id: 5, title: "Otso Room", inclusion: "Fully AIR CONDITIONED", price: 8000, availability: "8 Capacity", image: "unit2.jpg", tag: "Room 5", features: ["Wifi"] },
+    { id: 6, title: "XL Room", inclusion: "Fully AIR CONDITIONED", price: 6500, availability: "10 Capacity", image: "unit3.jpg", tag: "Room 6", features: [] },
+    { id: 7, title: "Dose Room", inclusion: "Fully AIR CONDITIONED", price: 4500, availability: "12 Capacity", image: "unit1.jpg", tag: "Room 7", features: [] },
+    { id: 8, title: "Large Room", inclusion: "Fully AIR CONDITIONED", price: 3500, availability: "14 Capacity", image: "unit2.jpg", tag: "Room 8", features: ["Aircon"] },
+  ];
+
+  const filterRentals = (type, value) => {
+    setFilters((prevFilters) => {
+      const newFilters = { ...prevFilters };
+      if (type === 'price') {
+        newFilters.price = value;
+      } else if (type === 'features') {
+        newFilters.features = prevFilters.features.includes(value)
+          ? prevFilters.features.filter((feature) => feature !== value)
+          : [...prevFilters.features, value];
       }
-    };
+      return newFilters;
+    });
+  };
 
-    renderRentals();
-  }, []);
+  useEffect(() => {
+    const filtered = rentals.filter((rental) => {
+      const matchesPrice =
+        filters.price === 'All' ||
+        (filters.price === 'Below ₱5,000' && rental.price < 5000) ||
+        (filters.price === '₱6,000 - ₱8,000' && rental.price >= 6000 && rental.price <= 8000) ||
+        (filters.price === '₱9,000 - ₱11,000' && rental.price >= 9000 && rental.price <= 11000);
+
+      const matchesFeatures =
+        filters.features.length === 0 ||
+        filters.features.every((feature) => rental.features.includes(feature));
+
+      return matchesPrice && matchesFeatures;
+    });
+    setFilteredRentals(filtered);
+  }, [filters]);
 
   return (
     <div className="Units">
-      <div id="rental-container"></div>
+      <div className="filter-section">
+        <button onClick={() => filterRentals('price', 'Below ₱5,000')}>Below ₱5,000</button>
+        <button onClick={() => filterRentals('price', '₱6,000 - ₱8,000')}>₱6,000 to ₱8,000</button>
+        <button onClick={() => filterRentals('price', '₱9,000 - ₱11,000')}>₱9,000 to ₱11,000</button>
+        <button onClick={() => filterRentals('price', 'All')}>All Prices</button>
+        <button onClick={() => filterRentals('features', 'Wifi')} className={filters.features.includes('Wifi') ? 'active' : ''}>Wifi / Internet</button>
+        <button onClick={() => filterRentals('features', 'Aircon')} className={filters.features.includes('Aircon') ? 'active' : ''}>Aircon</button>
+      </div>
+      <div id="rental-container">
+        {filteredRentals.map((rental) => (
+          <div key={rental.id} className="rental-card">
+            <div className="rental-header">
+              <span className="verified-badge">{rental.tag}</span>
+            </div>
+            <img src={rental.image} alt={rental.title} className="rental-image" />
+            <div className="rental-content">
+              <h3 className="rental-title">{rental.title}</h3>
+              <p className="rental-inclusion">{rental.inclusion}</p>
+              <p className="rental-price">Starts at <strong>₱{rental.price.toLocaleString()}</strong></p>
+              <p className="rental-availability">{rental.availability}</p>
+              <button className="details-button">View Details</button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
