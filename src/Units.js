@@ -10,24 +10,23 @@ const Units = () => {
     { id: 2, title: "Duo Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 6000, availability: "2 Capacity", image: "unit2.jpg", tag: "Room 2", features: ["Aircon", "Wifi"] },
     { id: 3, title: "Quadro Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 5000, availability: "4 Capacity", image: "unit3.jpg", tag: "Room 3", features: ["Wifi", "Aircon"] },
     { id: 4, title: "Sixto Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 7000, availability: "6 Capacity", image: "unit1.jpg", tag: "Room 4", features: ["Wifi", "Aircon"] },
-    { id: 5, title: "Otso Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 8000, availability: "8 Capacity", image: "unit2.jpg", tag: "Room 5", features: ["Wifi", "Aircon"] },
-    { id: 6, title: "XL Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 4500, availability: "12 Capacity", image: "unit1.jpg", tag: "Room 6", features: ["Aircon", "Wifi"] },
-    { id: 7, title: "Large Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 3500, availability: "14 Capacity", image: "unit2.jpg", tag: "Room 7", features: ["Aircon", "Wifi"] },
+    { id: 5, title: "Otso Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 8000, availability: "8 Capacity", image: "unit2.jpg", tag: "Room 5", features: ["Wifi","Aircon"] },
+    { id: 6, title: "XL Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 4500, availability: "12 Capacity", image: "unit1.jpg", tag: "Room 6", features: ["Aircon","Wifi"] },
+    { id: 7, title: "Large Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 3500, availability: "14 Capacity", image: "unit2.jpg", tag: "Room 7", features: ["Aircon","Wifi"] },
     { id: 8, title: "Mega Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 10000, availability: "10 Capacity", image: "unit3.jpg", tag: "Room 8", features: ["Aircon", "Wifi"] },
   ];
 
-  const handleFilterClick = (type, value) => {
-    setFilters((prev) => {
-      const newFilters = { ...prev };
+  const filterRentals = (type, value) => {
+    setFilters((prevFilters) => {
+      const newFilters = { ...prevFilters };
 
       if (type === 'price') {
-        newFilters.price = prev.price === value ? 'All' : value; // Toggle price filter
+        newFilters.price = prevFilters.price === value ? 'All' : value; // Toggle price filter
       } else if (type === 'features') {
-        newFilters.features = prev.features.includes(value)
-          ? prev.features.filter((feature) => feature !== value)
-          : [...prev.features, value]; // Toggle features filter
+        newFilters.features = prevFilters.features.includes(value)
+          ? prevFilters.features.filter((feature) => feature !== value) // Undo feature filter
+          : [...prevFilters.features, value]; // Add feature filter
       }
-
       return newFilters;
     });
   };
@@ -42,42 +41,38 @@ const Units = () => {
 
       const matchesFeatures =
         filters.features.length === 0 ||
-        filters.features.every((feature) => rental.features.includes(feature));
+        filters.features.some((feature) => rental.features.includes(feature)); // Match ANY feature
 
       return matchesPrice && matchesFeatures;
     });
-
     setFilteredRentals(filtered);
   }, [filters]);
 
   return (
     <div className="Units">
-      {/* Search and Filter Section */}
-      <div className="filter-bar">
-        <div className="search-section">
-          <h1>Find rooms for rent with Dormy</h1>
-          <div className="search-input">
-            <img src="" alt="Search Icon" className="search-icon" /> {"public/search-icon.png"}
-            <input type="text" placeholder="What room do you want to find?" />
+      <div className="filter-section">
+        <button onClick={() => filterRentals('price', 'Below ₱5,000')} className={filters.price === 'Below ₱5,000' ? 'active' : ''}>Below ₱5,000</button>
+        <button onClick={() => filterRentals('price', '₱6,000 - ₱8,000')} className={filters.price === '₱6,000 - ₱8,000' ? 'active' : ''}>₱6,000 to ₱8,000</button>
+        <button onClick={() => filterRentals('price', '₱9,000 - ₱11,000')} className={filters.price === '₱9,000 - ₱11,000' ? 'active' : ''}>₱9,000 to ₱11,000</button>
+        <button onClick={() => filterRentals('features', 'Wifi')} className={filters.features.includes('Wifi') ? 'active' : ''}>Wifi / Internet</button>
+        <button onClick={() => filterRentals('features', 'Aircon')} className={filters.features.includes('Aircon') ? 'active' : ''}>Air Conditioned</button>
+      </div>
+      <div id="rental-container">
+        {filteredRentals.map((rental) => (
+          <div key={rental.id} className="rental-card">
+            <div className="rental-header">
+              <span className="verified-badge">{rental.tag}</span>
+            </div>
+            <img src={rental.image} alt={rental.title} className="rental-image" />
+            <div className="rental-content">
+              <h3 className="rental-title">{rental.title}</h3>
+              <p className="rental-inclusion">{`${rental.inclusion} and ${rental.inclusion2}`}</p>
+              <p className="rental-price">Starts at <strong>₱{rental.price.toLocaleString()}</strong></p>
+              <p className="rental-availability">{rental.availability}</p>
+              <button className="details-button">View Details</button>
+            </div>
           </div>
-        </div>
-        <div className="filters">
-          <button onClick={() => handleFilterClick('price', 'Below ₱5,000')} className={filters.price === 'Below ₱5,000' ? 'active' : ''}>
-            <img src="public/peso-icon.png" alt="Below 5k" className="filter-icon" /> Below ₱5,000
-          </button>
-          <button onClick={() => handleFilterClick('price', '₱6,000 - ₱8,000')} className={filters.price === '₱6,000 - ₱8,000' ? 'active' : ''}>
-            <img src="public/peso-icon.png" alt="6k to 8k" className="filter-icon" /> ₱6,000 to ₱8,000
-          </button>
-          <button onClick={() => handleFilterClick('price', '₱9,000 - ₱11,000')} className={filters.price === '₱9,000 - ₱11,000' ? 'active' : ''}>
-            <img src="public/peso-icon.png" alt="9k to 11k" className="filter-icon" /> ₱9,000 to ₱11,000
-          </button>
-          <button onClick={() => handleFilterClick('features', 'Wifi')} className={filters.features.includes('Wifi') ? 'active' : ''}>
-            <img src="public/wifi-icon.png" alt="Wifi" className="filter-icon" /> Wifi / Internet
-          </button>
-          <button onClick={() => handleFilterClick('features', 'Aircon')} className={filters.features.includes('Aircon') ? 'active' : ''}>
-            <img src="public/aircon-icon.png" alt="Aircon" className="filter-icon" /> Air Conditioned
-          </button>
-        </div>
+        ))}
       </div>
     </div>
   );
