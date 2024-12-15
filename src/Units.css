@@ -39,15 +39,15 @@
 
 /* Icon Styles */
 .peso-icon {
-  background-image: url('peso-icon.png'); /* Add actual icon */
+  background-image: url('src/peso-icon.png'); /* Add actual icon */
 }
 
 .wifi-icon {
-  background-image: url('wifi-icon.png');
+  background-image: url('src/wifi-icon.png');
 }
 
 .aircon-icon {
-  background-image: url('aircon-icon.png');
+  background-image: url('src/aircon-icon.png');
 }
 
 /* Rental Container */
