@@ -23,13 +23,6 @@ body {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.sea-gold-heading .sea {
-  color: #79C9F4; /* Light Blue */
-  font-size: 4rem; /* Increased size */
-  font-style: italic;
-  font-weight: 700;
-}
-
 .sea-gold-heading .gold {
   color: #53BDF1; /* Slightly Deeper Blue */
   font-size: 4rem; /* Increased size */
