@@ -12,29 +12,33 @@ body {
   max-width: 1200px;
   padding: 10px;
 }
-
-/* SeaGold Unit Heading */
+/* Header Container */
 .sea-gold-heading {
-  display: inline-block;
   text-align: center;
   font-family: 'Georgia', serif;
-  font-weight: bold;
-  margin: 20px auto;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 40px auto;
+  line-height: 1.2;
 }
 
-.sea-gold-heading .gold {
-  color: #53BDF1; /* Slightly Deeper Blue */
-  font-size: 4rem; /* Increased size */
-  font-weight: bold;
-}
-
-.sea-gold-heading .unit {
+/* "Unit" Title */
+.unit-text {
   display: block;
-  color: #003366; /* Deep Navy Blue */
-  font-size: 1.5rem; /* Increased size */
+  font-size: 4.5rem; /* Large text */
+  color: #79C9F4; /* Light Blue */
+  font-weight: bold;
   font-style: italic;
-  margin-top: -10px;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+/* Description Text */
+.description-text {
+  display: block;
+  font-size: 1.8rem; /* Subtitle size */
+  color: #003366; /* Dark Navy Blue */
+  font-weight: bold;
+  font-style: italic;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* Filter Bar */
