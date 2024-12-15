@@ -6,14 +6,13 @@ const Units = () => {
   const [filters, setFilters] = useState({ price: 'All', features: [] });
 
   const rentals = [
-    { id: 1, title: "Solo Room", inclusion: "Fully AIR CONDITIONED", price: 11000, availability: "1 Capacity", image: "unit1.jpg", tag: "Room 1", features: ["Aircon"] },
-    { id: 2, title: "Duo Room", inclusion: "Fully AIR CONDITIONED", price: 6000, availability: "2 Capacity", image: "unit2.jpg", tag: "Room 2", features: ["Aircon"] },
-    { id: 3, title: "Quadro Room", inclusion: "Fully AIR CONDITIONED", price: 5000, availability: "4 Capacity", image: "unit3.jpg", tag: "Room 3", features: ["Wifi"] },
-    { id: 4, title: "Sixto Room", inclusion: "Fully AIR CONDITIONED", price: 7000, availability: "6 Capacity", image: "unit1.jpg", tag: "Room 4", features: ["Wifi", "Aircon"] },
-    { id: 5, title: "Otso Room", inclusion: "Fully AIR CONDITIONED", price: 8000, availability: "8 Capacity", image: "unit2.jpg", tag: "Room 5", features: ["Wifi"] },
-    { id: 6, title: "XL Room", inclusion: "Fully AIR CONDITIONED", price: 6500, availability: "10 Capacity", image: "unit3.jpg", tag: "Room 6", features: [] },
-    { id: 7, title: "Dose Room", inclusion: "Fully AIR CONDITIONED", price: 4500, availability: "12 Capacity", image: "unit1.jpg", tag: "Room 7", features: [] },
-    { id: 8, title: "Large Room", inclusion: "Fully AIR CONDITIONED", price: 3500, availability: "14 Capacity", image: "unit2.jpg", tag: "Room 8", features: ["Aircon"] },
+    { id: 1, title: "Solo Room", inclusion: "Air Conditioned and WIFI", price: 11000, availability: "1 Capacity", image: "unit1.jpg", tag: "Room 1", features: ["Aircon"] },
+    { id: 2, title: "Duo Room", inclusion: "Air Conditioned and WIFI", price: 6000, availability: "2 Capacity", image: "unit2.jpg", tag: "Room 2", features: ["Aircon"] },
+    { id: 3, title: "Quadro Room", inclusion: "Air Conditioned and WIFI", price: 5000, availability: "4 Capacity", image: "unit3.jpg", tag: "Room 3", features: ["Wifi"] },
+    { id: 4, title: "Sixto Room", inclusion: "Air Conditioned and WIFI", price: 7000, availability: "6 Capacity", image: "unit1.jpg", tag: "Room 4", features: ["Wifi", "Aircon"] },
+    { id: 5, title: "Otso Room", inclusion: "Air Conditioned and WIFI", price: 8000, availability: "8 Capacity", image: "unit2.jpg", tag: "Room 5", features: ["Wifi"] },
+    { id: 6, title: "XL Room", inclusion: "Air Conditioned and WIFI", price: 4500, availability: "12 Capacity", image: "unit1.jpg", tag: "Room 7", features: [] },
+    { id: 8, title: "Large Room", inclusion: "Air Conditioned and WIFI", price: 3500, availability: "14 Capacity", image: "unit2.jpg", tag: "Room 8", features: ["Aircon"] },
   ];
 
   const filterRentals = (type, value) => {
