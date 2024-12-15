@@ -22,42 +22,9 @@ const Units = () => {
     { id: 8, title: "Mega Room", inclusion: "Air Conditioned", inclusion2: "Wifi", price: 10000, availability: "10", images: ["Room1.jpg", "Room2.jpg", "Room3.jpg"], tag: "Room 8", features: ["Aircon", "Wifi"] },
   ];
 
-  const handleFilterClick = (type, value) => {
-    setFilters((prev) => {
-      const newFilters = { ...prev };
-      if (type === "price") {
-        newFilters.price = prev.price === value ? "All" : value;
-      } else if (type === "features") {
-        newFilters.features = prev.features.includes(value)
-          ? prev.features.filter((feature) => feature !== value)
-          : [...prev.features, value];
-      } else if (type === "availability") {
-        newFilters.availability = value;
-      }
-      return newFilters;
-    });
-  };
-
   useEffect(() => {
-    const filtered = rentals.filter((rental) => {
-      const matchesPrice =
-        filters.price === "All" ||
-        (filters.price === "Below ₱5,000" && rental.price < 5000) ||
-        (filters.price === "₱6,000 - ₱8,000" && rental.price >= 6000 && rental.price <= 8000) ||
-        (filters.price === "₱9,000 - ₱11,000" && rental.price >= 9000 && rental.price <= 11000);
-
-      const matchesFeatures =
-        filters.features.length === 0 ||
-        filters.features.every((feature) => rental.features.includes(feature));
-
-      const matchesAvailability =
-        filters.availability === "" || parseInt(filters.availability) <= parseInt(rental.availability);
-
-      return matchesPrice && matchesFeatures && matchesAvailability;
-    });
-
-    setFilteredRentals(filtered);
-  }, [filters]);
+    setFilteredRentals(rentals);
+  }, []);
 
   const handleCarousel = (rentalId, direction) => {
     setCarouselIndices((prev) => {
@@ -78,32 +45,6 @@ const Units = () => {
 
   return (
     <div className="Units">
-      <div className="filter-bar">
-        <div className="search-section">
-          <h1 className="sea-gold-heading">
-            <span className="unit-text">Unit</span>
-            <span className="description-text">The Room that Starts Your Dream</span>
-          </h1>
-          <div className="search-input">
-            <span className="search-icon">🔍</span>
-            <input
-              type="number"
-              placeholder="Enter number of people (1-14)"
-              onChange={(e) => handleFilterClick("availability", e.target.value)}
-              min="1"
-              max="14"
-            />
-          </div>
-        </div>
-        <div className="filters">
-          <button onClick={() => handleFilterClick("price", "Below ₱5,000")}>Below ₱5,000</button>
-          <button onClick={() => handleFilterClick("price", "₱6,000 - ₱8,000")}>₱6,000 to ₱8,000</button>
-          <button onClick={() => handleFilterClick("price", "₱9,000 - ₱11,000")}>₱9,000 to ₱11,000</button>
-          <button onClick={() => handleFilterClick("features", "Wifi")}>Wifi / Internet</button>
-          <button onClick={() => handleFilterClick("features", "Aircon")}>Air Conditioned</button>
-        </div>
-      </div>
-
       <div id="rental-container">
         {filteredRentals.map((rental) => (
           <div key={rental.id} className="rental-card">
@@ -117,11 +58,23 @@ const Units = () => {
               >
                 &#8592;
               </button>
-              <img
-                src={rental.images[carouselIndices[rental.id] || 0]}
-                alt={rental.title}
-                className="rental-image"
-              />
+              <div
+                className="carousel-images"
+                style={{
+                  transform: `translateX(-${
+                    (carouselIndices[rental.id] || 0) * 100
+                  }%)`,
+                }}
+              >
+                {rental.images.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image}
+                    alt={`${rental.title} ${index}`}
+                    className="rental-image"
+                  />
+                ))}
+              </div>
               <button
                 className="carousel-btn next"
                 onClick={() => handleCarousel(rental.id, "next")}
@@ -131,10 +84,14 @@ const Units = () => {
             </div>
             <div className="rental-content">
               <h3 className="rental-title">{rental.title}</h3>
-              <p className="rental-inclusion">{`${rental.inclusion} and ${rental.inclusion2}`}</p>
+              <p className="rental-inclusion">
+                {rental.inclusion} and {rental.inclusion2}
+              </p>
               <p className="rental-price">Starts at ₱{rental.price.toLocaleString()}</p>
               <p className="rental-availability">Capacity: {rental.availability}</p>
-              <button className="details-button" onClick={() => openModal(rental)}>View Details</button>
+              <button className="details-button" onClick={() => openModal(rental)}>
+                View Details
+              </button>
             </div>
           </div>
         ))}
@@ -143,12 +100,21 @@ const Units = () => {
       {selectedRental && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="close-btn" onClick={closeModal}>×</button>
+            <button className="close-btn" onClick={closeModal}>
+              ×
+            </button>
             <h2>{selectedRental.title}</h2>
             <img src={selectedRental.images[0]} alt={selectedRental.title} />
-            <p><strong>Inclusions:</strong> {selectedRental.inclusion} and {selectedRental.inclusion2}</p>
-            <p><strong>Price:</strong> ₱{selectedRental.price.toLocaleString()}</p>
-            <p><strong>Capacity:</strong> {selectedRental.availability}</p>
+            <p>
+              <strong>Inclusions:</strong> {selectedRental.inclusion} and{" "}
+              {selectedRental.inclusion2}
+            </p>
+            <p>
+              <strong>Price:</strong> ₱{selectedRental.price.toLocaleString()}
+            </p>
+            <p>
+              <strong>Capacity:</strong> {selectedRental.availability}
+            </p>
           </div>
         </div>
       )}
