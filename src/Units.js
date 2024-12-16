@@ -237,15 +237,43 @@ const Units = () => {
       </div>
 
       {/* Modal */}
-      {selectedRental && (
-        <div className="modal-overlay" onClick={closeModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <h2>{selectedRental.title}</h2>
-            <p>{selectedRental.details}</p>
-            <button onClick={closeModal} className="close-modal">Close</button>
-          </div>
-        </div>
-      )}
+{selectedRental && (
+  <div className="modal-overlay" onClick={closeModal}>
+    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <button className="close-modal" onClick={closeModal}>✖</button>
+      <h2 className="modal-title">{selectedRental.title}</h2>
+
+      {/* Image Carousel */}
+      <div className="modal-carousel">
+        <button
+          className="carousel-btn prev"
+          onClick={() => handleCarousel(selectedRental.id, "prev")}
+        >
+          ←
+        </button>
+        <img
+          src={selectedRental.images[carouselIndices[selectedRental.id] || 0]}
+          alt={selectedRental.title}
+          className="modal-image"
+        />
+        <button
+          className="carousel-btn next"
+          onClick={() => handleCarousel(selectedRental.id, "next")}
+        >
+          →
+        </button>
+      </div>
+
+      {/* Details */}
+      <div className="modal-details">
+        <p><strong>Inclusions:</strong> {selectedRental.inclusion} and {selectedRental.inclusion2}</p>
+        <p><strong>Price:</strong> ₱{selectedRental.price.toLocaleString()}</p>
+        <p><strong>Capacity:</strong> {selectedRental.availability} people</p>
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };
