@@ -9,6 +9,7 @@ const Units = () => {
     availability: "",
   });
   const [carouselIndices, setCarouselIndices] = useState({});
+  const [selectedRental, setSelectedRental] = useState(null); // For Modal
 
   const rentals = [
     {
@@ -121,9 +122,9 @@ const Units = () => {
     const filtered = rentals.filter((rental) => {
       const matchesPrice =
         filters.price === "All" ||
-        (filters.price === "Below ₱5,000" && rental.price < 5000) ||
-        (filters.price === "₱6,000 - ₱8,000" && rental.price >= 6000 && rental.price <= 8000) ||
-        (filters.price === "₱9,000 - ₱11,000" && rental.price >= 9000 && rental.price <= 11000);
+        (filters.price === "Below ₱5000" && rental.price < 5000) ||
+        (filters.price === "₱6000 - ₱8000" && rental.price >= 6000 && rental.price <= 8000) ||
+        (filters.price === "₱9000 - ₱11000" && rental.price >= 9000 && rental.price <= 11000);
 
       const matchesFeatures =
         filters.features.length === 0 ||
@@ -152,6 +153,14 @@ const Units = () => {
     });
   };
 
+  const openModal = (rental) => {
+    setSelectedRental(rental);
+  };
+
+  const closeModal = () => {
+    setSelectedRental(null);
+  };
+
   return (
     <div className="Units">
       <div className="filter-bar">
@@ -172,12 +181,12 @@ const Units = () => {
           </div>
         </div>
         <div className="filters">
-          <button onClick={() => handleFilterClick("price", "Below ₱5,000")}>Below ₱5,000</button>
-          <button onClick={() => handleFilterClick("price", "₱6,000 - ₱8,000")}>
-            ₱6,000 to ₱8,000
+          <button onClick={() => handleFilterClick("price", "Below ₱5000")}>Below ₱5000</button>
+          <button onClick={() => handleFilterClick("price", "₱6000 - ₱8000")}>
+            ₱6000 to ₱8000
           </button>
-          <button onClick={() => handleFilterClick("price", "₱9,000 - ₱11,000")}>
-            ₱9,000 to ₱11,000
+          <button onClick={() => handleFilterClick("price", "₱9000 - ₱11000")}>
+            ₱9000 to ₱11000
           </button>
           <button onClick={() => handleFilterClick("features", "Wifi")}>Wifi / Internet</button>
           <button onClick={() => handleFilterClick("features", "Aircon")}>Air Conditioned</button>
@@ -194,7 +203,7 @@ const Units = () => {
                   className="carousel-btn prev"
                   onClick={() => handleCarousel(rental.id, "prev")}
                 >
-                  &#8592;
+                  ←
                 </button>
                 <div
                   className="carousel-images"
@@ -208,7 +217,7 @@ const Units = () => {
                   className="carousel-btn next"
                   onClick={() => handleCarousel(rental.id, "next")}
                 >
-                  &#8594;
+                  →
                 </button>
               </div>
             </div>
@@ -219,11 +228,24 @@ const Units = () => {
                 Starts at <strong>₱{rental.price.toLocaleString()}</strong>
               </p>
               <p className="rental-availability">{rental.availability} Capacity</p>
-              <button className="details-button">View Details</button>
+              <button className="details-button" onClick={() => openModal(rental)}>
+                View Details
+              </button>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Modal */}
+      {selectedRental && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <h2>{selectedRental.title}</h2>
+            <p>{selectedRental.details}</p>
+            <button onClick={closeModal} className="close-modal">Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

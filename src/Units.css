@@ -18,8 +18,8 @@ body {
 /* "Unit" Title */
 .unit-text {
   display: block;
-  font-size: 4.5rem; /* Large text */
-  color: #79C9F4; /* Light Blue */
+  font-size: 4.5rem;
+  color: #79C9F4;
   font-weight: bold;
   font-style: italic;
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
@@ -29,8 +29,8 @@ body {
 /* Description Text */
 .description-text {
   display: block;
-  font-size: 1.8rem; /* Subtitle size */
-  color: #003366; /* Dark Navy Blue */
+  font-size: 1.8rem;
+  color: #003366;
   font-weight: bold;
   font-style: italic;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
@@ -109,15 +109,11 @@ body {
   transition: all 0.3s ease;
 }
 
-.filters button.active {
-  background-color: #007bff;
-  color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
+.filters button.active,
 .filters button:hover {
   background-color: #007bff;
   color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Rental Container */
@@ -255,6 +251,44 @@ body {
   background-color: #0056b3;
 }
 
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.close-modal {
+  margin-top: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-modal:hover {
+  background-color: #0056b3;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .search-input {
@@ -275,7 +309,7 @@ body {
     padding: 5px;
   }
 
-  .rental-image {
+  .carousel-images img {
     height: 150px;
   }
 }
