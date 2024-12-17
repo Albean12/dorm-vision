@@ -1,0 +1,186 @@
+/* General Styles */
+.room-details-container {
+  font-family: Arial, sans-serif;
+  color: #333;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 1200px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.breadcrumb {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Room Header Section */
+.room-header {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+/* Image Gallery */
+.image-gallery {
+  flex: 1;
+}
+
+.main-image img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.side-images {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.side-images img {
+  width: 23%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Room Information Section */
+.room-info {
+  flex: 1;
+  color: #444;
+}
+
+.room-title {
+  font-size: 2.2rem;
+  color: #1a237e; /* Matching dark blue */
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.room-description {
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+h4 {
+  color: #007bff;
+  margin: 15px 0 5px;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+ul li::before {
+  content: "•";
+  color: #007bff;
+  margin-right: 8px;
+  font-size: 1.2rem;
+}
+
+/* Payment Terms Section */
+.payment-terms {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 5px;
+  border-left: 5px solid #007bff;
+  line-height: 1.6;
+}
+
+.payment-terms p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.payment-terms strong {
+  color: #1a237e;
+}
+
+/* Notes Section */
+.room-notes {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #fff3f3; /* Light red/pink background */
+  border-left: 5px solid #ff6b6b;
+  border-radius: 5px;
+  line-height: 1.5;
+}
+
+.room-notes p {
+  margin: 10px 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.room-notes strong {
+  font-weight: bold;
+  color: #d32f2f; /* Darker red for highlights */
+}
+
+.room-notes em {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* Icons Section */
+.icon-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.icon-list li {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #444;
+}
+
+.icon-list li img {
+  margin-right: 8px;
+  width: 20px;
+  height: 20px;
+}
+
+/* Contact and Address */
+.room-contact,
+.room-address {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 5px 0;
+  color: #444;
+}
+
+/* Section Headings */
+.section-heading {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #1a237e;
+  margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .room-header {
+    flex-direction: column;
+  }
+
+  .side-images img {
+    width: 48%;
+  }
+}

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "./justincase.css";
+import "./Units.css";
+import RoomDetails from "./RoomDetails";
+
 
 const Units = () => {
   const [filteredRentals, setFilteredRentals] = useState([]);
@@ -9,6 +11,7 @@ const Units = () => {
     availability: "",
   });
   const [carouselIndices, setCarouselIndices] = useState({});
+  const [selectedRental, setSelectedRental] = useState(null); // Modal State
 
   const rentals = [
     {
@@ -130,7 +133,8 @@ const Units = () => {
         filters.features.every((feature) => rental.features.includes(feature));
 
       const matchesAvailability =
-        filters.availability === "" || parseInt(filters.availability) <= parseInt(rental.availability);
+        filters.availability === "" ||
+        parseInt(filters.availability) <= parseInt(rental.availability);
 
       return matchesPrice && matchesFeatures && matchesAvailability;
     });
@@ -152,13 +156,16 @@ const Units = () => {
     });
   };
 
+  const openModal = (rental) => setSelectedRental(rental);
+  const closeModal = () => setSelectedRental(null);
+
   return (
     <div className="Units">
       <div className="filter-bar">
         <div className="search-section">
           <h1 className="sea-gold-heading">
             <span className="unit-text">Unit</span>
-            <span className="description-text">The Room that start your dream</span>
+            <span className="description-text">The Room that starts your dream</span>
           </h1>
           <div className="search-input">
             <span className="search-icon">🔍</span>
@@ -219,11 +226,25 @@ const Units = () => {
                 Starts at <strong>₱{rental.price.toLocaleString()}</strong>
               </p>
               <p className="rental-availability">{rental.availability} Capacity</p>
-              <button className="details-button">View Details</button>
+              <button className="details-button" onClick={() => openModal(rental)}>
+                View Details
+              </button>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Modal */}
+      {selectedRental && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <RoomDetails rental={selectedRental} />
+            <button className="close-btn" onClick={closeModal}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
