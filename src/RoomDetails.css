@@ -7,14 +7,14 @@
   max-width: 1200px;
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Breadcrumb */
 .breadcrumb {
   font-size: 1rem;
   color: #777;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   display: flex;
   align-items: center;
 }
@@ -37,9 +37,15 @@
   flex: 1;
 }
 
+.main-image {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 10px;
+}
+
 .main-image img {
   width: 100%;
-  height: 250px;
+  height: 100%;
   border-radius: 8px;
   object-fit: cover;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -47,17 +53,16 @@
 
 .side-images {
   display: flex;
-  justify-content: space-between;
   gap: 10px;
-  margin-top: 10px;
+  justify-content: space-between;
 }
 
 .side-images img {
-  width: 23%;
-  height: 80px;
+  width: 24%;
+  height: 100px;
   border-radius: 8px;
   object-fit: cover;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Room Information Section */
@@ -68,7 +73,7 @@
 .room-title {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #1a237e; /* Dark blue */
+  color: #1a237e; /* Dark Blue */
   margin-bottom: 10px;
 }
 
@@ -87,47 +92,49 @@ h3 {
 
 .room-description {
   margin: 20px 0;
-  line-height: 1.5;
+  line-height: 1.6;
   color: #444;
 }
 
 h4 {
   color: #007bff;
   font-size: 1.2rem;
+  margin-top: 20px;
   margin-bottom: 10px;
 }
 
 ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 ul li {
   display: flex;
   align-items: center;
+  margin-bottom: 8px;
   font-size: 1rem;
-  margin: 8px 0;
 }
 
-ul li img {
-  margin-right: 10px;
-  width: 20px;
-  height: 20px;
+ul li::before {
+  content: "•";
+  color: #007bff;
+  margin-right: 8px;
+  font-size: 1.2rem;
 }
 
 /* Payment Terms Section */
 .payment-terms {
   background: #f9f9f9;
   padding: 20px;
-  margin-top: 20px;
+  margin-top: 30px;
   border-left: 5px solid #007bff;
   border-radius: 5px;
 }
 
 .payment-terms p {
-  margin: 5px 0;
+  margin: 8px 0;
   font-size: 1rem;
-  color: #444;
 }
 
 .payment-terms strong {
@@ -141,17 +148,11 @@ ul li img {
   background: #fff3f3;
   border-left: 5px solid #ff6b6b;
   border-radius: 5px;
+  line-height: 1.5;
 }
 
 .room-notes strong {
   color: #d32f2f;
-  font-weight: bold;
-}
-
-.room-notes p {
-  margin: 5px 0;
-  font-size: 1rem;
-  color: #444;
 }
 
 /* Responsive Design */
@@ -162,6 +163,6 @@ ul li img {
 
   .side-images img {
     width: 48%;
-    height: 70px;
+    height: 80px;
   }
 }
